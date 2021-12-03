@@ -1,0 +1,175 @@
+/* 모바일용 CSS */
+/* 기본 CSS */
+
+/* 콘텐츠의 width와 height로 설정한 값에 padding, border, margin 값이 포함되어 만들어 집니다. */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    /* 1rem = html = 16px */
+    font-size: 62.5%;   /* 62.5% = 10px, 1rem = 10px */
+}
+
+body {
+    background-image: url(../img/bg_color.png);     /* 웹 요소에 배경 이미지 넣기 */
+    font-size: 1.4rem;                              /* 글꼴 크기 */
+    font-family: 'Nanum Gothic', 돋움;               /* 글꼴 종류 */
+    color: #000000;			                      /* 글꼴 색깔 #555555 */
+
+    line-height: 18px; 			                    /* 줄 간격 */
+    /*MARGIN: 0px;*/    			                /* 바깥쪽 여백 */
+    /*PADDING-LEFT: 0px;*/		                    /* 안쪽 여백 */
+    /*PADDING-RIGHT: 0px;*/
+    /*PADDING-TOP: 0px;*/
+    /*PADDING-BOTTOM: 0px;*/
+   
+}
+  
+a:link, a:visited, a:active {		                /* LINK-링크가 있을 때 */
+    text-decoration: none;		                    /* VISITED-한번이라도 방문한 페이지 */
+    /*color: #0000FF;*/		                        /* ACTIVE-링크를 클릭하여 이동중일 때 */
+}
+  
+a:hover {                                           /* HOVER-링크에 마우스가 있을 때 */
+    text-decoration: underline;
+    color: #FFa500;
+}
+
+.container {
+    width: 95%;
+    display: grid;
+    margin: 10px auto;
+    /*max-width: 1200px;*/
+    grid-template-rows: repeat(3, 1fr);             
+    grid-template-columns: 30% 70%;
+    place-content: start center;                    /* align-content와 justify-content의 단축 소겅입니다. */   
+    grid-template-areas: "header header"
+                         "nav article"
+                         "footer footer";
+    gap: 10px 10px;                                 /* 각 행과 행, 열과 열 사이의 간격을 지정합니다. */
+    background-color: aqua;                     
+}
+
+.header {
+    grid-area: header;
+    margin: 0px 0px 0px 0px;                        /* 요소의 외부(바깥)top, right, bottom, left) 여백을 지정 */
+    padding: 0px 0px 0px 0px;                       /* 요소의 내부(안)top, right, bottom, left) 여백을 지정 */
+    /*border: 1px solid #000000;*/
+    background-color: coral;
+}
+
+.nav { 
+    grid-area: nav;
+    border: 1px solid #000000;
+}
+
+.article {
+    grid-area: article; 
+    border: 1px solid #000000;
+}
+
+.footer {
+    padding: 10px 10px 10px 10px; 
+    grid-area: footer;
+    border: 1px solid #000000; 
+}  
+
+/* 머릿글 메뉴 */
+#topMenu {
+    height: 30px;
+    width: auto;
+    margin: 0px -2px -1px 0px;  
+}
+
+#topMenu ul {                               /* 메인 메뉴 안의 ul을 설정함: 상위메뉴의 ul+하위 메뉴의 ul */
+    list-style-type: none;                  /* 메인 메뉴 안의 ul 내부의 목록 표시를 없애줌 */
+    margin: 0px;                            /* 메인 메뉴 안의 ul의 margin을 없앰 */
+    padding: 0px;                           /* 메인 메뉴 안의 ul의 padding을 없앰 */
+}
+
+#topMenu ul li {                            /* 메인 메뉴 안에 ul 태그 안에 있는 li 태그의 스타일 적용(상위/하위메뉴 모두) */
+    color : #ffffff;                         /* 글씨 색을 흰색으로 설정 */
+    background-color: #2d2d2d;            /* 배경 색을 RGB(2D2D2D)로 설정 */
+    float: left;                            /* 왼쪽으로 나열되도록 설정 */
+    line-height: 30px;                      /* 텍스트 한 줄의 높이를 30px로 설정 */
+    vertical-align: middle;                 /* 세로 정렬을 가운데로 설정 */
+    text-align: center;                     /* 텍스트를 가운데로 정렬 */
+    position: relative;                     /* 해당 li 태그 내부의 top/left 포지션 초기화 */
+}
+
+.menuLink, .submenuLink {                   /* 상위 메뉴와 하위 메뉴의 a 태그에 공통으로 설정할 스타일 */
+    text-decoration: none;                  /* a 태그의 꾸밈 효과 제거 */
+    display: block;                         /* a 태그의 클릭 범위를 넓힘 */
+    width: 18.95vw;                           /* 기본 넓이를 199px로 설정 */
+    font-size: 1.4rem;                        /* 폰트 사이즈를 12px로 설정 */
+    font-weight: bold;                      /* 폰트를 굵게 설정 */
+    font-family: "Trebuchet MS", Dotum;     /* 기본 폰트를 영어/한글 순서대로 설정 */
+}
+
+.menuLink {                                 /* 상위 메뉴의 글씨색을 흰색으로 설정 */
+    color: #ffffff;
+}
+
+.topMenuLi:hover .menuLink {                /* 상위 메뉴의 li에 마우스오버 되었을 때 스타일 설정 */
+    color: red;                           /* 글씨 색 빨간색 */
+    background-color: #4d4d4d;            /* 배경색을 밝은 회색으로 설정 */
+}
+
+.submenuLink {                              /* 하위 메뉴의 a 태그 스타일 설정 */
+    margin: 0px 0px 0px 0px;
+    color: #2d2d2d;                       /* 글씨 색을 RGB(2D2D2D)로 설정 */
+    background-color: white;              /* 배경색을 흰색으로 설정 */
+    border: solid 1px black;              /* 테두리를 설정 */
+    margin-top: -1px;                       /* 위 칸의 하단 테두리와 아래칸의 상단 테두리가 겹쳐지도록 설정 */
+}
+
+.longLink {                                 /* 좀 더 긴 메뉴 스타일 설정 */
+    width: 18.95vw;                         /* 넓이는 198px로 설정 */
+}
+
+.submenu {                                  /* 하위 메뉴 스타일 설정 */
+    position: absolute;                     /* html의 flow에 영향을 미치지 않게 absolute 설정 */
+    height: 0px;                            /* 초기 높이는 0px로 설정 */
+    overflow: hidden;                       /* 실 내용이 높이보다 커지면 해당 내용 감춤 */
+    transition: height .2s;                 /* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(기본) */
+    -webkit-transition: height .2s;         /* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(구버전 크롬/사파라ㅣ) */
+    -moz-transition: height .2s;            /* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(구버전 파폭) */
+    -o-transition: height .2s;              /* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(구버전 오페라) */ 
+}
+
+.topMenuLi:hover .submenu {                 /* 상위 메뉴에 마우스 모버한 경우 그 안의 하위 메뉴 스타일 설정 */
+    height: 93px;                           /* 높이를 93px로 설정 */
+}
+
+.submenuLink:hover {                        /* 하위 메뉴의 a 태그의 마우스 오버 스타일 설정 */
+    color: red;                           /* 글씨색을 빨간색으로 설정 */
+    background-color: #dddddd;            /* 배경을 RGB(DDDDDD)로 설정 */
+}
+
+/* 모바일용 CSS */
+/*@media screen and (min-width: 320px){
+    body{
+    background-color: #000000;
+}
+.menuLink, .submenuLink{
+    font-size: 0.2rem;
+}
+}*/
+
+
+/* 태블릿용 CSS */
+/*@media all and (min-width: 768px){
+#wrap{
+    flex-direction: row;
+}
+}*/
+
+
+
+/* PC용 CSS */
+/*@media all and (min-width: 1024px){
+#wrap{
+    position: relative;
+}
+}*/

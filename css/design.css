@@ -1,0 +1,72 @@
+body{
+    background-image: url(../img/bg_color.png);
+    
+    font-size: 12px;			                /* 글꼴 크기 */
+    font-family: Gulim, sans-serif;      	/* 글꼴 종류 */
+    color: #000000;			                /* 글꼴 색깔 #555555 */
+  
+    line-height: 18px; 			              /* 줄 간격 */
+  /*  MARGIN: 0px;	*/			              /* 바깥쪽 여백 */
+  /*  PADDING-LEFT: 0px;	*/		          /* 안쪽 여백 */
+  /*  PADDING-RIGHT: 0px;  */
+  /*  PADDING-TOP: 0px;   */
+  /*  PADDING-BOTTOM: 0px;   */
+  }
+  
+  a:link, a:visited, a:active {		        /* LINK-링크가 있을 때 */
+    text-decoration: none;		            /* VISITED-한번이라도 방문한 페이지 */
+    color: #0000FF;		                    /* ACTIVE-링크를 클릭하여 이동중일 때 */
+  }
+  
+  a:hover {                              /* HOVER-링크에 마우스가 있을 때 */
+    text-decoration: underline;
+    color: #FFa500;
+  }
+  
+  .container {
+    display: grid;
+    grid-template-columns: 310px 820px;
+    grid-template-rows: auto 1fr auto;
+    justify-content: center;
+    height: 100%;
+    grid-gap: 10px;
+    grid-template-areas: 
+        "header header"
+        "nav article"
+        "footer footer";
+  }
+  
+  .header {
+    grid-area: header;
+    background-color: #FFFFFF;
+    border: 1px solid #AA0000;
+    width: 1090px;
+    padding: 20px;
+    margin: 10px 0px 0px 0px;
+    text-align: center;
+  }
+  
+  .nav {
+    grid-area: nav;
+    width: 290px;
+    padding: 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #AA0000;
+  }
+  
+  .article {
+    grid-area: article;
+    width: 790px;
+    background-color: #FFFFFF;
+    border: 1px solid #AA0000;
+    padding: 10px;
+  }
+  
+  .footer{
+    grid-area: footer;
+    background-color: #FFFFFF;
+    border: 1px solid #AA0000;
+    width: 1110px;
+    padding: 10px;
+    margin: 0px 0px 10px 0px;
+  }

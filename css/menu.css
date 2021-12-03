@@ -1,0 +1,79 @@
+body{
+    background-color: #ffffff;
+
+    /* @media screen and (max-width:360px) { 모바일 화면설정 360보다 작을 때(<360)
+      body { background-color: orange }  
+    }
+    @media screen and (min-width:760px) { PC 화면설정 760보다 클때(760<)
+      body { background-color:gray } 
+    } */
+    
+    font-size: 16px;                        /* 글꼴 크기 */
+    font-family: Gulim, sans-serif;         /* 글꼴 종류 */
+    color: #000000;			              /* 글꼴 색깔 #555555 */
+  
+    line-height: 18px; 			            /* 줄 간격 */
+  /*  MARGIN: 0px;	*/			            /* 바깥쪽 여백 */
+  /*  PADDING-LEFT: 0px;	*/		        /* 안쪽 여백 */
+  /*  PADDING-RIGHT: 0px;  */
+  /*  PADDING-TOP: 0px;   */
+  /*  PADDING-BOTTOM: 0px;   */
+}
+  
+a:link, a:visited, a:active {		        /* LINK-링크가 있을 때 */
+    text-decoration: none;		            /* VISITED-한번이라도 방문한 페이지 */
+    color: #0000FF;		                  /* ACTIVE-링크를 클릭하여 이동중일 때 */
+}
+  
+a:hover {                                   /* HOVER-링크에 마우스가 있을 때 */
+    text-decoration: underline;
+    color: #FFa500;
+}
+
+.base{
+    border: 2px solid #000000;
+    width: 1600px;
+    height: 600px;
+}
+
+.item{
+    margin: 0px 5px 0px 0px;    /* 요소의 외부(바깥)top, right, bottom, left) 여백을 지정 */
+    padding: 5px 0px 5px 0px;    /* 요소의 내부(안)top, right, bottom, left) 여백을 지정 */
+    border: 1px solid #000000;
+    position: relative;
+     
+    width: 200px;
+    display: inline-block;
+}
+
+.item:hover{
+    background-color: coral;
+}
+
+.item:hover > ul{
+    margin: 5px 0px 0px 0px;
+    display: block;
+}
+
+.item > ul{
+    border: 1px solid black;
+    position: absolute;
+    display: none;
+    width: 158px;
+    /*background-color: #ffffff;*/
+    /*line-height: 25px; 
+    text-align: center;*/    
+}               
+
+ul{
+    list-style: none;
+}
+
+ul > li {
+    text-align: center;
+}
+
+ul > li:hover{
+    background-color: skyblue;
+    /*margin: 0px 0px 0px -40px;*/
+}
