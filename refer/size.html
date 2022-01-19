@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title> Browser Size </title>
+        <script type="text/javascript">
+                function getDisplayInfo() {
+                    var size = {
+                    //width: window.innerWidth || document.body.clientWidth,
+                    //height: window.innerHeight || document.body.clientHeight
+                    width: screen.width || document.body.clientWidth,
+                    height: screen.height || document.body.clientHeight
+                    }
+
+                    var w = document.getElementById("dispWidth");
+
+                    var h = document.getElementById("dispHeight");
+
+		            w.innerHTML = size.width;
+
+		            h.innerHTML = size.height;
+                }
+
+                window.onload = getDisplayInfo;
+        </script>
+    </head>
+    <body>
+        <h3>Current Display info</h3>
+        <div>width: <span id="dispWidth">widht</span>px / height: <span id="dispHeight">height</span>px</div>
+    </body>
+</html>

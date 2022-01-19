@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .base{
+            border: 2px solid black;
+            width: 600px;
+            height: 600px;
+        }
+        
+        .item > ul{
+            border: 1px solid black;
+            display: none;
+            
+        }
+        
+        .item:hover > ul{
+            display: block;
+        }
+        
+        
+        .item{
+            text-align: center;
+            border: 1px solid black;
+            width: 100px;
+        }
+        ul{
+            list-style: none;
+        }
+        ul > li {
+            text-align: center;
+        }
+
+        
+    </style>
+</head>
+<body>
+  
+   <div class="base">
+      <ul>
+        <li class="item">
+           여성의류
+            <ul>
+                <li>여성1</li>
+                <li>여성2</li>
+                <li>여성3</li>
+            </ul>
+        </li>
+        <li class="item">
+           남성의류
+            <ul>
+                <li>남성1</li>
+                <li>남성1</li>
+                <li>남성1</li>
+            </ul>
+        </li>
+        <li class="item">
+           키즈
+            <ul>
+                <li>키즈1</li>
+                <li>키즈2</li>
+                <li>키즈</li>
+            </ul>
+        </li>
+    </ul> 
+   </div>
+    
+</body>
+</html>
