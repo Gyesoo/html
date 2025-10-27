@@ -1,6 +1,11 @@
 /* 모바일용 CSS */
 /* 기본 CSS */
 
+@font-face {
+    font-family: 'Nanum Gothic', sans-serif;               /* 글꼴 종류 */
+    src: url(../webfont/NanumGothic.woff);          /* 글꼴 경로 */
+    color: #000000;                               /* 글꼴 색깔 */
+}
 /* 콘텐츠의 width와 height로 설정한 값에 padding, border, margin 값이 포함되어 만들어 집니다. */
 * {
     box-sizing: border-box;
@@ -14,8 +19,8 @@ html {
 body {
     background-image: url(../img/bg_color.png);     /* 웹 요소에 배경 이미지 넣기 */
     font-size: 1.4rem;                              /* 글꼴 크기 */
-    font-family: 'Nanum Gothic', 돋움;               /* 글꼴 종류 */
-    color: #000000;			                      /* 글꼴 색깔 #555555 */
+    /*font-family: 'Nanum Gothic', 돋움;*/               /* 글꼴 종류 */
+    /*color: #000000;*/			                   /* 글꼴 색깔 #555555 */
 
     line-height: 18px; 			                    /* 줄 간격 */
     /*MARGIN: 0px;*/    			                /* 바깥쪽 여백 */
