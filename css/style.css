@@ -2,8 +2,9 @@
 /* 기본 CSS */
 
 @font-face {
-    font-family: 'Nanum Gothic', sans-serif;               /* 글꼴 종류 */
-    src: url(../webfont/NanumGothic.woff);          /* 글꼴 경로 */
+    font-family: 'Nanum Gothic', sans-serif;        /* 글꼴 이름 */
+    src: url(../webfont/NanumGothic.woff);          /* 글꼴 파일 경로 */
+    /* woff는 압축된 형식으로 비교적 작은 파일 크기로 빠른 로딩 제공한다. eot는 Microssoft가 개발한 형식으로 주로 IE에서 지원하며, 다른 브라우저에서는 거의 지원하지 않는다.*/
     color: #000000;                               /* 글꼴 색깔 */
 }
 /* 콘텐츠의 width와 height로 설정한 값에 padding, border, margin 값이 포함되어 만들어 집니다. */
