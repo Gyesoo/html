@@ -11,7 +11,7 @@
 /* box-sizing: content-box;는 box-sizing 속성의 기본값이며, 적용시 요소의 width와 height는 요소의 실제 콘텐츠 크기만을 정의하고 그안에 추가되는 padding과 border는 크기에 포함되지 않습니다. */
 /* box-sizing: border-box;를 적용하면 width와 height 값이 내용영역, padding, border, margin을 모두 포함하는 크기를 나타냅니다. */
 * {
-    box-sizing: content-box;
+    box-sizing: border-box;
 }
 
 html {
