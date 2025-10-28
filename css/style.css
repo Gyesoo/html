@@ -5,7 +5,6 @@
 @font-face {
     font-family: 'Nanum Gothic', sans-serif;        /* 글꼴 이름 */
     src: url(../webfont/NanumGothic.woff);          /* 글꼴 파일 경로 */
-    color: #000000;                               /* 글꼴 색깔 */
 }
 
 /* box-sizing: content-box;는 box-sizing 속성의 기본값이며, 적용시 요소의 width와 height는 요소의 실제 콘텐츠 크기만을 정의하고 그안에 추가되는 padding과 border는 크기에 포함되지 않습니다. */
@@ -21,9 +20,9 @@ html {
 
 body {
     background-image: url(../img/bg_color.png);     /* 웹 요소에 배경 이미지 넣기 */
-    font-size: 1.4rem;                              /* 글꼴 크기 */
-    /*font-family: 'Nanum Gothic', 돋움;*/               /* 글꼴 종류 */
-    /*color: #000000;*/			                   /* 글꼴 색깔 #555555 */
+    font-size: 10.4rem;                              /* 글꼴 크기 */
+    font-family: 'Nanum Gothic', sans-serif;               /* 글꼴 종류 */
+    color: #000000;			                   /* 글꼴 색깔 #555555 */
 
     line-height: 18px; 			                    /* 줄 간격 */
     /*MARGIN: 0px;*/    			                /* 바깥쪽 여백 */
