@@ -44,7 +44,7 @@ a:hover {                                           /* HOVER-링크에 마우스
 .container {
     width: 95%;
     display: grid;
-    margin: 10px auto;
+    margin: auto;                              /* margin 값을 auto로 두는 것은 좌우의 margin 값을 공평하게 나누면서 레이아웃을 한가운데 옳길 스 있습니다. 
     /*max-width: 1200px;*/
     grid-template-rows: repeat(3, 1fr);             
     grid-template-columns: 30% 70%;
