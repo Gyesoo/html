@@ -19,7 +19,7 @@ html {
 
 body {
     background-image: url(../img/bg_color.png);     /* 웹 요소에 배경 이미지 넣기 */
-    font-size: 10.4rem;                             /* 글꼴 크기 */
+    font-size: 1.4rem;                             /* 글꼴 크기 */
     font-family: 'Nanum Gothic', sans-serif;        /* 글꼴 종류 */
     color: #000000;			                   /* 글꼴 색깔 #555555 */
 
