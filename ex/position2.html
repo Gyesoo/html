@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <meta charset="UTF-8">
+    <head>
+        <title></title>
+        <style>
+            #other, #parent {
+                border: 5px solid tomato;
+            }
+
+            #large {
+                height: 10000px;
+                background-color: tomato;
+            }
+
+            #me {
+                background-color: black;
+                color: white;
+                position: fixed;
+                left: 0px;
+                top: 0px;
+            }
+        </style>
+    </head>
+    <body>
+         <div id="other">other</div>
+        <div id="parent">
+            parent
+            <div id="me">me</div>
+        </div>
+        <div id="large">large</div>       
+    </body>
+</html>
