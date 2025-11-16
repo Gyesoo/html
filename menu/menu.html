@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<!-- =========================================================
+    menu.html  (상단 검정색 메뉴바)
+
+    ■ 이 파일의 역할
+      - 웹사이트 상단의 "검정색 메뉴바" 전체를 구성합니다.
+      - index.html, detailillust.html 등 모든 페이지의
+        <div id="nav-slot"></div> 뒤에 include.js 가 자동으로 삽입합니다.
+
+    ■ include.js와의 연동 방식
+      1) 각 메뉴 <a> 안에는 data-menu="키값" 이 있음
+      2) 키값을 기반으로 JS가 아래 두 파일을 자동으로 로드함
+           → menu-키값.html        (왼쪽 사이드 메뉴)
+           → content-키값.html     (본문 내용)
+
+    예)
+      <a data-menu="detailillust">DETAILILLUST</a>
+      → menu-detailillust.html 로드
+      → content-detailillust.html 로드
+
+    ■ 구조 요약
+      <nav id="topMenu" class="navbar">
+        <ul>
+          <li class="topMenuLi">
+             <a class="menuLink">메뉴제목</a>
+             <ul class="submenu">
+                 <li><a>하위메뉴</a></li>
+             </ul>
+          </li>
+          <li>|</li>  ← 메뉴 구분선
+        </ul>
+      </nav>
+========================================================= -->
+
+<nav id="topMenu" class="navbar">
+    <ul>
+
+        <!-- =========================================================
+            1) LECTURES
+            - 첫 번째 상단 메뉴
+            - data-menu="lectures" → 왼쪽 메뉴(menu-lectures.html) 로드
+            - 하위 메뉴 3개 포함
+        ========================================================= -->
+        <li class="topMenuLi">
+
+            <!-- 메인 메뉴(클릭 가능) -->
+            <a class="menuLink" href="lectures.html" data-menu="lectures">
+                LECTURES
+            </a>
+
+            <!-- ▼ 마우스를 올리면 펼쳐지는 서브메뉴 ▼ -->
+            <ul class="submenu">
+                <li><a class="submenuLink longLink"
+                       href="http://unikys.tistory.com/category/Programming%20Lecture/%EC%86%8D%EA%B9%8A%EC%9D%80%20%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%20%EA%B0%95%EC%A2%8C">
+                       속깊은 자바스크립트 강좌
+                </a></li>
+
+                <li><a class="submenuLink longLink"
+                       href="http://unikys.tistory.com/category/Programming%20Lecture/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0%20%ED%99%88%ED%8E%98%EC%9D%B4%EC%A7%80%20%EB%A7%8C%EB%93%A4%EA%B8%B0">
+                       밑바닥부터 홈페이지 만들기
+                </a></li>
+
+                <li><a class="submenuLink longLink"
+                       href="http://unikys.tistory.com/category/Programming%20Lecture/Android%28%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%29%20%EC%95%B1%20%EA%B0%9C%EB%B0%9C">
+                       안드로이드 앱 개발
+                </a></li>
+            </ul>
+        </li>
+
+        <!-- 메뉴 구분기호 -->
+        <li>|</li>
+
+
+        <!-- =========================================================
+            2) TAG CLOUD
+            - data-menu="tagcloud"
+            - menu-tagcloud.html, content-tagcloud.html 자동 연결 가능
+        ========================================================= -->
+        <li class="topMenuLi">
+            <a class="menuLink" href="tagcloud.html" data-menu="tagcloud">
+                TAG CLOUD
+            </a>
+
+            <ul class="submenu">
+                <li><a class="submenuLink"
+                       href="http://unikys.tistory.com/tag/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8">
+                       자바스크립트
+                </a></li>
+
+                <li><a class="submenuLink"
+                       href="http://unikys.tistory.com/tag/%EA%B0%95%EC%A2%8C">
+                       강좌
+                </a></li>
+
+                <li><a class="submenuLink"
+                       href="http://unikys.tistory.com/tag/K100D">
+                       K100D
+                </a></li>
+            </ul>
+        </li>
+
+        <li>|</li>
+
+
+        <!-- =========================================================
+            3) DETAILILLUST
+            - data-menu="detailillust"
+            - 해당 페이지는 퀵메뉴 기능 있음
+        ========================================================= -->
+        <li class="topMenuLi">
+            <a class="menuLink" href="detailillust.html" data-menu="detailillust">
+                DETAILILLUST
+            </a>
+
+            <ul class="submenu">
+                <li><a class="submenuLink"
+                       href="http://unikys.tistory.com/tag/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8">
+                       자바스크립트
+                </a></li>
+
+                <li><a class="submenuLink"
+                       href="http://unikys.tistory.com/tag/%EA%B0%95%EC%A2%8C">
+                       강좌
+                </a></li>
+
+                <li><a class="submenuLink"
+                       href="http://unikys.tistory.com/tag/K100D">
+                       K100D
+                </a></li>
+            </ul>
+        </li>
+
+        <li>|</li>
+
+
+        <!-- =========================================================
+            4) WEBCOLOR
+            - data-menu="webcolor"
+            - webcolor.html → content-webcolor.html 자동 적용
+        ========================================================= -->
+        <li class="topMenuLi">
+            <a class="menuLink" href="webcolor.html" data-menu="webcolor">
+                WEBCOLOR
+            </a>
+
+            <ul class="submenu">
+                <li><a class="submenuLink"
+                       href="http://unikys.tistory.com/tag/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8">
+                       자바스크립트
+                </a></li>
+
+                <li><a class="submenuLink"
+                       href="http://unikys.tistory.com/tag/%EA%B0%95%EC%A2%8C">
+                       강좌
+                </a></li>
+
+                <li><a class="submenuLink"
+                       href="http://unikys.tistory.com/tag/K100D">
+                       K100D
+                </a></li>
+            </ul>
+        </li>
+
+        <li>|</li>
+
+
+        <!-- =========================================================
+            5) ABOUT
+            - data-menu="about"
+            - menu-about.html + content-about.html 자동 로드 가능
+        ========================================================= -->
+        <li class="topMenuLi">
+            <a class="menuLink" href="about.html" data-menu="about">
+                ABOUT
+            </a>
+
+            <ul class="submenu">
+                <li><a class="submenuLink"
+                       href="http://unikys.tistory.com/tag/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8">
+                       자바스크립트
+                </a></li>
+
+                <li><a class="submenuLink"
+                       href="http://unikys.tistory.com/tag/%EA%B0%95%EC%A2%8C">
+                       강좌
+                </a></li>
+
+                <li><a class="submenuLink"
+                       href="http://unikys.tistory.com/tag/K100D">
+                       K100D
+                </a></li>
+            </ul>
+        </li>
+
+    </ul>
+</nav>
+

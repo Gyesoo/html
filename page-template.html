@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- =========================================================
+    page-template.html  (새 페이지용 기본 템플릿)
+
+    ■ 이 파일의 목적
+      - LECTURES / TAG CLOUD / ABOUT 처럼
+        "새로운 상단 메뉴 페이지"를 만들 때 복사해서 사용하는 기본틀입니다.
+      - 예)
+          1) 이 파일을 복사해서 mypage.html 로 이름을 바꾼다.
+          2) menu.html 에서 data-menu="mypage" 인 항목을 추가한다.
+          3) menu-mypage.html, content-mypage.html 파일을 만든다.
+
+    ■ 포함되는 것
+      - 헤더 / 상단 메뉴 / 왼쪽 메뉴 / 본문 / 푸터를
+        include.js 가 자동으로 불러올 수 있도록
+        공통 마커(#header-slot, #nav-slot, #left-menu, #main-content, #footer-slot)를
+        모두 포함하고 있습니다.
+
+    ※ 이 파일은 예시일 뿐이며,
+       title 태그, 파일 이름, data-menu 값은
+       실제로 만들고자 하는 페이지 이름에 맞게 수정해야 합니다.
+========================================================= -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <!-- 모바일·태블릿에서 화면을 기기 너비에 맞추기 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NEW PAGE TITLE</title>
+
+    <!-- 공통 스타일 시트 -->
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- 공통 include 스크립트
+         - header / menu / footer 자동 로드
+         - 사이드 메뉴(menu-XXX.html) + 본문(content-XXX.html) 자동 로드 -->
+    <script src="./js/include.js" defer></script>
+</head>
+
+<body>
+    <!-- [1] 헤더 삽입 위치 (화면에는 보이지 않는 기준점) -->
+    <div id="header-slot"></div>
+
+    <!-- [2] 상단 메뉴(navbar) 삽입 위치 -->
+    <div id="nav-slot"></div>
+
+    <!-- [3] 메인 레이아웃 컨테이너 (사이드 메뉴 + 본문 2열 구조) -->
+    <div class="container">
+        <!-- 왼쪽 사이드 메뉴: menu-XXX.html 이 여기에 들어옵니다. -->
+        <div id="left-menu" class="item"></div>
+
+        <!-- 오른쪽 본문: content-XXX.html 이 여기에 들어옵니다. -->
+        <div id="main-content" class="item">
+            <!-- 필요하다면 "로딩 중..." 같은 임시 문구를 넣어도 됩니다. -->
+        </div>
+    </div>
+
+    <!-- [4] 푸터 삽입 위치 -->
+    <div id="footer-slot"></div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- =========================================================
+    menu-about.html
+    ----------------------------------------------------------
+    ■ 이 파일의 역할
+      - ABOUT 페이지에서 왼쪽에 표시되는 “사이드 메뉴”입니다.
+      - 사용자가 상단 메뉴(menu.html)에서 ABOUT을 클릭하면,
+        include.js 가 이 파일을 자동으로
+            <div id="left-menu"></div>
+        안에 삽입합니다.
+
+    ----------------------------------------------------------
+    ■ include.js 자동 로딩 구조
+
+      1) menu.html 의 ABOUT 항목은 다음과 같이 지정됨:
+            <a data-menu="about">ABOUT</a>
+
+      2) include.js 는 data-menu 값을 읽어:
+            menu-about.html    → #left-menu
+            content-about.html → #main-content
+         두 파일을 자동으로 로드함.
+
+      3) menu-about.html 은 사이드 메뉴만 담당하며,
+         본문 내용은 모두 content-about.html 에 존재합니다.
+
+    ----------------------------------------------------------
+    ■ 사이드 메뉴 구성 방식
+
+      <ul class="side-menu">
+          <li><strong>ABOUT</strong></li>     ← 카테고리 제목
+          <li><a>사이트 소개</a></li>          ← 하위 항목들
+          <li><a>제작자 소개</a></li>
+          <li><a>연락처 / 이메일</a></li>
+      </ul>
+
+      ※ 모든 디자인은 style.css 의
+          .side-menu / .side-menu li / .side-menu a
+         규칙으로 제어됩니다.
+========================================================= -->
+
+<ul class="side-menu">
+
+    <!-- 카테고리 제목 (굵게 표시) -->
+    <li><strong>ABOUT</strong></li>
+
+    <!-- 하위 항목들 -->
+    <!-- 필요에 따라 data-content="content-about-XX.html" 로 연결 가능 -->
+    <li><a href="#">사이트 소개</a></li>
+    <li><a href="#">제작자 소개</a></li>
+    <li><a href="#">연락처 / 이메일</a></li>
+
+</ul>

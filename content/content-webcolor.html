@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<!-- =========================================================
+    content-webcolor.html
+    ----------------------------------------------------------
+    ■ 역할
+      - "WEBCOLOR" 메뉴를 클릭했을 때 오른쪽 본문(#main-content)에
+        include.js 에 의해 자동으로 삽입되는 본문(content) 파일입니다.
+
+    ■ 포함하지 않는 것
+      - header / footer / 상단 메뉴 / 왼쪽 사이드 메뉴는 포함되지 않습니다.
+        (이 파일은 ‘본문만’ 담당하는 파일입니다.)
+
+    ■ 포함하는 것
+      - 웹컬러 이미지(canvas) + 마우스 돋보기(확대) 기능
+
+    ■ 필수 전제
+      - ./img/webcolor.png 이미지가 존재해야 합니다.
+      - style.css 에서 #main-content 는 기본 padding:10px 을 가지므로,
+        이 파일 내부에서 margin:-10px 으로 패딩을 상쇄해
+        이미지가 화면에 꽉 차 보이도록 처리합니다.
+
+========================================================= -->
+
+<!-- =========================================================
+    1. 전체 WEB COLOR 돋보기 기능을 감싸는 래퍼
+       - 가운데 정렬
+       - zoom(돋보기)의 position 기준점
+       - #main-content 의 padding(10px)을 무효화하기 위해 margin:-10px
+========================================================= -->
+<div class="webcolor-wrapper">
+
+    <!-- =====================================================
+        2. 메인 캔버스(mainCanvas)
+           - 웹컬러 이미지를 축소하여 그려 넣는 영역
+           - 마우스를 올리면 위치에 따라 확대 기능 실행
+    ====================================================== -->
+    <canvas id="mainCanvas"></canvas>
+
+    <!-- =====================================================
+        3. 돋보기 박스 (#zoom)
+           - 마우스를 올리면 나타나는 원형 확대 창
+           - 내부에 zoomCanvas 를 가지고 실제 확대된 그림을 표시
+    ====================================================== -->
+    <div id="zoom">
+        <canvas id="zoomCanvas" width="150" height="150"></canvas>
+    </div>
+
+</div> <!-- /.webcolor-wrapper -->
+
+
+<!-- =========================================================
+    4. WEB COLOR 전용 CSS
+       - 본문(content) 파일 내부에 포함되어도 문제되지 않음
+       - 이 페이지 전용 스타일이므로 <style> 안에 정의
+========================================================= -->
+<style>
+
+    /* -----------------------------
+       (1) webcolor-wrapper 레이아웃
+    ------------------------------ */
+    .webcolor-wrapper {
+        text-align: center;   /* 내부 요소 가운데 정렬 */
+        position: relative;   /* zoom(돋보기)의 위치 기준점 */
+
+        /* #main-content 기본 padding:10px 때문의 분홍색 여백 제거 */
+        margin: -10px;
+    }
+
+    /* -----------------------------
+       (2) 모든 canvas 공통 스타일
+          - 커서 형태 변경(돋보기 느낌)
+    ------------------------------ */
+    .webcolor-wrapper canvas {
+        cursor: crosshair;
+    }
+
+    /* -----------------------------
+       (3) 원형 돋보기 박스 (#zoom)
+    ------------------------------ */
+    #zoom {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;       /* 원형 */
+        border: 3px solid #000;   /* 검정 테두리 */
+        overflow: hidden;         /* 원형 밖 그림 잘라냄 */
+        display: none;            /* 마우스 올렸을 때만 보임 */
+        pointer-events: none;     /* 클릭 영향 없음 */
+        z-index: 10;              /* 위쪽으로 표시 */
+        transform: translate(-50%, -50%); /* 마우스 중심 배치 */
+    }
+
+    /* zoomCanvas 는 부모(#zoom)와 동일 크기 */
+    #zoom canvas {
+        width: 150px;
+        height: 150px;
+    }
+
+</style>
+
+
+<!-- =========================================================
+    5. WEB COLOR 확대 기능 스크립트
+       - 마우스 위치에 따라 돋보기 이동
+       - 원본 이미지의 일부를 확대하여 zoomCanvas 에 그림
+========================================================= -->
+<script>
+    /* ---------------------------------------------------------
+        1) 이미지 및 캔버스 기본 준비
+    --------------------------------------------------------- */
+
+    const img = new Image();
+    img.src = './img/webcolor.png';   // 원본 이미지 (경로 중요!)
+
+    const mainCanvas = document.getElementById('mainCanvas');
+    const ctx = mainCanvas.getContext('2d');
+
+    const zoom = document.getElementById('zoom');
+    const zoomCanvas = document.getElementById('zoomCanvas');
+    const zoomCtx = zoomCanvas.getContext('2d');
+
+    zoomCtx.imageSmoothingEnabled = true;  // 확대 시 계단 현상 방지
+
+    const wrapper = document.querySelector('.webcolor-wrapper');
+
+
+    /* ---------------------------------------------------------
+        2) 확대 설정값
+    --------------------------------------------------------- */
+
+    const scale = 0.2255;  // 메인 캔버스에 표시할 때의 축소 비율
+    const zoomFactor = 0.5; // 확대 강도(작을수록 더 많이 확대됨)
+    const zoomSize = 150;   // 돋보기 크기(px)
+
+
+    /* ---------------------------------------------------------
+        3) 이미지 로딩되면 캔버스에 축소된 이미지 그리기
+           + 셔츠 위치 계산(돋보기 활성 구역)
+    --------------------------------------------------------- */
+    const shirtAreas = [];
+
+    img.onload = () => {
+        mainCanvas.width = img.width * scale;
+        mainCanvas.height = img.height * scale;
+
+        // 원본 → 축소된 이미지 그리기
+        ctx.drawImage(img, 0, 0, mainCanvas.width, mainCanvas.height);
+
+        // 셔츠(아이콘) 반복 영역 계산 값
+        const startX = 850 * scale;
+        const startY = 1950 * scale;
+        const gapX   = 40 * scale;
+        const gapY   = 38 * scale;
+        const shirtW = 3160 * scale;
+        const shirtH = 3650 * scale;
+
+        // 13줄 × 18칸 반복 구역 계산
+        for (let row = 0; row < 13; row++) {
+            for (let col = 0; col < 18; col++) {
+                shirtAreas.push({
+                    x: startX + col * gapX,
+                    y: startY + row * gapY,
+                    width: shirtW,
+                    height: shirtH
+                });
+            }
+        }
+    };
+
+
+    /* ---------------------------------------------------------
+        4) 마우스 움직임 → 확대 처리
+    --------------------------------------------------------- */
+    mainCanvas.addEventListener('mousemove', (e) => {
+
+        const canvasRect = mainCanvas.getBoundingClientRect();
+        const wrapperRect = wrapper.getBoundingClientRect();
+
+        // 마우스 위치(캔버스 기준)
+        const mx = e.clientX - canvasRect.left;
+        const my = e.clientY - canvasRect.top;
+
+        // 원본 이미지 좌표로 변환하는 비율
+        const scaleX = img.width / mainCanvas.width;
+        const scaleY = img.height / mainCanvas.height;
+
+        let overShirt = false;
+
+        // 마우스가 셔츠 아이콘 위에 있을 때만 확대 기능 실행
+        for (let area of shirtAreas) {
+            if (
+                mx >= area.x && mx <= area.x + area.width &&
+                my >= area.y && my <= area.y + area.height
+            ) {
+                overShirt = true;
+
+                // 돋보기 위치 계산 (wrapper 기준)
+                const zoomX = e.clientX - wrapperRect.left;
+                const zoomY = e.clientY - wrapperRect.top;
+
+                zoom.style.display = 'block';
+                zoom.style.left = `${zoomX}px`;
+                zoom.style.top  = `${zoomY}px`;
+
+                // 원본 이미지 기준 확대 중심
+                const centerX = mx * scaleX;
+                const centerY = my * scaleY;
+
+                // 원본에서 잘라낼 영역
+                const srcSize = zoomSize / zoomFactor;
+                const srcX = centerX - srcSize / 2;
+                const srcY = centerY - srcSize / 2;
+
+                // 확대된 부분을 zoomCanvas 에 그림
+                zoomCtx.clearRect(0, 0, zoomSize, zoomSize);
+                zoomCtx.drawImage(
+                    img,
+                    srcX, srcY,
+                    srcSize, srcSize,
+                    0, 0,
+                    zoomSize, zoomSize
+                );
+
+                break;
+            }
+        }
+
+        // 셔츠 영역 바깥이면 돋보기 숨김
+        if (!overShirt) {
+            zoom.style.display = 'none';
+        }
+    });
+
+
+    /* ---------------------------------------------------------
+        5) 마우스가 캔버스를 벗어나면 돋보기 숨기기
+    --------------------------------------------------------- */
+    mainCanvas.addEventListener('mouseleave', () => {
+        zoom.style.display = 'none';
+    });
+</script>

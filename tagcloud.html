@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!-- =========================================================
+    tagcloud.html  (TAG CLOUD 메인 페이지)
+    ----------------------------------------------------------
+    ■ 이 파일의 목적
+      - "TAG CLOUD" 페이지를 사용자가 방문했을 때
+        가장 먼저 로딩되는 기본 뼈대 HTML입니다.
+
+      - 그러나 이 파일은 "실제 콘텐츠"를 직접 포함하지 않습니다.
+        대신 include.js 가 외부 파일을 자동으로 불러와
+          헤더 / 상단 메뉴 / 왼쪽 메뉴 / 본문 / 푸터
+        를 모두 채워 넣는 구조입니다.
+
+    ■ 자동 로딩 흐름(중요)
+      include.js 는 다음 순서로 HTML 파일을 자동 삽입합니다:
+
+      1) #header-slot 뒤(afterend) → header.html
+      2) #nav-slot 뒤(afterend)    → menu.html
+
+      3) 상단 메뉴(menu.html)에서 선택된 메뉴의 data-menu 값을 읽어서:
+            menu-XXX.html     → #left-menu
+            content-XXX.html  → #main-content
+         가 자동 로드됩니다.
+         (예: data-menu="tagcloud" 이면 menu-tagcloud.html 과
+              content-tagcloud.html 이 자동 삽입)
+
+      4) #footer-slot 앞(beforebegin) → footer.html
+
+      ※ 이 구조는 index.html, detailillust.html, webcolor.html 등
+        모든 서브 페이지가 동일하게 사용합니다.
+========================================================= -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+
+    <!-- 모바일·태블릿에서 화면의 너비 비율을 기기에 맞추기 위한 설정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TAG CLOUD</title>
+
+    <!-- 사이트 전체 공통 스타일 시트 -->
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- include.js
+         - header.html / menu.html 자동 로딩
+         - 사이드 메뉴(menu-XXX.html) 자동 로딩
+         - 본문(content-XXX.html) 자동 로딩
+         ※ defer: HTML 파싱을 끝낸 후 JS 실행 -->
+    <script src="./js/include.js" defer></script>
+</head>
+
+<body>
+    <!-- =====================================================
+        [1] 헤더 삽입 기준점
+            - 이 div 자체는 화면에 표시되지 않는 "표식(marker)"이고,
+              header.html 이 여기 바로 뒤(afterend)에 삽입됩니다.
+    ====================================================== -->
+    <div id="header-slot"></div>
+
+    <!-- =====================================================
+        [2] 상단 메뉴(navbar) 삽입 기준점
+            - menu.html 이 이 div 뒤(afterend)에 삽입됩니다.
+            - 상단 검정색 주 메뉴 UI 전체가 menu.html 안에 있습니다.
+    ====================================================== -->
+    <div id="nav-slot"></div>
+
+    <!-- =====================================================
+        [3] 메인 레이아웃 컨테이너
+            - 폭 1440px, 가운데 정렬
+            - CSS Grid(2열)로 구성
+              왼쪽 : #left-menu      (menu-XXX.html)
+              오른쪽 : #main-content (content-XXX.html)
+            - 모든 콘텐츠 삽입은 include.js 가 자동으로 처리합니다.
+    ====================================================== -->
+    <div class="container">
+
+        <!-- 왼쪽 사이드 메뉴 -->
+        <!-- include.js 가 menu-tagcloud.html 을 자동으로 삽입 -->
+        <div id="left-menu" class="item"></div>
+
+        <!-- 오른쪽 본문 영역 -->
+        <!-- include.js 가 content-tagcloud.html 을 자동으로 삽입 -->
+        <div id="main-content" class="item">
+            <!-- ★ 여기에는 직접 글을 쓰지 않습니다.
+                 자바스크립트가 content-XXX.html 을 읽어 자동 채움 -->
+        </div>
+    </div>
+
+    <!-- =====================================================
+        [4] 푸터 삽입 기준점
+            - footer.html 은 이 div "앞(beforebegin)"에 삽입됩니다.
+            - footer.html 자체가 보라색 전체 폭 푸터를 구성합니다.
+    ====================================================== -->
+    <div id="footer-slot"></div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!-- =========================================================
+    lectures.html
+    ----------------------------------------------------------
+    ■ 이 파일은 "LECTURES" 페이지의 메인 뼈대 파일입니다.
+
+    ※ 주의사항
+      이 HTML은 '실제 본문 콘텐츠'를 직접 포함하지 않습니다.
+      모든 페이지 공통 구조와 동일하게
+          header / top-menu / left-menu / content / footer
+      는 include.js 가 자동으로 외부 파일을 가져와 채웁니다.
+
+    ----------------------------------------------------------
+    ■ include.js 자동 로딩 흐름 요약
+
+      (1) #header-slot 뒤(afterend)
+              → header.html 삽입
+
+      (2) #nav-slot 뒤(afterend)
+              → menu.html 삽입
+              → menu.html 안의 data-menu 값을 읽어
+                    menu-lectures.html      (왼쪽 메뉴)
+                    content-lectures.html   (본문 내용)
+                을 자동으로 선택하여 로드
+
+      (3) .container 내부
+              → #left-menu     ← menu-lectures.html 삽입
+              → #main-content  ← content-lectures.html 삽입
+
+      (4) #footer-slot 앞(beforebegin)
+              → footer.html 삽입
+
+      즉, lectures.html 은 "틀(레이아웃)"만 있고,
+      화면에 보이는 모든 내용은 JS 가 채워 넣습니다.
+========================================================= -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+
+    <!-- 모바일·태블릿 화면 최적화를 위한 필수 meta 태그 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LECTURES</title>
+
+    <!-- 사이트 전체에서 공통으로 사용하는 CSS -->
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- include.js (공통 HTML 자동 삽입 스크립트)
+         ※ defer 속성: HTML parsing이 끝난 후 실행됨 -->
+    <script src="./js/include.js" defer></script>
+</head>
+
+<body>
+    <!-- =====================================================
+        [1] 헤더 삽입 기준점
+            - header.html 내용이 이 div "뒤(afterend)"에 삽입됩니다.
+            - 이 div 자체는 화면에 표시되지 않는 마커(marker)입니다.
+    ====================================================== -->
+    <div id="header-slot"></div>
+
+    <!-- =====================================================
+        [2] 상단 네비게이션(검정색 메뉴바) 삽입 기준점
+            - menu.html 파일 전체가 이 div 뒤(afterend)에 삽입됩니다.
+            - menu.html 안의 data-menu 로 현재 페이지("lectures")를 인식합니다.
+    ====================================================== -->
+    <div id="nav-slot"></div>
+
+    <!-- =====================================================
+        [3] 전체 페이지 레이아웃 컨테이너
+            - width: 1440px, 가운데 정렬
+            - display: grid
+            - 왼쪽은 사이드 메뉴 / 오른쪽은 본문
+            - 내부 콘텐츠는 include.js 가 자동으로 삽입합니다.
+    ====================================================== -->
+    <div class="container">
+
+        <!-- ----------------------------------------------
+             왼쪽 사이드 메뉴 영역
+             include.js 가 "menu-lectures.html" 를 자동 로드하여 삽입
+        ---------------------------------------------- -->
+        <div id="left-menu" class="item"></div>
+
+        <!-- ----------------------------------------------
+             본문(content) 영역
+             include.js 가 "content-lectures.html" 를 자동 로드하여 삽입
+             ※ lectures.html 자체에는 본문을 절대 직접 작성하지 않습니다.
+        ---------------------------------------------- -->
+        <div id="main-content" class="item">
+            <!-- 본문은 include.js 가 content-lectures.html을 채워 넣습니다. -->
+        </div>
+
+    </div>
+
+    <!-- =====================================================
+        [4] 푸터 삽입 기준점
+            - footer.html 이 이 div "앞(beforebegin)"에 삽입됩니다.
+            - footer-slot 자체는 화면에 출력되지 않습니다.
+    ====================================================== -->
+    <div id="footer-slot"></div>
+
+</body>
+</html>

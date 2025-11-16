@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!-- =========================================================
+    about.html
+    ----------------------------------------------------------
+    ■ 이 파일의 역할
+      - "ABOUT" 페이지의 메인 뼈대(레이아웃 구조)입니다.
+      - 실제 화면에 표시되는 본문 내용은
+          content-about.html
+        에 있으며, include.js 가 자동으로 로드합니다.
+
+    ----------------------------------------------------------
+    ■ include.js 자동 로딩 흐름
+
+      (1) #header-slot 뒤(afterend)
+              → header.html 삽입
+
+      (2) #nav-slot 뒤(afterend)
+              → menu.html 삽입
+              → menu.html 안의 data-menu 값을 이용해 현재 페이지 판별
+                 ex) data-menu="about" 이 선택되면:
+                     menu-about.html         (왼쪽 메뉴)
+                     content-about.html      (본문)
+                 이 자동으로 로드됨
+
+      (3) .container 안
+              #left-menu      ← menu-about.html 자동 삽입
+              #main-content   ← content-about.html 자동 삽입
+
+      (4) #footer-slot 앞(beforebegin)
+              → footer.html 삽입
+
+      ※ 중요한 점:
+        이 파일(about.html)은 “본문 내용”을 직접 포함하지 않습니다.
+        모든 내용은 content-about.html 에서 불러옵니다.
+========================================================= -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+
+    <!-- 모바일·태블릿의 화면 폭에 맞추기 위한 필수 설정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ABOUT</title>
+
+    <!-- 사이트 전체 공통 CSS -->
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- include.js (헤더/메뉴/푸터/사이드/본문 자동 로드)
+         ※ defer: HTML parsing 후 실행되므로 깔끔함 -->
+    <script src="./js/include.js" defer></script>
+</head>
+
+<body class="about">
+    <!-- =====================================================
+        [1] 헤더 삽입 기준점
+            - header.html 이 이 div "뒤(afterend)"에 삽입됩니다.
+            - 이 div 자신은 화면에 출력되지 않습니다.
+    ====================================================== -->
+    <div id="header-slot"></div>
+
+    <!-- =====================================================
+        [2] 상단 메뉴(navbar) 삽입 기준점
+            - menu.html 이 이 div "뒤(afterend)"에 삽입됩니다.
+            - menu.html 의 data-menu 값으로 현재 페이지를 인식함.
+    ====================================================== -->
+    <div id="nav-slot"></div>
+
+    <!-- =====================================================
+        [3] 메인 레이아웃 컨테이너
+            - .container : 1440px 폭, 가운데 정렬
+            - 내부는 2컬럼(Grid)
+                왼쪽  : #left-menu        (menu-about.html)
+                오른쪽: #main-content     (content-about.html)
+            - 두 영역 모두 include.js 가 자동으로 채움
+    ====================================================== -->
+    <div class="container">
+
+        <!-- 왼쪽 사이드 메뉴 -->
+        <div id="left-menu" class="item"></div>
+
+        <!-- 오른쪽 본문 영역 -->
+        <div id="main-content" class="item">
+            <!-- 본문은 content-about.html 에서 자동으로 불러옵니다. -->
+        </div>
+
+    </div>
+
+    <!-- =====================================================
+        [4] 푸터 삽입 기준점
+            - footer.html 은 이 div "앞(beforebegin)"에 삽입됨.
+    ====================================================== -->
+    <div id="footer-slot"></div>
+
+</body>
+</html>

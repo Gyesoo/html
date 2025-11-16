@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!-- =========================================================
+    menu-lectures.html
+    ----------------------------------------------------------
+    ■ 이 파일의 역할
+      - "LECTURES" 페이지에서 왼쪽에 표시되는 사이드 메뉴입니다.
+      - 사용자가 상단 메뉴에서 LECTURES를 클릭하면,
+        include.js 가 이 파일을 자동으로
+            <div id="left-menu">
+        영역 안에 삽입합니다.
+
+    ----------------------------------------------------------
+    ■ include.js 자동 로딩 흐름 정리
+
+      1) 상단 메뉴(menu.html)에서
+            <a data-menu="lectures">LECTURES</a>
+         요소가 선택됨.
+
+      2) include.js 는 data-menu 값을 읽어:
+            menu-lectures.html    → #left-menu 에 삽입
+            content-lectures.html → #main-content 에 삽입
+
+      3) 따라서 menu-lectures.html 은 오직
+         "LECTURES 전용 왼쪽 사이드 메뉴"만 담당합니다.
+
+      4) 디자인은 style.css 의 다음 규칙들이 적용됨:
+            .side-menu
+            .side-menu li
+            .side-menu a
+
+    ----------------------------------------------------------
+    ■ 사이드 메뉴 구조 설명
+      <ul class="side-menu">
+         <li><strong>LECTURES 메뉴</strong></li> ← 카테고리 제목
+         <li><a>강좌 항목 1</a></li>              ← 하위 메뉴
+         <li><a>강좌 항목 2</a></li>
+         <li><a>강좌 항목 3</a></li>
+      </ul>
+
+========================================================= -->
+
+<ul class="side-menu">
+
+    <!-- 카테고리 제목(강조해서 굵게 표시됨) -->
+    <li><strong>LECTURES 메뉴</strong></li>
+
+    <!-- 하위 강좌 목록 항목들 -->
+    <li>
+        <a href="#">
+            속깊은 자바스크립트 강좌 모음
+        </a>
+    </li>
+
+    <li>
+        <a href="#">
+            밑바닥부터 홈페이지 만들기
+        </a>
+    </li>
+
+    <li>
+        <a href="#">
+            안드로이드 앱 개발 강좌
+        </a>
+    </li>
+
+</ul>

@@ -1,0 +1,45 @@
+
+[2025년 웹사이트 제작 시 화면 설정 기준]
+
+1. 화면 사이즈 (레이아웃 기준 너비)
+- 데스크탑: 1280px ~ 1440px
+- 태블릿: 768px ~ 1024px
+- 모바일: 360px ~ 428px
+- 반응형 미디어 쿼리 예시:
+  @media (max-width: 767px) { ... }
+  @media (min-width: 768px) and (max-width: 1024px) { ... }
+  @media (min-width: 1025px) { ... }
+
+2. 화면 해상도 (디스플레이 해상도 고려)
+- 고해상도(Retina, 4K) 대응 필요
+- 벡터(SVG) 또는 @2x, @3x 이미지 사용 권장
+
+3. 이미지 해상도 및 최적화
+- 로고: 200~400px, SVG/PNG
+- 배너: 1920×1080px, JPG/WEBP
+- 썸네일: 400×300px
+- 배경 이미지: 1920px 이상
+- 아이콘: 24×24px, 48×48px, SVG
+- 이미지 최적화: WebP 사용, TinyPNG/Squoosh 등 압축 도구 활용
+- srcset 사용 예시:
+  <img src="img-1x.jpg" srcset="img-2x.jpg 2x, img-3x.jpg 3x" alt="샘플 이미지">
+
+4. 폰트 및 텍스트
+- 단위: rem 또는 % 사용 (기본 16px = 1rem)
+- 웹폰트 사용 시 로딩 최적화 고려
+
+5. 기타 고려 사항
+- 뷰포트 설정 (모바일 대응 필수):
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+- CSS Flexbox/Grid 사용
+- 접근성 고려 (alt, 대비, 키보드 탐색 등)
+- Core Web Vitals 대응 (LCP, CLS 등)
+
+[요약 표]
+항목              | 권장 기준
+-----------------|----------------------
+화면 너비       | 반응형 (360px ~ 1440px)
+이미지 해상도 | 고해상도 (@2x, @3x), WebP 형식
+해상도 대응    | SVG/벡터 + srcset 활용
+CSS 단위        | rem, %, vw, vh
+성능 최적화    | Lazy loading, 압축, Core Web Vitals 대응

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!-- =========================================================
+    webcolor.html
+    ----------------------------------------------------------
+    ■ 이 파일의 역할
+      - WEBCOLOR 페이지의 “메인 엔트리(시작점)”입니다.
+      - 하지만 실제 화면에 보이는 콘텐츠는
+          content-webcolor.html
+        에 있으며, include.js 가 자동으로 본문을 채웁니다.
+
+    ■ 왜 이렇게 되어 있는가?
+      - menu.html 의 WEBCOLOR 메뉴는 data-menu="webcolor" 로 지정됨
+      - include.js 는 data-menu 값을 읽어:
+            menu-webcolor.html      (왼쪽 메뉴)
+            content-webcolor.html   (본문)
+        을 자동으로 로드합니다.
+
+      ▶ webcolor.html 자체에는 본문을 직접 작성하지 않습니다.
+      ▶ webcolor.html 은 “레이아웃 뼈대” 역할만 합니다.
+
+    ■ 전체 로드 흐름 (include.js 내부)
+      1) #header-slot 뒤에 header.html 삽입
+      2) #nav-slot 뒤에 menu.html 삽입
+      3) 상단 메뉴 active 판별 후:
+              menu-webcolor.html → #left-menu
+              content-webcolor.html → #main-content
+      4) #footer-slot 앞에 footer.html 삽입
+
+    ※ index.html 과 구조가 완전히 동일합니다.
+       단지 제목(title)만 다를 뿐입니다.
+========================================================= -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <!-- 모바일 · 태블릿에서 화면 너비 비율 맞추기 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WEBCOLOR</title>
+
+    <!-- 사이트 공통 CSS -->
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- include.js
+         - header / menu / footer 자동 로딩
+         - 사이드 메뉴(menu-XXX.html) 자동 로딩
+         - 본문(content-XXX.html) 자동 로딩
+         ※ defer : HTML parsing 종료 후 실행 -->
+    <script src="./js/include.js" defer></script>
+</head>
+
+<body>
+
+    <!-- =====================================================
+        1) 헤더 삽입 기준점
+           → include.js 가 header.html을 여기 “뒤(afterend)”에 넣습니다.
+    ===================================================== -->
+    <div id="header-slot"></div>
+
+    <!-- =====================================================
+        2) 상단 메뉴(navbar) 삽입 기준점
+           → menu.html 이 여기 “뒤(afterend)”에 들어옵니다.
+    ===================================================== -->
+    <div id="nav-slot"></div>
+
+    <!-- =====================================================
+        3) 메인 레이아웃 컨테이너
+           (.container = 1440px grid 레이아웃)
+
+           ※ 이 안에 두 영역이 채워짐:
+             - #left-menu     ← menu-webcolor.html
+             - #main-content  ← content-webcolor.html
+           모든 로딩은 include.js가 수행합니다.
+    ===================================================== -->
+    <div class="container">
+        <!-- 왼쪽 사이드 메뉴 (JS가 menu-webcolor.html 로 채움) -->
+        <div id="left-menu" class="item"></div>
+
+        <!-- 오른쪽 본문 (JS가 content-webcolor.html 로 채움) -->
+        <div id="main-content" class="item">
+            <!-- JS가 내용을 자동으로 삽입하므로 비워둠 -->
+        </div>
+    </div>
+
+    <!-- =====================================================
+        4) 푸터 삽입 기준점
+           → footer.html 을 여기 “앞(beforebegin)”에 넣습니다.
+    ===================================================== -->
+    <div id="footer-slot"></div>
+
+</body>
+</html>
+
