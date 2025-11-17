@@ -215,13 +215,10 @@ body {
    실제 서비스할 때는 border를 제거해도 됨 */
 .item:nth-child(1) { 
     /* background-color: aquamarine;  ← 임시 배경색(테스트용) */
-    /*border: 1px solid #aa0000;*/
 }
 
 .item:nth-child(2) { 
     /* background-color: hotpink;    ← 임시 배경색(테스트용) */
-    /*border: 1px solid #aa0000;*/
-    width: 100%;
 }
 
 
