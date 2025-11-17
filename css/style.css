@@ -219,7 +219,7 @@ body {
 
 .item:nth-child(2) { 
     /* background-color: hotpink;    ← 임시 배경색(테스트용) */
-    border: 1px solid #aa0000;
+    /*border: 1px solid #aa0000;*/
 }
 
 
@@ -231,7 +231,7 @@ body {
 #left-menu {
     /* 예전에는 우측에 경계선(border-right)을 주기도 했으나
        현재는 디자인을 위해 주석 처리 */
-    /* border-right: 1px solid #ddd; */
+    border-right: 1px solid #aa0000;
 
     padding: 0;
     min-height: 200px;
@@ -245,7 +245,7 @@ body {
     margin: 0;
 
     /* DETAILILLUST 모양과 맞추기 위해 기본 박스 스타일도 함께 지정 */
-    width: 280px;            /* 왼쪽 그리드 폭(280px)에서 padding 등을 뺀 실제 메뉴 폭 */
+    width: 100%;            /* 왼쪽 그리드 폭(280px)에서 padding 등을 뺀 실제 메뉴 폭 */
     background: #333333;     /* 상단 드롭다운 서브메뉴와 유사한 어두운 배경 */
     color: #ffffff;
     /*font-size: 0.9rem;*/
@@ -324,6 +324,7 @@ body {
     max-width: 100%;
     padding: 10px;          /* 기본 본문 여백 */
     grid-column: 2 / 4;     /* .container 그리드에서 2번째~3번째 열까지 사용 */
+    border: 1px solid #aa0000;
 }
 
 /* WEBCOLOR 페이지 전용
