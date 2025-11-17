@@ -195,7 +195,8 @@ body {
     background: #ffffff;
 
     display: grid;
-    grid-template-columns: 280px 1fr 0;
+    /*grid-template-columns: 280px 1fr 0;*/
+    grid-template-columns: 1fr 4fr 0;
     /* ① 왼쪽 사이드 메뉴 : 280px (사이드 메뉴 너비 + padding 고려)
        ② 본문 영역       : 나머지
        ③ 여분(예비용)    : 0 (지금은 사용 안 함) */
@@ -214,12 +215,13 @@ body {
    실제 서비스할 때는 border를 제거해도 됨 */
 .item:nth-child(1) { 
     /* background-color: aquamarine;  ← 임시 배경색(테스트용) */
-    border: 1px solid #aa0000; 
+    /*border: 1px solid #aa0000;*/
 }
 
 .item:nth-child(2) { 
     /* background-color: hotpink;    ← 임시 배경색(테스트용) */
     /*border: 1px solid #aa0000;*/
+    width: 100%;
 }
 
 
@@ -231,8 +233,8 @@ body {
 #left-menu {
     /* 예전에는 우측에 경계선(border-right)을 주기도 했으나
        현재는 디자인을 위해 주석 처리 */
-    border-right: 1px solid #aa0000;
-
+    width: 100%;
+    border: 1px solid #aa0000;
     padding: 0;
     min-height: 200px;
 }
