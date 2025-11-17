@@ -232,7 +232,7 @@ body {
     background-color: #ffffff;
     /* 사이드 메뉴 전체 박스 바깥 테두리는 사용하지 않음 */
     /*border: none;*/
-    border: 1px solid #aa0000;
+    /*border: 1px solid #aa0000;*/
     padding: 0;
     min-height: 200px;
 }
@@ -349,7 +349,8 @@ body {
     max-width: 100%;
     padding: 10px;          /* 기본 본문 여백 */
     grid-column: 2 / 4;     /* .container 그리드에서 2번째~3번째 열까지 사용 */
-    border: 1px solid #aa0000;
+    /*border: 1px solid #aa0000;*/
+    border-left: 1px dashed #2d2d2d;  /* solid(실선), dotted(점선), dashed(점선), dotted(실선) */
 }
 
 /* WEBCOLOR 페이지 전용
@@ -495,7 +496,7 @@ body.detailillust #main-content img {
     margin: 0 0 40px 0;
 }
 
-detailillust-section h3 {
+.detailillust-section h3 {
     margin: 0 0 10px 0;
     font-size: 1.4rem;
 }
