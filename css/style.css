@@ -228,9 +228,10 @@ body {
    - 왼쪽에 항상 고정된 메뉴 영역
    ========================================================= */
 #left-menu {
-    /* 예전에는 우측에 경계선(border-right)을 주기도 했으나
-       현재는 디자인을 위해 주석 처리 */
     width: 100%;
+    background-color: #ffffff;
+    /* 사이드 메뉴 전체 박스 바깥 테두리는 사용하지 않음 */
+    /*border: none;*/
     border: 1px solid #aa0000;
     padding: 0;
     min-height: 200px;
@@ -243,74 +244,99 @@ body {
     padding: 0;
     margin: 0;
 
-    /* DETAILILLUST 모양과 맞추기 위해 기본 박스 스타일도 함께 지정 */
-    width: 100%;            /* 왼쪽 그리드 폭(280px)에서 padding 등을 뺀 실제 메뉴 폭 */
-    background: #333333;     /* 상단 드롭다운 서브메뉴와 유사한 어두운 배경 */
+    width: 100%;
+    background: #2d2d2d;  /* 상단 드롭다운 서브메뉴와 유사한 어두운 배경 */
     color: #ffffff;
-    /*font-size: 0.9rem;*/
     font-size: 1rem;
     font-weight: bold;
 }
 
-/* 일반 사이드 메뉴(기본형) a 태그 */
+/* 일반 사이드 메뉴(기본형) a 태그
+   - DETAILILLUST 전용(.side-link)은 아래에서 따로 정의 */
 .side-menu a {
     display: block;
     padding: 4px 6px;
     text-decoration: none;
-    color: #333;             /* DETAILILLUST 이외의 메뉴에서 사용될 수 있음 */
+    color: #333;
 }
 
 /* 기본형 hover (단순 리스트용)
    - DETAILILLUST 전용 스타일(.side-link)과는 별도로 동작 */
 .side-menu a:hover {
-    background: #f0f0f0;
-    color: #aa0000;
+    background: #dddddd;
+    color: red;
 }
 
 /* -------------------------------------------------
    6-1. DETAILILLUST 사이드 메뉴 전용 스타일
-   - 상단 드롭다운과 거의 같은 검정/주황 디자인을 사용
    - menu-detailillust.html 의 구조:
         <nav class="side-menu side-menu-detail">
-          <ul class="side-section"> ... </ul>
+          <ul class="side-section">
+            <li class="side-section-title">...</li>
+            <li><a class="side-link">...</a></li>
+            ...
+          </ul>
         </nav>
    ------------------------------------------------- */
 
-/* 각 섹션(그룹) 공통 */
+/* 각 섹션(그룹) 공통
+   - ul 자체에는 바깥 테두리를 주지 않고, li에만 윗선(border-top)을 줘서
+     "항목 사이에만" 회색선이 보이게 함 */
 .side-menu .side-section {
     list-style: none;
     margin: 0;
     padding: 0;
-    border-bottom: 1px solid #555555;
 }
 
-/* 섹션 제목 (예: 자바스크립트, 강좌, K100D) */
+/* 섹션 안 각 li 사이에 구분선 (탑 서브메뉴와 동일한 방식)
+   - 모든 li 위쪽에 회색선을 그리고
+   - 첫 번째 li만 border-top을 지워서, 맨 위에는 선이 안 보이게 함 */
+.side-menu .side-section li {
+    border-top: 1px solid #555555;
+}
+
+/* 첫 번째 항목(섹션 제목)의 윗선 제거 */
+.side-menu .side-section li:first-child {
+    border-top: none;
+}
+
+/* 섹션 제목 (예: 자바스크립트, 강좌, K100D)
+   - 제목 줄 자체에는 별도의 아래 선을 주지 않음 (위의 li border-top 규칙만 사용) */
 .side-menu .side-section-title {
     background: #222222;
     color: #ffffff;
     font-weight: bold;
     padding: 10px 16px;
-    border-bottom: 1px solid #555555;
 }
 
 /* DETAILILLUST 전용 개별 링크 (.side-link)
-   - 상단 드롭다운 서브메뉴 색상을 참고하여 구성 */
+   - 상단 드롭다운 서브메뉴와 비슷한 여백 / 글꼴 크기를 사용 */
 .side-menu .side-link {
     display: block;
-    padding: 8px 16px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    line-height: 1.2;
     color: #eeeeee;
     text-decoration: none;
-    border-bottom: 1px solid #555555;
-    line-height: 1.4;
-    word-break: keep-all;   /* 긴 한글 문장이 자연스럽게 줄바꿈되도록 */
+    word-break: keep-all;  /* 긴 한글 문장이 자연스럽게 줄바꿈되도록 */
+    /* 개별 링크에는 border-bottom을 주지 않고,
+       li에만 border-top을 줘서 항목 사이 구분선 역할을 하게 함 */
 }
 
-/* 마우스를 올렸을 때 / 현재 선택된 메뉴 (active) */
+/* 마지막 li의 아래쪽에는 어떤 선도 보이지 않도록
+   - li의 윗선만 쓰는 방식이기 때문에 사실상 시각적 변화는 없지만,
+     혹시 나중에 border-bottom을 추가했을 때를 대비해 명시적으로 제거 */
+.side-menu .side-section li:last-child {
+    border-bottom: none;
+}
+
+/* DETAILILLUST 사이드 메뉴에서 마우스를 올렸을 때 / 활성화된 항목 */
 .side-menu .side-link:hover,
 .side-menu .side-link.active {
-    background: #ff4800;    /* 오렌지색 배경 (상단 메뉴 hover 색상과 맞춤) */
-    color: #ffffff;
+    background: #444444;
+    color: #ff4800;
 }
+
 
 
 
