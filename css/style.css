@@ -342,20 +342,21 @@ body {
     max-width: 100%;
     padding: 10px;          /* 기본 본문 여백 */
     grid-column: 2 / 4;     /* .container 그리드에서 2번째~3번째 열까지 사용 */
-    /*border: 1px solid #aa0000;*/
-    border-left: 1px dashed #2d2d2d;  /* solid(실선), dotted(점선), dashed(점선), dotted(실선) */
+    border-left: 1px dashed #2d2d2d;  /* 좌측 점선 구분선 */
 }
 
-/* 본문 영역에 들어오는 모든 이미지 공통 설정
+/* 본문 영역에 들어오는 이미지 + 캔버스 공통 설정
    - 화면(부모 요소)의 너비를 넘지 않게 자동 축소
    - 비율 유지(height: auto) */
-#main-content img {
+#main-content img,
+#main-content canvas {
     display: block;
     max-width: 100%;   /* 부모 폭을 넘지 않도록 제한 */
     height: auto;      /* 가로가 줄어들면 세로도 비율에 맞게 자동 조정 */
-    margin: 0 auto;    /* 필요하면 중앙 정렬 */
+    margin: 0 auto;    /* 가운데 정렬 */
     padding: 0;
 }
+
 
 /* WEBCOLOR 페이지 전용
    - 배경 이미지가 컨테이너를 꽉 채우도록 padding 제거 */
