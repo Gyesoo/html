@@ -533,11 +533,15 @@ detailillust-section p {
     margin: 0 !important;
 }
 
-/* 본문 안에서 이미지는 영역 밖으로 넘어가지 않도록 */
+/* 본문 영역에 들어오는 모든 이미지 공통 설정
+   - 화면(부모 요소)의 너비를 넘지 않게 자동 축소
+   - 비율 유지(height: auto) */
 #main-content img {
-    max-width: 100%;
-    height: auto;
     display: block;
+    max-width: 100%;   /* 부모 폭을 넘지 않도록 제한 */
+    height: auto;      /* 가로가 줄어들면 세로도 비율에 맞게 자동 조정 */
+    margin: 0 auto;    /* 필요하면 중앙 정렬 */
+    padding: 0;
 }
 
 
