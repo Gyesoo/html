@@ -59,11 +59,11 @@
        (1) webcolor-wrapper 레이아웃
     ------------------------------ */
     .webcolor-wrapper {
-        text-align: center;   /* 내부 요소 가운데 정렬 */
-        position: relative;   /* zoom(돋보기)의 위치 기준점 */
-
-        /* #main-content 기본 padding:10px 때문의 분홍색 여백 제거 */
-        margin: -10px;
+        text-align: center;
+        position: relative;
+        /* #main-content padding 을 0으로 맞췄으므로
+        더 이상 음수 마진은 필요 없음 */
+        margin: 0;
     }
 
     /* -----------------------------
@@ -72,7 +72,13 @@
     ------------------------------ */
     .webcolor-wrapper canvas {
         cursor: crosshair;
+        /* 화면 폭을 넘지 않도록 반응형으로 표시 */
+        max-width: 100%;
+        width: 100%;    /* 부모(.webcolor-wrapper) 폭에 맞춤 */
+        height: auto;   /* 세로는 비율에 따라 자동 */
+        display: block;
     }
+
 
     /* -----------------------------
        (3) 원형 돋보기 박스 (#zoom)
