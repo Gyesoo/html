@@ -346,6 +346,17 @@ body {
     border-left: 1px dashed #2d2d2d;  /* solid(실선), dotted(점선), dashed(점선), dotted(실선) */
 }
 
+/* 본문 영역에 들어오는 모든 이미지 공통 설정
+   - 화면(부모 요소)의 너비를 넘지 않게 자동 축소
+   - 비율 유지(height: auto) */
+#main-content img {
+    display: block;
+    max-width: 100%;   /* 부모 폭을 넘지 않도록 제한 */
+    height: auto;      /* 가로가 줄어들면 세로도 비율에 맞게 자동 조정 */
+    margin: 0 auto;    /* 필요하면 중앙 정렬 */
+    padding: 0;
+}
+
 /* WEBCOLOR 페이지 전용
    - 배경 이미지가 컨테이너를 꽉 채우도록 padding 제거 */
 body.page-webcolor #main-content {
@@ -533,16 +544,13 @@ detailillust-section p {
     margin: 0 !important;
 }
 
-/* 본문 영역에 들어오는 모든 이미지 공통 설정
-   - 화면(부모 요소)의 너비를 넘지 않게 자동 축소
-   - 비율 유지(height: auto) */
+/* 본문 안에서 이미지는 영역 밖으로 넘어가지 않도록 */
 #main-content img {
+    max-width: 100%;
+    height: auto;
     display: block;
-    max-width: 100%;   /* 부모 폭을 넘지 않도록 제한 */
-    height: auto;      /* 가로가 줄어들면 세로도 비율에 맞게 자동 조정 */
-    margin: 0 auto;    /* 필요하면 중앙 정렬 */
-    padding: 0;
 }
+
 
 
 /* =========================================================
@@ -619,4 +627,18 @@ detailillust-section p {
     #site-footer .footer-inner {
         text-align: center;
     }
+
+
+
+    /* 본문 영역에 들어오는 모든 이미지 공통 설정
+   - 화면(부모 요소)의 너비를 넘지 않게 자동 축소
+   - 비율 유지(height: auto) */
+#main-content img {
+    display: block;
+    max-width: 100%;   /* 부모 폭을 넘지 않도록 제한 */
+    height: auto;      /* 가로가 줄어들면 세로도 비율에 맞게 자동 조정 */
+    margin: 0 auto;    /* 필요하면 중앙 정렬 */
+    padding: 0;
+}
+
 }
