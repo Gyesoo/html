@@ -219,20 +219,20 @@ body {
 
 /* =========================================================
    6. 왼쪽 사이드 메뉴 (#left-menu)
-   - 왼쪽에 항상 고정된 메뉴 영역
+   - 모든 페이지에서 공통으로 사용하는 왼쪽 메뉴 영역
    ========================================================= */
 #left-menu {
     width: 100%;
     background-color: #ffffff;
     /* 사이드 메뉴 전체 박스 바깥 테두리는 사용하지 않음 */
-    /*border: none;*/
-    /*border: 1px solid #aa0000;*/
+    border: none;
     padding: 0;
     min-height: 200px;
 }
 
-/* 사이드 메뉴 공통 리스트(기본형)
-   - menu-about, menu-webcolor 등 단순 리스트에 사용 */
+/* 사이드 메뉴 공통 리스트
+   - menu-about, menu-webcolor, menu-lectures, menu-detailillust 등
+     모든 사이드 메뉴가 공통으로 사용하는 ul */
 .side-menu {
     list-style: none;
     padding: 0;
@@ -245,22 +245,28 @@ body {
     font-weight: bold;
 }
 
+/* 모든 사이드 메뉴 항목 사이 구분선
+   - .side-menu 안에서 두 번째 li부터 윗선(border-top)을 그림
+   - 이렇게 하면 DETAILILLUST, WEBCOLOR, LECTURES 등
+     어떤 메뉴라도 사이드 메뉴 사이에 회색선이 생김 */
+#left-menu .side-menu li + li {
+    border-top: 1px solid #555555;
+}
+
 /* 일반 사이드 메뉴(기본형) a 태그
    - DETAILILLUST 전용(.side-link)은 아래에서 따로 정의 */
 .side-menu a {
     display: block;
-    padding: 4px 6px;
+    padding: 8px 12px;
     text-decoration: none;
-    color: #333;
+    color: #eeeeee;
 }
 
-/* 기본형 hover (단순 리스트용)
-   - DETAILILLUST 전용 스타일(.side-link)과는 별도로 동작 */
+/* 기본형 hover (단순 리스트용) */
 .side-menu a:hover {
     background: #dddddd;
     color: red;
 }
-
 
 /* -------------------------------------------------
    6-1. DETAILILLUST 사이드 메뉴 전용 스타일
@@ -274,29 +280,16 @@ body {
         </nav>
    ------------------------------------------------- */
 
-/* 각 섹션(그룹) 공통
-   - ul 자체에는 바깥 테두리를 주지 않고, li에만 윗선(border-top)을 줘서
-     "항목 사이에만" 회색선이 보이게 함 */
+/* DETAILILLUST에서 사용하는 섹션(그룹) ul 공통 */
 .side-menu .side-section {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-/* 섹션 안 각 li 사이에 구분선 (탑 서브메뉴와 동일한 방식)
-   - 모든 li 위쪽에 회색선을 그리고
-   - 첫 번째 li만 border-top을 지워서, 맨 위에는 선이 안 보이게 함 */
-.side-menu .side-section li {
-    border-top: 1px solid #555555;
-}
-
-/* 첫 번째 항목(섹션 제목)의 윗선 제거 */
-.side-menu .side-section li:first-child {
-    border-top: none;
-}
-
-/* 섹션 제목 (예: 자바스크립트, 강좌, K100D)
-   - 제목 줄 자체에는 별도의 아래 선을 주지 않음 (위의 li border-top 규칙만 사용) */
+/* 섹션 제목 (예: 자바스크립트, 강좌, K100D 등)
+   - 제목 줄은 li 이지만, 위의 li+li 규칙에 의해
+     아래 항목과 자연스럽게 구분선이 생김 */
 .side-menu .side-section-title {
     background: #222222;
     color: #ffffff;
@@ -314,15 +307,6 @@ body {
     color: #eeeeee;
     text-decoration: none;
     word-break: keep-all;  /* 긴 한글 문장이 자연스럽게 줄바꿈되도록 */
-    /* 개별 링크에는 border-bottom을 주지 않고,
-       li에만 border-top을 줘서 항목 사이 구분선 역할을 하게 함 */
-}
-
-/* 마지막 li의 아래쪽에는 어떤 선도 보이지 않도록
-   - li의 윗선만 쓰는 방식이기 때문에 사실상 시각적 변화는 없지만,
-     혹시 나중에 border-bottom을 추가했을 때를 대비해 명시적으로 제거 */
-.side-menu .side-section li:last-child {
-    border-bottom: none;
 }
 
 /* DETAILILLUST 사이드 메뉴에서 마우스를 올렸을 때 / 활성화된 항목 */
@@ -526,7 +510,7 @@ body.detailillust #main-content img {
 }
 
 /* DETAILILLUST 본문 텍스트 */
-detailillust-section p {
+.detailillust-section p {
     margin: 4px 0;
     line-height: 1.5;
 }
@@ -562,6 +546,17 @@ detailillust-section p {
         left: auto;
         margin-bottom: 10px;
         width: 100%;
+    }
+
+    /* ✅ DETAILILLUST 본문을 1열 그리드의 첫 번째 칼럼으로 이동 */
+    #detail-contents,
+    .detailillust-article {
+        grid-column: 1 / 2;
+    }
+
+    /* ✅ DETAILILLUST 페이지에서 추가로 주었던 왼쪽 여백 제거 */
+    body.detailillust #main-content {
+        padding-left: 10px;   /* 필요하면 0 또는 다른 값으로 조정 가능 */
     }
 }
 
