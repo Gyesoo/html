@@ -443,7 +443,7 @@ body.page-webcolor #main-content {
 .detailillust-layout {
     position: relative;                    /* #quick의 기준이 되는 부모 */
     display: grid;
-    grid-template-columns: 260px minmax(0, 1fr);
+    grid-template-columns: 400px minmax(0, 1fr);
     /* 왼쪽: 퀵메뉴 영역, 오른쪽: 본문(나머지) */
     gap: 10px;                             /* 좌우 간격 */
 }
