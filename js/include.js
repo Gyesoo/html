@@ -339,20 +339,26 @@ function initSideMenu() {
     let url = link.getAttribute("data-content"); // 예: content-detailillust-02.html
     if (!url) return;
 
-    // 만약 경로에 슬래시(/)가 없다면, content/ 폴더를 자동으로 붙여 준다.
-    // - data-content="content-detailillust-02.html"  → content/content-detailillust-02.html
-    // - data-content="content/content-detailillust-02.html" 처럼 이미 폴더가 있으면 그대로 사용
+    // 경로 앞에 content/ 자동 붙이기 (슬래시가 없을 때만)
     if (!url.includes("/")) {
       url = PATH.contentDir + url;
     }
 
-    // 본문 영역에 HTML 로드
+    // ▶ 본문 교체
     loadHtmlInto("#main-content", url);
 
-    // 선택된 사이드 메뉴에 .active 클래스 붙이기 (시각적인 강조)
+    // ▶ 여기서 active 처리: 이전 항목에서 active 제거, 현재 항목에 active 추가
     sideMenu.querySelectorAll("a.side-link").forEach((a) => {
       a.classList.remove("active");
     });
     link.classList.add("active");
   });
+
+  // 페이지가 처음 로드되었을 때, 아직 active 가 없다면 첫 번째 항목에 active 부여
+  if (!sideMenu.querySelector("a.side-link.active")) {
+    const firstLink = sideMenu.querySelector("a.side-link");
+    if (firstLink) {
+      firstLink.classList.add("active");
+    }
+  }
 }

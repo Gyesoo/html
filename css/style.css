@@ -33,7 +33,6 @@ html {
 body {
     margin: 0;
     padding: 0;
-    font-family: "Trebuchet MS", Dotum, "Nanum Gothic", sans-serif;
 
     /* 배경 이미지 + 기본 배경색 */
     background-image: url(../img/bg_color.png);
@@ -137,6 +136,7 @@ body {
 .navbar a.active {
     color: red !important;
 }
+
 
 
 /* =========================================================
@@ -268,28 +268,36 @@ body {
     color: red;
 }
 
+
 /* -------------------------------------------------
-   6-1. DETAILILLUST 사이드 메뉴 전용 스타일
-   - menu-detailillust.html 의 구조:
+   6-1. DETAILILLUST 사이드 메뉴 전용 스타일 (최소 버전)
+   -------------------------------------------------
+   ※ 이 블록은 DETAILILLUST 페이지의 왼쪽 메뉴만을 위한 스타일입니다.
+      - HTML 구조 (menu-detailillust.html)
         <nav class="side-menu side-menu-detail">
           <ul class="side-section">
-            <li class="side-section-title">...</li>
-            <li><a class="side-link">...</a></li>
-            ...
+            <li class="side-section-title">DETAILILLUST</li>
+            <li><a class="side-link" ...>[02호] ...</a></li>
+            <li><a class="side-link" ...>[03호] ...</a></li>
           </ul>
         </nav>
+
+      - 6번에서 모든 .side-menu 공통 스타일(배경, 글꼴, li 사이의 선)을 처리하고,
+        여기에서는 DETAILILLUST 특유의
+        "제목 줄"과 "링크 모양"만 따로 정의합니다.
    ------------------------------------------------- */
 
-/* DETAILILLUST에서 사용하는 섹션(그룹) ul 공통 */
+/* DETAILILLUST에서 사용하는 섹션(그룹) ul
+   - 기본 목록 스타일 제거 (점, 여백 등) */
 .side-menu .side-section {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-/* 섹션 제목 (예: 자바스크립트, 강좌, K100D 등)
-   - 제목 줄은 li 이지만, 위의 li+li 규칙에 의해
-     아래 항목과 자연스럽게 구분선이 생김 */
+/* DETAILILLUST 사이드 메뉴의 제목 줄
+   - 예: "DETAILILLUST"
+   - 어두운 배경 + 흰 글자 + 조금 두꺼운 느낌 */
 .side-menu .side-section-title {
     background: #222222;
     color: #ffffff;
@@ -298,7 +306,8 @@ body {
 }
 
 /* DETAILILLUST 전용 개별 링크 (.side-link)
-   - 상단 드롭다운 서브메뉴와 비슷한 여백 / 글꼴 크기를 사용 */
+   - 상단 드롭다운 서브메뉴와 비슷한 여백/글꼴 크기
+   - 긴 한글도 자연스럽게 줄바꿈되도록 word-break 적용 */
 .side-menu .side-link {
     display: block;
     padding: 8px 12px;
@@ -306,10 +315,13 @@ body {
     line-height: 1.2;
     color: #eeeeee;
     text-decoration: none;
-    word-break: keep-all;  /* 긴 한글 문장이 자연스럽게 줄바꿈되도록 */
+    word-break: keep-all;
 }
 
-/* DETAILILLUST 사이드 메뉴에서 마우스를 올렸을 때 / 활성화된 항목 */
+/* DETAILILLUST 사이드 메뉴에서
+   - 마우스를 올렸을 때 (hover)
+   - 선택된 항목 (active)
+   을 강조해서 표시 */
 .side-menu .side-link:hover,
 .side-menu .side-link.active {
     background: #444444;
@@ -351,16 +363,18 @@ body.page-webcolor #main-content {
 /* DETAILILLUST 페이지 전용 좌측 여백
    - 왼쪽에서 약간 띄워서 디자인을 맞추기 위함
    - 필요에 따라 150px 값을 조정 가능 */
-body.detailillust #main-content {
+
+
+/* 기본: 세부 페이지에서 왼쪽 여백 없음 */
+.detailillust-layout #main-content {
+    padding-left: 0;
+}
+
+/* 메인 작품 리스트 페이지에만 여백 적용 */
+.detailillust-layout.main-episode #main-content {
     padding-left: 150px;
 }
 
-/* DETAILILLUST 본문 안의 이미지 기본 정렬 */
-body.detailillust #main-content img {
-    display: block;
-    margin: 0;
-    padding: 0;
-}
 
 
 /* =========================================================
@@ -441,7 +455,7 @@ body.detailillust #main-content img {
    --------------------------------------------------------- */
 #quick {
     position: absolute;
-    left: -150px;
+    left: -11px;
     top: -20px;
 
     width: 20vw;
@@ -553,12 +567,8 @@ body.detailillust #main-content img {
     .detailillust-article {
         grid-column: 1 / 2;
     }
-
-    /* ✅ DETAILILLUST 페이지에서 추가로 주었던 왼쪽 여백 제거 */
-    body.detailillust #main-content {
-        padding-left: 10px;   /* 필요하면 0 또는 다른 값으로 조정 가능 */
-    }
 }
+
 
 
 /* =========================================================
