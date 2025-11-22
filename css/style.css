@@ -1,6 +1,7 @@
 /* =========================================================
    0. 웹폰트 설정
    - 사이트 전체에서 사용할 한글 폰트(Nanum Gothic) 지정
+   - 실제 사용 시 body 등에 font-family: "Nanum Gothic" 적용
    ========================================================= */
 @font-face {
     src: url(../webfont/NanumGothic.woff);
@@ -14,7 +15,8 @@
    ========================================================= */
 
 /* 모든 요소의 박스 모델을 border-box로 통일
-   (padding, border까지 포함해서 width/height 계산) */
+   (padding, border까지 포함해서 width/height 계산)
+   → 레이아웃 계산을 쉽게 만들어줌 */
 *,
 *::before,
 *::after {
@@ -26,7 +28,7 @@ html {
     margin: 0;
     padding: 0;
     font-size: 16px;          /* 1rem = 16px 기준 */
-    scroll-behavior: smooth;  /* #id로 이동할 때 부드럽게 스크롤 */
+    scroll-behavior: smooth;  /* #id로 이동할 때 부드럽게 스크롤 이동 */
 }
 
 /* <body> 태그 기본 설정 */
@@ -34,11 +36,11 @@ body {
     margin: 0;
     padding: 0;
 
-    /* 배경 이미지 + 기본 배경색 */
+    /* 전체 페이지 공통 배경 이미지 + 기본 배경색 */
     background-image: url(../img/bg_color.png);
     background-color: #f0f0f0;
 
-    position: relative;  /* detailillust의 #quick 등이 상대 기준으로 사용할 수 있음 */
+    position: relative;  /* DETAILILLUST의 #quick 등이 위치 기준으로 사용 가능 */
 }
 
 
@@ -80,9 +82,9 @@ body {
     background: #2d2d2d;     /* 어두운 회색(거의 검정) */
 }
 
-/* 상단 메뉴의 최상위 ul */
+/* 상단 메뉴의 최상위 ul (메뉴 전체 줄) */
 #topMenu > ul {
-    list-style: none;                /* 불릿 제거 */
+    list-style: none;                /* 불릿(점) 제거 */
     display: flex;                   /* 가로로 나열 */
     justify-content: space-between;  /* 메뉴를 양쪽으로 균등 분배 */
     align-items: stretch;
@@ -132,7 +134,8 @@ body {
     color: red;             /* 글자색 빨간색 */
 }
 
-/* 상단 메뉴에서 "현재 선택된" 항목 표시용 클래스 */
+/* 상단 메뉴에서 "현재 선택된" 항목 표시용 클래스
+   - include.js에서 .active를 붙여줌 */
 .navbar a.active {
     color: red !important;
 }
@@ -166,7 +169,7 @@ body {
     max-height: 500px; /* 충분히 크게 지정해서 안에 있는 항목이 모두 보이게 */
 }
 
-/* 서브메뉴 각 li */
+/* 서브메뉴 각 li 사이 구분선 */
 #topMenu > ul > li.topMenuLi > ul.submenu > li {
     border-top: 1px solid #555;
 }
@@ -192,8 +195,8 @@ body {
     display: grid;
     /*grid-template-columns: 280px 1fr 0;*/
     grid-template-columns: 1fr 4fr 0;
-    /* ① 왼쪽 사이드 메뉴 : 280px (사이드 메뉴 너비 + padding 고려)
-       ② 본문 영역       : 나머지
+    /* ① 왼쪽 사이드 메뉴 : 1fr
+       ② 본문 영역       : 4fr
        ③ 여분(예비용)    : 0 (지금은 사용 안 함) */
     column-gap: 10px;       /* 왼쪽 사이드 메뉴와 본문 사이 여백 */
     padding: 0;
@@ -206,14 +209,14 @@ body {
     margin: 0;
 }
 
-/* 개발/디자인 시 레이아웃 확인용 테두리
-   실제 서비스할 때는 border를 제거해도 됨 */
+/* 개발/디자인 시 레이아웃 확인용(현재는 주석 처리)
+   필요 없으면 완전히 삭제해도 무방 */
 .item:nth-child(1) { 
-    /* background-color: aquamarine;  ← 임시 배경색(테스트용) */
+    /* background-color: aquamarine; */
 }
 
 .item:nth-child(2) { 
-    /* background-color: hotpink;    ← 임시 배경색(테스트용) */
+    /* background-color: hotpink; */
 }
 
 
@@ -247,8 +250,8 @@ body {
 
 /* 모든 사이드 메뉴 항목 사이 구분선
    - .side-menu 안에서 두 번째 li부터 윗선(border-top)을 그림
-   - 이렇게 하면 DETAILILLUST, WEBCOLOR, LECTURES 등
-     어떤 메뉴라도 사이드 메뉴 사이에 회색선이 생김 */
+   - DETAILILLUST, WEBCOLOR, LECTURES 등
+     어떤 페이지라도 메뉴 항목 사이에 회색선이 생김 */
 #left-menu .side-menu li + li {
     border-top: 1px solid #555555;
 }
@@ -320,7 +323,7 @@ body {
 
 /* DETAILILLUST 사이드 메뉴에서
    - 마우스를 올렸을 때 (hover)
-   - 선택된 항목 (active)
+   - 선택된 항목 (active, JS에서 클래스 추가)
    을 강조해서 표시 */
 .side-menu .side-link:hover,
 .side-menu .side-link.active {
@@ -359,22 +362,6 @@ body {
 body.page-webcolor #main-content {
     padding: 0;
 }
-
-/* DETAILILLUST 페이지 전용 좌측 여백
-   - 왼쪽에서 약간 띄워서 디자인을 맞추기 위함
-   - 필요에 따라 150px 값을 조정 가능 */
-
-
-/* 기본: 세부 페이지에서 왼쪽 여백 없음 */
-.detailillust-layout #main-content {
-    padding-left: 0;
-}
-
-/* 메인 작품 리스트 페이지에만 여백 적용 */
-.detailillust-layout.main-episode #main-content {
-    padding-left: 150px;
-}
-
 
 
 /* =========================================================
@@ -439,7 +426,8 @@ body.page-webcolor #main-content {
     font-weight: bold;
 }
 
-/* 퀵메뉴 + 본문을 감싸는 레이아웃 */
+/* 퀵메뉴 + 본문을 감싸는 레이아웃
+   - 왼쪽: 퀵 메뉴, 오른쪽: 본문 */
 .detailillust-layout {
     position: relative;                    /* #quick의 기준이 되는 부모 */
     display: grid;
@@ -515,7 +503,7 @@ body.page-webcolor #main-content {
     margin: 30px 0;
 }
 
-/* DETAILILLUST 본문 안의 이미지 */
+/* DETAILILLUST 본문 안의 이미지 (반응형) */
 .detailillust-section img {
     display: block;
     max-width: 100%;
@@ -562,7 +550,7 @@ body.page-webcolor #main-content {
         width: 100%;
     }
 
-    /* ✅ DETAILILLUST 본문을 1열 그리드의 첫 번째 칼럼으로 이동 */
+    /* DETAILILLUST 본문을 1열 그리드의 첫 번째 칼럼으로 이동 */
     #detail-contents,
     .detailillust-article {
         grid-column: 1 / 2;
