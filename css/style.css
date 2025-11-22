@@ -40,6 +40,14 @@ body {
     background-image: url(../img/bg_color.png);
     background-color: #f0f0f0;
 
+    /* =========================================================
+    POSITION
+    - HTML요소가 웹페이지내에 어디에, 어떻게 배치될지 결정
+    -static: (기본값) 문서의 흐름에 맞춰 배치
+    -relative: 위치값을 지정할 수 있다.
+    -absolute: relative값을 사용할 상위 요소를 부모요소로 생각하고, 그것을 기준으로 위치를 지정
+    -fixed: 브아우저 창을 기준으로 위치를 지정
+   ========================================================= */
     position: relative;  /* DETAILILLUST의 #quick 등이 위치 기준으로 사용 가능 */
 }
 
