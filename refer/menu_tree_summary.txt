@@ -1,0 +1,115 @@
+[최근 메뉴 트리 작업 정리 - 텍스트 문서]
+
+이 문서는 최근 진행된 웹 프로젝트의 메뉴 구조 정리 작업을
+대화 기록을 기반으로 요약한 문서입니다.
+
+
+------------------------------------------------
+📌 1. 작업 목적
+------------------------------------------------
+- 상단 메뉴(Top 메뉴) 및 왼쪽 사이드 메뉴 관리 방식 개선
+- HTML 개별 파일에서 경로를 직접 수정하지 않고
+  include.js 한 곳에서 모든 경로를 관리할 수 있도록 구조화
+- 수정 시 전체 파일 수정이 아닌 단일 JS 수정으로 유지보수 가능하도록 개선
+
+
+------------------------------------------------
+📌 2. 프로젝트 폴더 구조 정리
+------------------------------------------------
+project/
+ ├─ common/         ← header.html, footer.html
+ ├─ menu/           ← menu-about.html, menu-webcolor.html ...
+ ├─ content/        ← content-detailillust.html, content-about.html ...
+ └─ index.html
+
+정리 효과:
+- 경로 충돌 제거
+- include 경로가 일정해져서 header/menu/footer 로딩 정상화
+
+
+------------------------------------------------
+📌 3. include.js 개선
+------------------------------------------------
+
+경로 변수를 JS로 통합:
+
+const PATH = {
+    commonDir: "common/",
+    menuDir: "menu/",
+    contentDir: "content/"
+};
+
+예시 (공통 include):
+
+loadHtmlInto("#header", PATH.commonDir + "header.html");
+loadHtmlInto("#menu", PATH.menuDir + "menu-about.html");
+loadHtmlInto("#footer", PATH.commonDir + "footer.html");
+
+
+------------------------------------------------
+📌 4. Top 메뉴 active 클래스 적용
+------------------------------------------------
+
+CSS:
+.navbar a.active {
+    color: red !important;
+}
+
+클릭 시 자동 활성 처리(JS):
+
+if (link.href === window.location.href) {
+    link.classList.add("active");
+}
+
+
+------------------------------------------------
+📌 5. Side 메뉴 active 적용
+------------------------------------------------
+사이드 메뉴 링크 선택 시 강조 표시:
+
+.side-menu .side-link.active {
+    background: #444;
+    color: #ff4800;
+}
+
+JS 자동 부여:
+
+sideMenu.querySelectorAll(".side-link").forEach(a => a.classList.remove("active"));
+link.classList.add("active");
+
+
+------------------------------------------------
+📌 6. 사이드 메뉴 스타일 정돈
+------------------------------------------------
+
+✔ 공통 사이드메뉴 스타일 → 6번 섹션 유지
+✔ DETAILILLUST 전용 스타일 → 6-1 최소화 유지
+✔ 불필요한 코드 삭제:
+  - .side-menu .side-link.active (중복 선언)
+  - body.detailillust #main-content img (사용되지 않음)
+  - item:nth-child 배경 테스트 코드
+
+
+------------------------------------------------
+📌 7. 결과 요약
+------------------------------------------------
+
+| 항목 | 정리 전 | 정리 후 |
+|------|--------|--------|
+| 메뉴 경로 관리 | HTML 별 개별 설정 | include.js 단일 관리 |
+| Top 메뉴 active | 없음 | 자동 적용 |
+| Side 메뉴 active | DETAILILLUST 한정 | 전체 페이지 적용 |
+| 사이드 메뉴 CSS | 중복/산재 | 공통 + 전용 블록 분리 |
+| 레이아웃 이해 | padding-left 오해 | grid + offset 기반 |
+
+
+------------------------------------------------
+📌 8. 다음 가능 작업
+------------------------------------------------
+- 문서 PDF/Word 변환
+- 전체 CSS 리팩터링
+- GitHub Pages 문서 구성(README.md 생성)
+- 프로젝트 ZIP 정리본 생성
+
+------------------------------------------------
+END
