@@ -27,7 +27,7 @@
       4) #footer-slot 앞에 footer.html 삽입
 
     ※ index.html 과 구조가 완전히 동일합니다.
-       단지 제목(title)만 다를 뿐입니다.
+      단지 제목(title)만 다를 뿐입니다.
 ========================================================= -->
 <html lang="ko">
 <head>
@@ -41,10 +41,10 @@
     <link rel="stylesheet" href="./css/style.css" />
 
     <!-- include.js
-         - header / menu / footer 자동 로딩
-         - 사이드 메뉴(menu-XXX.html) 자동 로딩
-         - 본문(content-XXX.html) 자동 로딩
-         ※ defer : HTML parsing 종료 후 실행 -->
+        - header / menu / footer 자동 로딩
+        - 사이드 메뉴(menu-XXX.html) 자동 로딩
+        - 본문(content-XXX.html) 자동 로딩
+        ※ defer : HTML parsing 종료 후 실행 -->
     <script src="./js/include.js" defer></script>
 </head>
 
@@ -52,24 +52,24 @@
 
     <!-- =====================================================
         1) 헤더 삽입 기준점
-           → include.js 가 header.html을 여기 “뒤(afterend)”에 넣습니다.
+          → include.js 가 header.html을 여기 “뒤(afterend)”에 넣습니다.
     ===================================================== -->
     <div id="header-slot"></div>
 
     <!-- =====================================================
         2) 상단 메뉴(navbar) 삽입 기준점
-           → menu.html 이 여기 “뒤(afterend)”에 들어옵니다.
+          → menu.html 이 여기 “뒤(afterend)”에 들어옵니다.
     ===================================================== -->
     <div id="nav-slot"></div>
 
     <!-- =====================================================
         3) 메인 레이아웃 컨테이너
-           (.container = 1440px grid 레이아웃)
+          (.container = 1440px grid 레이아웃)
 
-           ※ 이 안에 두 영역이 채워짐:
-             - #left-menu     ← menu-webcolor.html
-             - #main-content  ← content-webcolor.html
-           모든 로딩은 include.js가 수행합니다.
+          ※ 이 안에 두 영역이 채워짐:
+            - #left-menu     ← menu-webcolor.html
+            - #main-content  ← content-webcolor.html
+          모든 로딩은 include.js가 수행합니다.
     ===================================================== -->
     <div class="container">
         <!-- 왼쪽 사이드 메뉴 (JS가 menu-webcolor.html 로 채움) -->
@@ -83,7 +83,7 @@
 
     <!-- =====================================================
         4) 푸터 삽입 기준점
-           → footer.html 을 여기 “앞(beforebegin)”에 넣습니다.
+          → footer.html 을 여기 “앞(beforebegin)”에 넣습니다.
     ===================================================== -->
     <div id="footer-slot"></div>
 

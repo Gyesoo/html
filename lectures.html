@@ -5,33 +5,33 @@
     ■ 이 파일은 "LECTURES" 페이지의 메인 뼈대 파일입니다.
 
     ※ 주의사항
-      이 HTML은 '실제 본문 콘텐츠'를 직접 포함하지 않습니다.
-      모든 페이지 공통 구조와 동일하게
-          header / top-menu / left-menu / content / footer
-      는 include.js 가 자동으로 외부 파일을 가져와 채웁니다.
+        이 HTML은 '실제 본문 콘텐츠'를 직접 포함하지 않습니다.
+        모든 페이지 공통 구조와 동일하게
+        header / top-menu / left-menu / content / footer
+        는 include.js 가 자동으로 외부 파일을 가져와 채웁니다.
 
     ----------------------------------------------------------
     ■ include.js 자동 로딩 흐름 요약
 
-      (1) #header-slot 뒤(afterend)
-              → header.html 삽입
+        (1) #header-slot 뒤(afterend)
+            → header.html 삽입
 
-      (2) #nav-slot 뒤(afterend)
-              → menu.html 삽입
-              → menu.html 안의 data-menu 값을 읽어
+        (2) #nav-slot 뒤(afterend)
+            → menu.html 삽입
+            → menu.html 안의 data-menu 값을 읽어
                     menu-lectures.html      (왼쪽 메뉴)
                     content-lectures.html   (본문 내용)
                 을 자동으로 선택하여 로드
 
-      (3) .container 내부
-              → #left-menu     ← menu-lectures.html 삽입
-              → #main-content  ← content-lectures.html 삽입
+        (3) .container 내부
+            → #left-menu     ← menu-lectures.html 삽입
+            → #main-content  ← content-lectures.html 삽입
 
-      (4) #footer-slot 앞(beforebegin)
-              → footer.html 삽입
+        (4) #footer-slot 앞(beforebegin)
+            → footer.html 삽입
 
-      즉, lectures.html 은 "틀(레이아웃)"만 있고,
-      화면에 보이는 모든 내용은 JS 가 채워 넣습니다.
+        즉, lectures.html 은 "틀(레이아웃)"만 있고,
+        화면에 보이는 모든 내용은 JS 가 채워 넣습니다.
 ========================================================= -->
 <html lang="ko">
 <head>
@@ -46,7 +46,7 @@
     <link rel="stylesheet" href="./css/style.css" />
 
     <!-- include.js (공통 HTML 자동 삽입 스크립트)
-         ※ defer 속성: HTML parsing이 끝난 후 실행됨 -->
+        ※ defer 속성: HTML parsing이 끝난 후 실행됨 -->
     <script src="./js/include.js" defer></script>
 </head>
 
@@ -75,15 +75,15 @@
     <div class="container">
 
         <!-- ----------------------------------------------
-             왼쪽 사이드 메뉴 영역
-             include.js 가 "menu-lectures.html" 를 자동 로드하여 삽입
+            왼쪽 사이드 메뉴 영역
+            include.js 가 "menu-lectures.html" 를 자동 로드하여 삽입
         ---------------------------------------------- -->
         <div id="left-menu" class="item"></div>
 
         <!-- ----------------------------------------------
-             본문(content) 영역
-             include.js 가 "content-lectures.html" 를 자동 로드하여 삽입
-             ※ lectures.html 자체에는 본문을 절대 직접 작성하지 않습니다.
+            본문(content) 영역
+            include.js 가 "content-lectures.html" 를 자동 로드하여 삽입
+            ※ lectures.html 자체에는 본문을 절대 직접 작성하지 않습니다.
         ---------------------------------------------- -->
         <div id="main-content" class="item">
             <!-- 본문은 include.js 가 content-lectures.html을 채워 넣습니다. -->

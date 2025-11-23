@@ -11,18 +11,18 @@
 
       1) 상단 메뉴(menu.html)에서 DETAILILLUST 항목은:
             <a data-menu="detailillust">DETAILILLUST</a>
-         와 같이 data-menu 값을 가지고 있음.
+        와 같이 data-menu 값을 가지고 있음.
 
       2) include.js 는 data-menu="detailillust" 을 읽어:
             menu-detailillust.html     → #left-menu
             content-detailillust.html  → #main-content
-         를 자동으로 로드함.
+        를 자동으로 로드함.
 
       3) 이 파일(menu-detailillust.html)은
-           “DETAILILLUST 전용 사이드 메뉴 UI”
-         만을 담당하며,
-         본문 내용은 절대로 여기에 넣지 않습니다.
-         (본문은 content-detailillust-XX.html 에 위치함)
+          “DETAILILLUST 전용 사이드 메뉴 UI”
+          만을 담당하며,
+          본문 내용은 절대로 여기에 넣지 않습니다.
+          (본문은 content-detailillust-XX.html 에 위치함)
 
     ----------------------------------------------------------
     ■ 사이드 메뉴 구성 방식 설명
@@ -32,8 +32,8 @@
       - <a class="side-link" data-content="">    : 본문 로딩 링크
 
       ※ data-content="파일명.html" 속성:
-         include.js 가 클릭 이벤트를 감지하여
-         해당 HTML 파일을 #main-content 에 자동으로 삽입함.
+        include.js 가 클릭 이벤트를 감지하여
+        해당 HTML 파일을 #main-content 에 자동으로 삽입함.
 
     ----------------------------------------------------------
     ■ CSS 적용 위치
@@ -45,9 +45,9 @@
 <nav class="side-menu side-menu-detail">
 
   <!-- =====================================================
-       DETAILILLUST 카테고리 그룹
-       - title  : 사이드 메뉴 상단 카테고리 제목
-       - a.link : 본문을 로드하는 실제 클릭 링크
+      DETAILILLUST 카테고리 그룹
+      - title  : 사이드 메뉴 상단 카테고리 제목
+      - a.link : 본문을 로드하는 실제 클릭 링크
     ====================================================== -->
   <ul class="side-section">
     
@@ -55,7 +55,7 @@
     <!--<li class="side-section-title">DETAILILLUST</li>-->
 
     <!-- 개별 글(본문) 연결 링크들 -->
-     <li>
+    <li>
       <a href="#" class="side-link" data-content="content-detailillust.html">[02호] 시작이 반~~~</a>
     </li>
     <li>

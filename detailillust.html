@@ -3,33 +3,32 @@
     detailillust.html
     ----------------------------------------------------------
     ■ 이 파일의 목적
-      - "DETAILILLUST" 페이지의 기본 골격(레이아웃 뼈대)입니다.
-      - 실제 화면에 보이는 콘텐츠는
-            content-detailillust.html
-        에 있으며, include.js 가 해당 본문을 자동으로 채워 넣습니다.
+        - "DETAILILLUST" 페이지의 기본 골격(레이아웃 뼈대)입니다.
+        - 실제 화면에 보이는 콘텐츠는 content-detailillust.html
+            에 있으며, include.js 가 해당 본문을 자동으로 채워 넣습니다.
 
     ----------------------------------------------------------
     ■ include.js 자동 로딩 흐름 (핵심 구조)
 
-      (1) #header-slot 뒤(afterend)
-              → header.html 삽입
+        (1) #header-slot 뒤(afterend)
+            → header.html 삽입
 
-      (2) #nav-slot 뒤(afterend)
-              → menu.html 삽입
-              → menu.html 안의 data-menu 값을 읽어
-                   menu-detailillust.html      (왼쪽 메뉴)
-                   content-detailillust.html   (본문)
+        (2) #nav-slot 뒤(afterend)
+            → menu.html 삽입
+            → menu.html 안의 data-menu 값을 읽어
+                menu-detailillust.html      (왼쪽 메뉴)
+                content-detailillust.html   (본문)
                 을 자동으로 선택하여 로드
 
-      (3) .container 안에서
-              #left-menu  ← menu-detailillust.html 자동 삽입
-              #main-content ← content-detailillust.html 자동 삽입
+        (3) .container 안에서
+            #left-menu  ← menu-detailillust.html 자동 삽입
+            #main-content ← content-detailillust.html 자동 삽입
 
-      (4) #footer-slot 앞(beforebegin)
-              → footer.html 삽입
+        (4) #footer-slot 앞(beforebegin)
+            → footer.html 삽입
 
-      즉, detailillust.html 자체에는 본문을 직접 작성하지 않습니다.
-      페이지 뼈대만 제공하고 나머지는 JS가 모두 자동으로 채웁니다.
+        즉, detailillust.html 자체에는 본문을 직접 작성하지 않습니다.
+        페이지 뼈대만 제공하고 나머지는 JS가 모두 자동으로 채웁니다.
 ========================================================= -->
 <html lang="ko">
 <head>
@@ -44,9 +43,9 @@
     <link rel="stylesheet" href="./css/style.css" />
 
     <!-- include.js
-         - header/menu/footer 자동 로드
-         - 현재 페이지에 해당하는 사이드 메뉴 + 본문 자동 로드
-         ※ defer: HTML 파싱 완료 후 JS 실행 -->
+        - header/menu/footer 자동 로드
+        - 현재 페이지에 해당하는 사이드 메뉴 + 본문 자동 로드
+        ※ defer: HTML 파싱 완료 후 JS 실행 -->
     <script src="./js/include.js" defer></script>
 </head>
 

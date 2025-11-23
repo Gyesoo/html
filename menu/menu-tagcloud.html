@@ -10,19 +10,19 @@
     ■ include.js 자동 로딩 구조
 
       1) 상단 메뉴(menu.html)의 TAG CLOUD 항목에는:
-           data-menu="tagcloud"
-         속성이 존재함.
+          data-menu="tagcloud"
+          속성이 존재함.
 
       2) include.js 는 이 값을 읽고 다음 두 파일을 자동 결정:
-            menu-tagcloud.html    → 왼쪽 메뉴
-            content-tagcloud.html → 본문 내용
+          menu-tagcloud.html    → 왼쪽 메뉴
+          content-tagcloud.html → 본문 내용
 
       3) menu-tagcloud.html 은 index.html / tagcloud.html / 모든 페이지의
-         <div id="left-menu"></div>
-         안에 삽입됩니다.
+        <div id="left-menu"></div>
+        안에 삽입됩니다.
 
       4) 이 파일은 “사이드 메뉴 UI만 담당”하며,
-         본문의 내용은 content-tagcloud.html 에 있음.
+        본문의 내용은 content-tagcloud.html 에 있음.
 
     ----------------------------------------------------------
     ■ HTML 구조 설명
