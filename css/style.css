@@ -84,9 +84,17 @@ body {
 /* 헤더 안 로그인 입력창 스타일 */
 #site-header input[type="text"],
 #site-header input[type="password"] {
-    width: 100%;
+    /*width: 69%;*/
     padding: 4px 6px;
     margin-bottom: 4px;
+}
+
+#site-header input[type="text"] {
+    width: 91.5%;
+}
+
+#site-header input[type="password"] {
+    width: 69%;
 }
 
 
