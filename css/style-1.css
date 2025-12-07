@@ -1,0 +1,669 @@
+/* =========================================================
+    0. 웹폰트 설정
+    - 사이트 전체에서 사용할 한글 폰트(Nanum Gothic) 지정
+    - 실제 사용 시 body 등에 font-family: "Nanum Gothic" 적용
+   ========================================================= */
+@font-face {
+    src: url(../webfont/NanumGothic.woff);
+    font-family: "Nanum Gothic", sans-serif;
+}
+
+
+/* =========================================================
+    1. 전체 공통 스타일 (초기화 & 기본값)
+    - 모든 페이지에 공통으로 적용되는 기본 설정
+   ========================================================= */
+
+/* 모든 요소의 박스 모델을 border-box로 통일
+    (padding, border까지 포함해서 width/height 계산)
+    → 레이아웃 계산을 쉽게 만들어줌 */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* <html> 태그 기본 설정 */
+html {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;          /* 1rem = 16px 기준 */
+    scroll-behavior: smooth;  /* #id로 이동할 때 부드럽게 스크롤 이동 */
+}
+
+/* <body> 태그 기본 설정 */
+body {
+    margin: 0;
+    padding: 0;
+
+    /* 전체 페이지 공통 배경 이미지 + 기본 배경색 */
+    background-image: url(../img/bg_color.png);
+    background-color: #f0f0f0;
+
+    /* -----------------------------------------------------
+    ∘ POSITION
+    --------------------------------------------------------
+    - HTML요소가 웹페이지내에 어디에, 어떻게 배치될지 결정
+    -static: (기본값) 문서의 흐름에 맞춰 배치
+    -relative: 위치값을 지정할 수 있다.
+    -absolute: relative값을 사용할 상위 요소를 부모요소로 생각하고, 그것을 기준으로 위치를 지정
+    -fixed: 브아우저 창을 기준으로 위치를 지정
+    -------------------------------------------------------- */
+    position: relative;  /* DETAILILLUST의 #quick 등이 위치 기준으로 사용 가능 */
+}
+
+
+/* =========================================================
+    2. 헤더 영역 (#site-header)
+    - 맨 위 노란색 영역 (로고, 로그인 박스, TODAY 등)
+   ========================================================= */
+#site-header {
+    max-width: 1440px;       /* 최대 폭 1440px */
+    width: 100%;             /* 작은 화면에서는 100% 채우기 */
+    margin: 0 auto;          /* 화면 가로 중앙 정렬 */
+
+    display: grid;           /* 3열 그리드 레이아웃 */
+    grid-template-columns: 250px 1fr 250px;
+    /* -----------------------------------------------------
+    ∘ align-items
+    --------------------------------------------------------
+    -flexbox 또는 grid컨테이너의 수직축(교차 축)에서 자식 요소의 정렬 방식을 지정
+    -flex-start: 요소를 컨테이너의 왼쪽 끝에 정렬
+    -flex-end: 요소를 컨테이너의 오른쪽 끝에 정렬
+    -center: 요소를 컨테이너의 중앙에 정렬
+    -baseline/last: 텍스트의 기본선 또는 마지막 줄을 기준으로 정렬
+    -stretch: 요소를 컨테이너 높이에 맞춰 늘림
+    -------------------------------------------------------- */
+    align-items: center;     /* 세로 방향 가운데 정렬 */
+    column-gap: 12px;        /* 칸 사이 간격 */
+
+    background: #ffcc00;     /* 노란색 배경 */
+    padding: 8px 12px;       /* 안쪽 여백 */
+}
+
+/* 헤더 안 로그인 입력창 스타일 */
+#site-header input[type="text"],
+#site-header input[type="password"] {
+    /*width: 69%;*/
+    padding: 4px 6px;
+    margin-bottom: 4px;
+}
+
+#site-header input[type="text"] {
+    width: 91.5%;
+}
+
+#site-header input[type="password"] {
+    width: 69%;
+}
+
+
+/* =========================================================
+    3. 상단 메뉴바 (#topMenu)
+    - 검은색 상단 내비게이션 바
+   ========================================================= */
+#topMenu {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    background: #2d2d2d;     /* 어두운 회색(거의 검정) */
+}
+
+/* 상단 메뉴의 최상위 ul (메뉴 전체 줄) */
+#topMenu > ul {
+    list-style: none;                /* 불릿(점) 제거 */
+    display: flex;                   /* 가로로 나열 */
+    /* -----------------------------------------------------
+    ∘ justify-content
+    --------------------------------------------------------
+    -Flexbox에서 컨테이너 내 요소들을 메인축(가로 방향)에 따라 정렬하는 속성
+    -flex-start: 요소를 컨테이너의 왼쪽 끝에서 정렬
+    -flex-end: 요소를 컨테이너의 오른쪽 끝에서 정렬
+    -center: 요소를 컨테이너의 중앙에 정렬
+    -space-between: 요소들 사이에 일정한 간격을 두고 정렬
+    -space-around: 컨테이너와 욧고, 요소 사이에 모두 간격을 두고 정렬
+    -space-evenly: 컨테이너, 요소, 요소 사이에 균등하게 간격을 두고 정렬
+    -------------------------------------------------------- */
+    justify-content: space-between;  /* 메뉴를 양쪽으로 균등 분배 */
+    align-items: stretch;
+    margin: 0;
+    padding: 0;
+    /* -----------------------------------------------------
+    ∘ flex-wrap
+    --------------------------------------------------------
+    -flex-item 요소들이 강제로 한줄에 배치되게 할 것인지, 여러행으로 나누어 표현할 것인지 결정
+    -nowrap: 플렉스 레이아웃 항목들이 한 줄로 나열
+    -wrap: 플렉스 레이아웃 항목들을 필요하다면 열러 줄에 걸쳐 나열
+    -wrap-reverse: wap과 동일하나 순서가 역순으로 나열
+    -------------------------------------------------------- */
+    flex-wrap: nowrap;               /* 기본은 한 줄 유지 */
+}
+
+/* 각 li 공통 (구분선 포함) */
+#topMenu > ul > li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 실제 메뉴 항목이 들어가는 li (.topMenuLi) */
+#topMenu > ul > li.topMenuLi {
+    position: relative;  /* 서브메뉴(드롭다운)의 기준이 되는 부모 */
+    flex: 1 1 0;         /* 모든 메뉴 항목 너비를 균등하게 분배 */
+}
+
+/* '|' 문자 구분선 역할을 하는 li (topMenuLi가 아닌 것들) */
+#topMenu > ul > li:not(.topMenuLi) {
+    flex: 0 0 auto;
+    color: #ffffff;
+    padding: 0 4px;
+}
+
+/* 상단 메뉴의 링크 공통 스타일 */
+#topMenu a.menuLink,
+#topMenu a.submenuLink {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    /* -----------------------------------------------------
+    ∘ white-space
+    --------------------------------------------------------
+    -normal: 연속된 공백은 하나로 합쳐지고, 필요에 따라 자동 줄바꿈
+    -nowrap: 공백과 줄바꿈 모두 무시, 긴 텍스트도 한 줄로 계속 표시
+    -pre: 공백, 줄바꿈, 들여쓰기를 모두 그대로 유지
+    -pre-wrap: 공백과 줄바꿈은 모두 유지, 필요시 줄바꿈이 자동 발생
+    -pre-line: 공백은 하나로 합치고, 줄바꿈은 줄바꿈 기호와 단어 끝에서 발생
+    -break-spaces: 연속된 공백은 줄바꿈 기호로 인식
+    -------------------------------------------------------- */
+    white-space: nowrap;    /* 줄바꿈 방지 */
+    text-align: center;
+
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+/* 상단 메뉴 hover 시 (마우스를 올렸을 때) */
+#topMenu > ul > li.topMenuLi:hover > a.menuLink {
+    background: #4d4d4d;    /* 살짝 밝은 회색 배경 */
+    color: red;             /* 글자색 빨간색 */
+}
+
+/* 상단 메뉴에서 "현재 선택된" 항목 표시용 클래스
+   - include.js에서 .active를 붙여줌 */
+.navbar a.active {
+    color: red !important;
+}
+
+
+/* =========================================================
+    4. 드롭다운 서브메뉴 (상단 메뉴 아래로 펼쳐지는 부분)
+   ========================================================= */
+
+/* 서브메뉴 ul 기본 상태: 접혀 있음 (max-height: 0) */
+#topMenu > ul > li.topMenuLi > ul.submenu {
+    position: absolute;
+    top: 100%;       /* 부모 li 바로 아래에 붙게 */
+    left: 0;
+
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    background: #2d2d2d;
+    overflow: hidden;
+    max-height: 0;                     /* 높이를 0으로 해서 안 보이도록 */
+    transition: max-height 0.25s ease; /* 펼쳐질 때 애니메이션 효과 */
+    z-index: 1000;
+}
+
+/* 마우스를 올렸을 때 서브메뉴 펼치기 */
+#topMenu > ul > li.topMenuLi:hover > ul.submenu {
+    max-height: 500px; /* 충분히 크게 지정해서 안에 있는 항목이 모두 보이게 */
+}
+
+/* 서브메뉴 각 li 사이 구분선 */
+#topMenu > ul > li.topMenuLi > ul.submenu > li {
+    border-top: 1px solid #555555;
+}
+
+/* 서브메뉴 항목에 마우스를 올렸을 때 */
+#topMenu > ul > li.topMenuLi > ul.submenu > li:hover > a {
+    background: #dddddd;
+    color: red !important;
+}
+
+
+/* =========================================================
+    5. 메인 레이아웃 (.container)
+    - 왼쪽 사이드 메뉴 + 본문 영역을 감싸는 큰 박스
+   ========================================================= */
+.container {
+    max-width: 1440px;
+    width: 100%;
+    margin: 10px auto;      /* 위/아래 10px, 좌우 가운데 정렬 */
+
+    background: #ffffff;
+
+    display: grid;
+    /*grid-template-columns: 280px 1fr 0;*/
+    grid-template-columns: 1fr 4fr 0;
+    /*  ① 왼쪽 사이드 메뉴 : 1fr
+        ② 본문 영역       : 4fr
+        ③ 여분(예비용)    : 0 (지금은 사용 안 함) */
+    column-gap: 10px;       /* 왼쪽 사이드 메뉴와 본문 사이 여백 */
+    padding: 0;
+}
+
+/* .container 안의 각 칸(좌/우)을 감싸는 공통 박스 */
+.item {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+}
+
+/* 개발/디자인 시 레이아웃 확인용(현재는 주석 처리)
+   필요 없으면 완전히 삭제해도 무방 */
+.item:nth-child(1) { 
+    /* background-color: aquamarine; */
+}
+
+.item:nth-child(2) { 
+    /* background-color: hotpink; */
+}
+
+
+/* =========================================================
+    6. 왼쪽 사이드 메뉴 (#left-menu)
+    - 모든 페이지에서 공통으로 사용하는 왼쪽 메뉴 영역
+   ========================================================= */
+#left-menu {
+    width: 100%;
+    background-color: #ffffff;
+    /* 사이드 메뉴 전체 박스 바깥 테두리는 사용하지 않음 */
+    border: none;
+    padding: 0;
+    min-height: 200px;
+}
+
+/* 사이드 메뉴 공통 리스트
+    - menu-about, menu-webcolor, menu-lectures, menu-detailillust 등
+     모든 사이드 메뉴가 공통으로 사용하는 ul */
+.side-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    width: 100%;
+    background: #2d2d2d;  /* 상단 드롭다운 서브메뉴와 유사한 어두운 배경 */
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* 모든 사이드 메뉴 항목 사이 구분선
+    - .side-menu 안에서 두 번째 li부터 윗선(border-top)을 그림
+    - DETAILILLUST, WEBCOLOR, LECTURES 등
+     어떤 페이지라도 메뉴 항목 사이에 회색선이 생김 */
+#left-menu .side-menu li + li {
+    border-top: 1px solid #555555;
+}
+
+/* 일반 사이드 메뉴(기본형) a 태그
+   - DETAILILLUST 전용(.side-link)은 아래에서 따로 정의 */
+.side-menu a {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #eeeeee;
+}
+
+/* 기본형 hover (단순 리스트용) */
+.side-menu a:hover {
+    background: #dddddd;
+    color: red;
+}
+
+
+/* -------------------------------------------------
+    6-1. DETAILILLUST 사이드 메뉴 전용 스타일 (최소 버전)
+    -------------------------------------------------
+    ※ 이 블록은 DETAILILLUST 페이지의 왼쪽 메뉴만을 위한 스타일입니다.
+        - HTML 구조 (menu-detailillust.html)
+        <nav class="side-menu side-menu-detail">
+            <ul class="side-section">
+                <li class="side-section-title">DETAILILLUST</li>
+                <li><a class="side-link" ...>[02호] ...</a></li>
+                <li><a class="side-link" ...>[03호] ...</a></li>
+            </ul>
+        </nav>
+
+        - 6번에서 모든 .side-menu 공통 스타일(배경, 글꼴, li 사이의 선)을 처리하고,
+            여기에서는 DETAILILLUST 특유의
+            "제목 줄"과 "링크 모양"만 따로 정의합니다.
+   ------------------------------------------------- */
+
+/* DETAILILLUST에서 사용하는 섹션(그룹) ul
+   - 기본 목록 스타일 제거 (점, 여백 등) */
+.side-menu .side-section {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* DETAILILLUST 사이드 메뉴의 제목 줄
+    - 예: "DETAILILLUST"
+    - 어두운 배경 + 흰 글자 + 조금 두꺼운 느낌 */
+.side-menu .side-section-title {
+    background: #222222;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 10px 16px;
+}
+
+/* DETAILILLUST 전용 개별 링크 (.side-link)
+    - 상단 드롭다운 서브메뉴와 비슷한 여백/글꼴 크기
+    - 긴 한글도 자연스럽게 줄바꿈되도록 word-break 적용 */
+.side-menu .side-link {
+    display: block;
+    padding: 8px 12px;
+    font-size: 1rem;
+    line-height: 1.2;
+    color: #eeeeee;
+    text-decoration: none;
+    word-break: keep-all;
+}
+
+/* DETAILILLUST 사이드 메뉴에서
+    - 마우스를 올렸을 때 (hover)
+    - 선택된 항목 (active, JS에서 클래스 추가)
+   을 강조해서 표시 */
+.side-menu .side-link:hover,
+.side-menu .side-link.active {
+    background: #444444;
+    color: #ff4800;
+}
+
+
+/* =========================================================
+    7. 본문 영역 (#main-content)
+    - 오른쪽 실제 콘텐츠가 들어가는 부분
+   ========================================================= */
+#main-content {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;          /* 기본 본문 여백 */
+    grid-column: 2 / 4;     /* .container 그리드에서 2번째~3번째 열까지 사용 */
+    border-left: 1px dashed #2d2d2d;  /* 좌측 점선 구분선 */
+}
+
+/* 본문 영역에 들어오는 이미지 + 캔버스 공통 설정
+    - 화면(부모 요소)의 너비를 넘지 않게 자동 축소
+    - 비율 유지(height: auto) */
+#main-content img,
+#main-content canvas {
+    display: block;
+    max-width: 100%;   /* 부모 폭을 넘지 않도록 제한 */
+    height: auto;      /* 가로가 줄어들면 세로도 비율에 맞게 자동 조정 */
+    margin: 0 auto;    /* 가운데 정렬 */
+    padding: 0;
+}
+
+/* WEBCOLOR 페이지 전용
+   - 배경 이미지가 컨테이너를 꽉 채우도록 padding 제거 */
+body.page-webcolor #main-content {
+    padding: 0;
+}
+
+
+/* =========================================================
+    8. 푸터 (#site-footer)
+    - 맨 아래 보라색 띠 + 텍스트 영역
+   ========================================================= */
+#site-footer {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    background: #6a0dad;      /* 보라색 */
+}
+
+/* 푸터 안 실제 내용 박스 */
+#site-footer .footer-inner {
+    padding: 20px 20px;
+    color: #ffffff;
+    text-align: right;        /* 오른쪽 정렬 */
+}
+
+
+/* =========================================================
+    9. 반응형(태블릿, 1024px 이하) - 전체 공통
+    - 1024px 이하 화면(태블릿 등)에서 전체 레이아웃 조정
+   ========================================================= */
+@media (max-width: 1024px) {
+
+    /* 주요 컨테이너 폭은 100%로 고정 */
+    #site-header,
+    #topMenu,
+    .container,
+    #site-footer,
+    #site-footer .footer-inner {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    /* 그리드 열 폭 조정: 사이드 메뉴 폭 축소 */
+    .container {
+        grid-template-columns: 200px 1fr;
+    }
+
+    /* 상단 메뉴는 항목 간 간격을 조금 더 좁게 */
+    #topMenu > ul {
+        justify-content: space-around;
+    }
+}
+
+
+/* =========================================================
+    10. DETAILILLUST 페이지 전용 레이아웃
+    - content-detailillust.html에서 사용하는 퀵메뉴 + 본문 2단 구조
+   ========================================================= */
+.detailillust-wrapper {
+    padding: 10px 0;
+}
+
+/* DETAILILLUST 페이지 제목(필요 시 사용) */
+.detailillust-title {
+    margin: 0 0 10px 0;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+/* 퀵메뉴 + 본문을 감싸는 레이아웃
+   - 왼쪽: 퀵 메뉴, 오른쪽: 본문 */
+.detailillust-layout {
+    position: relative;                    /* #quick의 기준이 되는 부모 */
+    display: grid;
+    grid-template-columns: 400px minmax(0, 1fr);
+    /* 왼쪽: 퀵메뉴 영역, 오른쪽: 본문(나머지) */
+    gap: 10px;                             /* 좌우 간격 */
+}
+
+/* ---------------------------------------------------------
+    DETAILILLUST 퀵메뉴 (#quick)
+    - 공중에 떠 있는 메뉴처럼 보이도록 absolute 사용
+    - include.js에서 scroll 위치에 따라 top 값을 부드럽게 변경
+   --------------------------------------------------------- */
+#quick {
+    position: absolute;
+    left: -11px;
+    top: -20px;
+
+    width: 20vw;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #aa0000;
+
+    font-size: 14px;
+    line-height: 0.5;
+    z-index: 100;   /* 다른 요소들보다 위에 보이도록 */
+}
+
+#quick a {
+    display: block;
+    padding: 2px 10px;
+    text-decoration: none;
+    color: #0000ff;
+}
+
+#quick a:hover {
+    text-decoration: underline;
+    color: #ffa500;
+}
+
+/* 오른쪽 본문 : 2번째 열 전체 사용 */
+#detail-contents,
+.detailillust-article {
+    grid-column: 2 / 3;
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+}
+
+/* 각 호(섹션) 공통 */
+.detailillust-section {
+    width: 100%;
+    max-width: none;
+    margin: 0 0 40px 0;
+}
+
+.detailillust-section h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.4rem;
+}
+
+/* 제목 아래 검은 가는 선 */
+.detailillust-section > hr {
+    border: none;
+    border-top: 1px solid #000;
+    margin: 5px 0 15px 0;
+}
+
+/* 각 호 사이를 나누는 회색 구분선 */
+.detailillust-separator {
+    border: none;
+    border-top: 1px solid #d8d8d8;
+    margin: 30px 0;
+}
+
+/* DETAILILLUST 본문 안의 이미지 (반응형) */
+.detailillust-section img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 20px;   /* 가운데 정렬 + 아래 여백 */
+}
+
+/* DETAILILLUST 본문 텍스트 */
+.detailillust-section p {
+    margin: 4px 0;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+    11. DETAILILLUST 관련 폭 제한 해제
+    - 혹시 예전에 설정한 max-width 등으로 폭이 좁아지는 것을
+        방지하기 위해 한 번 더 강제로 풀어주는 부분
+   ========================================================= */
+#main-content,
+.content-area,
+.item {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+}
+
+
+/* =========================================================
+    12. DETAILILLUST 반응형 (1024px 이하 전용)
+    - 태블릿 이하에서 퀵메뉴와 본문을 위아래(1열)로 배치
+   ========================================================= */
+@media (max-width: 1024px) {
+
+    .detailillust-layout {
+        grid-template-columns: 1fr;   /* 퀵메뉴 + 본문을 세로로 쌓기 */
+    }
+
+    #quick {
+        position: static;             /* 더 이상 공중에 뜨지 않게 */
+        top: auto;
+        left: auto;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    /* DETAILILLUST 본문을 1열 그리드의 첫 번째 칼럼으로 이동 */
+    #detail-contents,
+    .detailillust-article {
+        grid-column: 1 / 2;
+    }
+}
+
+
+/* =========================================================
+    13. 반응형(모바일, 768px 이하) - 전체 공통
+    - 가장 마지막에 두어 모든 규칙을 최종 덮어쓰기
+   ========================================================= */
+@media (max-width: 768px) {
+
+    /* 메인 레이아웃: 사이드 메뉴와 본문을 한 줄씩 세로 배치 */
+    .container {
+        grid-template-columns: 1fr;
+        padding: 10px 0;
+    }
+
+    #left-menu {
+        border-right: none;
+    }
+
+    /* 헤더를 2열 × 2행 구조로 변경 */
+    #site-header {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        row-gap: 6px;
+    }
+
+    /* 세 번째 박스(TODAY 영역)를 1~2열에 걸쳐 표시 */
+    #site-header > div:nth-child(3) {
+        grid-column: 1 / 3;
+    }
+
+    /* 상단 메뉴 : 2줄까지 허용 */
+    #topMenu > ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #topMenu > ul > li.topMenuLi {
+        flex: 1 0 45%;
+        max-width: 50%;
+    }
+
+    /* '|' 구분선은 모바일에서 숨김 */
+    #topMenu > ul > li:not(.topMenuLi) {
+        display: none;
+    }
+
+    /* 메뉴 글자 크기/여백 축소 */
+    #topMenu a.menuLink {
+        padding: 6px;
+        font-size: 0.85rem;
+    }
+
+    /* 푸터 문구 가운데 정렬 */
+    #site-footer .footer-inner {
+        text-align: center;
+    }
+}
