@@ -2,9 +2,23 @@
     0. 웹폰트 설정
     - 사이트 전체에서 사용할 한글 폰트(Nanum Gothic) 지정
    ========================================================= */
+
+/* 나눔고딕 */
 @font-face {
-    src: url(../webfont/NanumGothic.woff);
-    font-family: "Nanum Gothic", sans-serif;
+    font-family: "NanumGothicWeb";
+    src: url("../webfont/NanumGothic.woff") format("woff");
+    font-weight: 400;     /* @font-face가 어떤 굵기(보통 Regular) 인지 브라우저에 알려줍니다. */
+    font-style: normal;   /* @font-face가 일반(비-이탤릭) 이라는 뜻입니다. */
+    font-display: swap;   /* 웹폰트가 로딩되기 전에는 시스템 폰트로 먼저 보였다가, 로딩되면 웹폰트로 “교체(swap)”합니다. */
+}
+
+/* 더페이스 잉크립퀴드 */
+@font-face {
+    font-family: "InkLipquidWeb";
+    src: url("../webfont/THEFACESHOP%20INKLIPQUID.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
 
@@ -37,7 +51,7 @@ body {
     background-image: url(../img/bg_color.png);
     background-color: #f0f0f0;
 
-    font-family: "Nanum Gothic", sans-serif;
+    font-family: "NanumGothicWeb", sans-serif;
     font-size: 1rem;
     line-height: 1.4;
 
@@ -476,7 +490,7 @@ body.page-webcolor #main-content {
     background-color: #ffffff;
     border: 1px solid #aa0000;
 
-    font-size: 14px;
+    font-size: 16px;
     line-height: 0.5;
     z-index: 100;
 }

@@ -1,0 +1,121 @@
+/* =========================================================
+    0. 웹폰트 설정
+    - 사이트 전체에서 사용할 한글 폰트(Nanum Gothic) 지정
+   ========================================================= */
+@font-face {
+    src: url(../webfont/NanumGothic.woff);
+    font-family: "Nanum Gothic", sans-serif;
+}
+
+
+/* =========================================================
+    1. 기본 초기화 & 공통 스타일
+   ========================================================= */
+
+/* 모든 요소의 박스 모델을 border-box로 통일
+   (padding, border까지 합친 값을 width/height로 계산) */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* html 기본 설정 */
+html {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;           /* 1rem = 16px */
+    scroll-behavior: smooth;   /* 앵커(#id)로 이동할 때 부드럽게 스크롤 */
+}
+
+/* body 공통 배경 및 폰트 */
+body {
+    margin: 0;
+    padding: 0;
+
+    /* 전체 페이지 배경 (격자 이미지 + 기본색) */
+    background-image: url(../img/bg_color.png);
+    background-color: #f0f0f0;
+
+    font-family: "Nanum Gothic", sans-serif;
+    font-size: 1rem;
+    line-height: 1.4;
+
+    /* -----------------------------------------------------
+    ∘ POSITION
+    --------------------------------------------------------
+    - HTML요소가 웹페이지내에 어디에, 어떻게 배치될지 결정
+    -static: (기본값) 문서의 흐름에 맞춰 배치
+    -relative: 위치값을 지정할 수 있다.
+    -absolute: relative값을 사용할 상위 요소를 부모요소로 생각하고, 그것을 기준으로 위치를 지정
+    -fixed: 브아우저 창을 기준으로 위치를 지정
+    -------------------------------------------------------- */
+    /* position: relative 는 DETAILILLUST 퀵메뉴(#quick)에서 기준으로 사용 */
+    position: relative;
+}
+
+
+
+.container {   
+    width: 1442px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 353px 3fr 1fr;
+    grid-template-rows: 100px auto auto 50px;
+    /*background-color: burlywood;*/
+
+    grid-template-areas:
+        'header header  header'
+        'nav    nav     nav'
+        'aside  main    main'
+        'footer footer  footer';
+}
+
+.today {
+    background-color: burlywood;
+}
+
+.website {
+    background-color: chocolate;
+}
+
+.login {
+    background-color: cyan;
+}
+header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    flex: 300px auto 300px;
+    grid-area: header;
+    background-color: blueviolet;
+}
+
+nav {
+    grid-area: nav;
+    margin-bottom: 10px;
+    background-color: brown;
+    
+}
+
+aside{
+    grid-area: aside;
+    background-color: coral;
+}
+main {
+    grid-area: main;
+    background-color: crimson;
+}
+
+footer {
+    grid-area: footer;
+    margin-top: 10px;
+    background-color: hotpink;
+}
+
+.test {
+    width: 1280px;
+    margin: 0 auto;
+    background-color: 333;
+}
