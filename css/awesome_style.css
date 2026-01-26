@@ -1,0 +1,178 @@
+/* =========================================================
+    Awesome 메뉴 (li 한 칸 = 하나의 버튼/링크처럼 동작)
+
+    목표
+    - 마우스: li:hover 로 '칸 전체' hover
+    - 키보드: li:focus-within 으로 '칸 전체' 포커스(배경/아이콘/라벨/테두리) 강조
+    - 5개 항목: nth-child(1~5)별로 서로 다른 색(변수) 적용
+
+    구조(권장)
+    .awesome
+        > ul
+            > li
+                > a
+                    > i  (Font Awesome)
+                    > span(라벨)
+========================================================= */
+
+/* -----------------------------
+    1) Reset (권장: 컴포넌트 범위로 제한)
+    - 전역(*) 리셋은 페이지 전체에 영향을 주므로,
+      awesome 메뉴에만 적용되도록 범위를 제한합니다.
+-------------------------------- */
+.awesome,
+.awesome * {
+    box-sizing: border-box;
+}
+
+.awesome ul,
+.awesome li {
+    margin: 0;
+    padding: 0;
+}
+
+/* -----------------------------
+    2) Layout (컨테이너/리스트 레이아웃)
+-------------------------------- */
+.awesome {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.awesome > ul {
+    display: flex;
+    align-items: stretch;  /* li 높이를 동일하게 늘려 '칸' 느낌 강화 */
+    gap: 3px;              /* 아이템 간격 */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* -----------------------------
+    3) Item (칸/링크/아이콘/라벨)
+-------------------------------- */
+.awesome > ul > li {
+    display: flex;
+    flex: 1 1 0;           /* 모든 칸을 동일 비율로 */
+    align-items: stretch;  /* a가 li 높이를 꽉 채우도록 */
+
+    /* 기본 색상(각 항목별로 override 가능) */
+    background-color: var(--bg, #dddddd);
+
+    /* UX: 칸 전체가 인터랙션 영역처럼 보이게 */
+    cursor: pointer;
+}
+
+/* a: 실제 클릭/키보드 포커스 대상
+    - flex:1 로 li 내부를 꽉 채워 '칸 전체 클릭'이 되게 만듭니다. */
+.awesome > ul > li > a {
+    display: inline-flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    padding: 2px;
+    text-decoration: none;
+}
+
+/* 아이콘(i): 원형 테두리 + 가운데 정렬 */
+.awesome > ul > li > a > i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+
+    /* 기본 색(각 항목별로 override 가능) */
+    border: 2px solid var(--accent, #3399ff);
+    color: var(--accent, #3399ff);
+
+    font-size: 21px;
+    line-height: 1;
+}
+
+/* 라벨(span): class 없이도 'a의 직계 span'으로 지정 */
+.awesome > ul > li > a > span {
+    font-size: 17px;
+    font-weight: 500;
+    color: #333333;
+    line-height: 1;
+}
+
+/* -----------------------------
+    4) States (hover / focus)
+    - hover와 focus-within을 동일한 시각 언어로 통일
+-------------------------------- */
+
+/* 칸 전체 배경 강조: 마우스 hover + 키보드 포커스 */
+.awesome > ul > li:hover,
+.awesome > ul > li:focus-within {
+    background-color: var(--bg-hover, #4d4d4d);
+}
+
+/* 칸이 hover/포커스 상태일 때 아이콘/테두리 색 변경 */
+.awesome > ul > li:hover > a > i,.awesome > ul > li:focus-within > a > i {
+    color: var(--accent-hover, var(--accent, red));
+    border-color: var(--accent-hover, var(--accent, red));
+}
+
+/* 칸이 hover/포커스 상태일 때 라벨 색 변경 */
+.awesome > ul > li:hover > a > span,
+.awesome > ul > li:focus-within > a > span {
+    color: var(--accent-hover, var(--accent, red));
+}
+
+/* 키보드 포커스 표시를 '칸 전체'에 부여
+    - a 자체 outline은 끄고(li:focus-within이 담당)
+    - outline-offset:-2px 는 테두리를 안쪽으로 넣습니다. */
+.awesome > ul > li > a:focus-visible {
+    outline: none;
+}
+
+.awesome > ul > li:focus-within {
+    outline: 2px solid var(--accent-hover, var(--accent, red));
+    outline-offset: -2px;
+}
+
+/* -----------------------------
+    5) Per-item Theme (1~5번 항목별 색상)
+    - 기본/hover 배경, 포인트 컬러(아이콘/라벨)를 변수로 관리
+-------------------------------- */
+.awesome > ul > li:nth-child(1) {
+    --accent: #1e88e5;      /* 파랑 */
+    --accent-hover: #90caf9;
+    --bg: #e3f2fd;
+    --bg-hover: #0d47a1;
+}
+
+.awesome > ul > li:nth-child(2) {
+    --accent: #43a047;      /* 초록 */
+    --accent-hover: #a5d6a7;
+    --bg: #e8f5e9;
+    --bg-hover: #1b5e20;
+}
+
+.awesome > ul > li:nth-child(3) {
+    --accent: #fb8c00;      /* 주황 */
+    --accent-hover: #ffcc80;
+    --bg: #fff3e0;
+    --bg-hover: #e65100;
+}
+
+.awesome > ul > li:nth-child(4) {
+    --accent: #8e24aa;      /* 보라 */
+    --accent-hover: #ce93d8;
+    --bg: #f3e5f5;
+    --bg-hover: #4a148c;
+}
+
+.awesome > ul > li:nth-child(5) {
+    --accent: #e53935;      /* 빨강 */
+    --accent-hover: #ef9a9a;
+    --bg: #ffebee;
+    --bg-hover: #b71c1c;
+}

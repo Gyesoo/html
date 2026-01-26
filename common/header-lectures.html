@@ -1,0 +1,40 @@
+<!-- =========================================================
+  header-lectures.html (LECTURES 전용 헤더 / partial)
+  - include.js의 loadHeader()가 #site-header를 이 파일로 교체합니다.
+  - 주의: partial 이므로 <!DOCTYPE>, <html>, <head>, <body>가 없어야 합니다.
+========================================================= -->
+
+<header id="site-header">
+    <!-- 왼쪽 영역(원하는 문구로 변경 가능) -->
+    <div class="header-left">
+        count
+    </div>
+
+    <!-- 가운데 영역(타이틀) -->
+    <div class="header-center">
+        <div style="font-size: 48px; letter-spacing: 2px; color: blue;">
+        MY HOMEPAGE
+        </div>
+        <div style="margin-top: 2px; font-size: 14px; font-weight: 700;">
+        WEB / LECTURES (강좌)
+        </div>
+    </div>
+
+    <!-- 오른쪽 영역(로그인 UI 유지) -->
+    <div class="header-right">
+        <div style="text-align: left; margin-bottom: 4px;">today</div>
+
+        <!-- form은 실제 로그인 기능이 없으면 제출 방지 -->
+        <form onsubmit="return false;">
+        <div>
+            <label style="display:inline-block; width:70px;">ID</label>
+            <input type="text" placeholder="ID" />
+        </div>
+
+        <div>
+            <label style="display:inline-block; width:70px;">password</label>
+            <input type="password" placeholder="Password" />
+        </div>
+        </form>
+    </div>
+</header>

@@ -8,10 +8,18 @@
 
     ▣ 전체 흐름 요약 (include.js 기준)
       1) #header-slot   → header.html 이 이 위치 "뒤(afterend)"에 삽입
-      2) #nav-slot      → menu.html 이 이 위치 "뒤(afterend)"에 삽입
-      3) .main 안
-          - #left-menu    → menu-XXX.html (사이드 메뉴) 삽입
-          - #main-content → content-XXX.html (본문 내용) 삽입
+
+      2) #nav-slot      → (모드에 따라) 상단 메뉴가 이 위치 "뒤(afterend)"에 삽입
+          - home 모드 : menu-awesome.html
+          - app  모드 : menu.html
+
+      3) .main 안 (모드에 따라 보이는 영역이 달라짐)
+          - home 모드 :
+              #home-content  → content-home.html (홈 화면용 콘텐츠)
+          - app 모드 :
+              #left-menu     → menu-XXX.html (사이드 메뉴) 삽입
+              #main-content  → content-XXX.html (본문 내용) 삽입
+
       4) #footer-slot   → footer.html 이 이 위치 "앞(beforebegin)"에 삽입
 
       ※ XXX 는 상단 메뉴의 data-menu 값
@@ -28,9 +36,15 @@
     <!-- 공통 스타일 시트 (모든 페이지에서 공유) -->
     <link rel="stylesheet" href="./css/style.css" />
 
+    <!-- Font Awesome (사용 중인 파일 경로 유지) -->
+    <link rel="stylesheet" href="./awesome/css/all.min.css" />
+
+    <!-- home 모드(awesome 메뉴) 전용 스타일 -->
+    <link rel="stylesheet" href="./css/awesome_style.css" />
+
     <!-- 공통 include 스크립트
-        - header.html / menu.html / footer.html 자동 삽입
-        - 상단 메뉴 상태에 따라 사이드 메뉴 + 본문 자동 로드
+        - header / (home이면 menu-awesome) / footer 자동 삽입
+        - app 모드이면 상단 메뉴 상태에 따라 사이드 메뉴 + 본문 자동 로드
         ※ defer : HTML을 다 읽은 후에 JS 실행 -->
     <script src="./js/include.js" defer></script>
 </head>
@@ -46,19 +60,25 @@
 
     <!-- =====================================================
         2) 상단 메뉴(navbar) 삽입 위치 마커
-          - menu.html 이 이 div 바로 "뒤(afterend)"에 삽입됩니다.
-          - 상단 검정색 메뉴바 전체가 menu.html 안에 들어 있습니다.
+          - include.js에서 모드에 따라 아래 파일 중 하나가
+            이 div 바로 "뒤(afterend)"에 삽입됩니다.
+            - home 모드 : menu-awesome.html
+            - app  모드 : menu.html
     ===================================================== -->
     <div id="nav-slot"></div>
 
     <!-- =====================================================
         3) 본문 레이아웃 컨테이너(.main)
-          - 왼쪽 사이드 메뉴와 오른쪽 본문을 담는 큰 레이아웃 박스
-          - .main : 1440px 폭, 가운데 정렬, CSS Grid 사용
-          - #left-menu : 왼쪽 사이드 메뉴 (menu-XXX.html 이 들어옴)
-          - #main-content : 오른쪽 본문 (content-XXX.html 이 들어옴)
+          - home 모드 : #home-content 만 보이게(랜딩 페이지)
+          - app  모드 : #left-menu + #main-content 보이게(기존 UI)
     ===================================================== -->
     <div class="main">
+        <!-- 홈 전용 콘텐츠 영역
+            - 기본적으로는 CSS에서 display:none 처리되어 숨겨져 있습니다.
+            - include.js의 showHome()에서만 보이게(display 변경) 합니다. -->
+        <div id="home-content"></div>
+
+        <!-- 기존 UI(앱) -->
         <!-- 왼쪽 사이드 메뉴 영역
             - include.js 의 loadSideAndContent() 에서
               menu-XXX.html 파일을 읽어와 여기에 넣습니다. -->
@@ -66,8 +86,7 @@
 
         <!-- 오른쪽 본문 영역
             - include.js 의 loadSideAndContent() 에서
-              content-XXX.html 파일을 읽어와 여기에 넣습니다.
-            - 페이지를 처음 열면 자바스크립트가 자동으로 내용을 채웁니다. -->
+              content-XXX.html 파일을 읽어와 여기에 넣습니다. -->
         <div id="main-content" class="item">
             <!-- JS가 자동으로 HTML을 삽입하기 때문에
                 여기에는 초기 텍스트를 넣지 않고 비워 둡니다. -->

@@ -110,6 +110,18 @@ img {
     background: transparent;
 }
 
+/* =====================================================
+    홈 전용 콘텐츠 영역 (#home-content)
+    - 기본값: 숨김
+    - include.js의 showHome()/showApp()이 display 값을 바꿔서
+      home 모드에서만 보이게 합니다.
+===================================================== */
+#home-content {
+    display: none;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
 
 /* =========================================================
     3. 헤더 영역 (#site-header)
