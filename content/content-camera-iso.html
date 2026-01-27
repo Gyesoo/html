@@ -1,31 +1,35 @@
 <!-- =========================================================
-    content-tagcloud.html
+    content-camera-iso.html
     ----------------------------------------------------------
     ■ 이 파일의 역할
-        - 상단 메뉴 "TAG CLOUD" 항목을 클릭하면
-            include.js 에 의해 <div id="main-content"> 안에
-            자동으로 삽입되는 “본문(content) 파일”입니다.
+        - CAMERA 섹션의 "ISO" 콘텐츠(본문)만 담고 있는 조각 HTML 입니다.
+        - 상단 메뉴(menu-camera.html)에서 ISO 항목을 클릭하면
+          include.js가 이 파일을 <div id="main-content"></div> 안에
+          자동으로 삽입합니다.
 
     ----------------------------------------------------------
-    ■ include.js 자동 로딩 흐름
+    ■ include.js 자동 로딩 흐름 (현재 프로젝트 구조 기준)
 
-        1) menu.html 의 TAG CLOUD 항목은 이렇게 구성됨:
-            <a data-menu="tagcloud">TAG CLOUD</a>
+        1) menu-camera.html 의 ISO 메뉴는 예를 들어 다음처럼 구성됩니다.
+            <a class="menuLink"
+               data-menu="camera"
+               data-content="content-camera-iso.html">ISO</a>
 
-        2) 사용자가 TAG CLOUD 를 클릭하면 include.js 가
-            menu-tagcloud.html      → #left-menu 에 삽입
-            content-tagcloud.html   → #main-content 에 삽입
+        2) 사용자가 ISO를 클릭하면 include.js가
+            - (필요 시) camera 섹션에 맞는 왼쪽 메뉴를 #left-menu에 로드하고
+            - content-camera-iso.html 을 #main-content 에 삽입합니다.
 
-        3) 따라서 이 파일은 “본문 내용만”을 담당하며
-            헤더(header) / 푸터(footer) / 사이드 메뉴(left-menu)는
-            이 파일에 포함하지 않습니다.
+        3) 따라서 이 파일에는 “본문 내용만” 작성합니다.
+            - 헤더(header), 상단메뉴(nav), 푸터(footer),
+              레이아웃 컨테이너(.main) 같은 공통 골격은 포함하지 않습니다.
+            - CSS/JS는 보통 공통 파일에서 처리합니다.
 
     ----------------------------------------------------------
-    ■ 아래에는 TAG CLOUD 본문 내용을 자유롭게 작성하면 됩니다.
-        - 제목, 문단, 이미지, 리스트 등 모든 HTML 요소 사용 가능
+    ■ 아래에는 ISO 관련 본문 내용을 작성하면 됩니다.
+        - 제목(h2), 문단(p), 이미지(img), 리스트(ul/ol) 등 자유롭게 사용 가능
 ========================================================= -->
 
-<h2>TAG CLOUD</h2>
+<h2>ISO</h2>
 
 <p>
     카메라 ISO-1
