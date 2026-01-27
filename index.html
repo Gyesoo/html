@@ -3,26 +3,26 @@
     index.html
     - 홈페이지 메인 페이지 (시작점)
     - 이 파일은 "공통 레이아웃의 뼈대"만 가지고 있고,
-      실제 화면에 보이는 내용은 대부분 외부 파일에서
-      include.js 를 통해 자동으로 불러오는 구조입니다.
+        실제 화면에 보이는 내용은 대부분 외부 파일에서
+        include.js 를 통해 자동으로 불러오는 구조입니다.
 
     ▣ 전체 흐름 요약 (include.js 기준)
-      1) #header-slot   → header.html 이 이 위치 "뒤(afterend)"에 삽입
+        1) #header-slot   → header.html 이 이 위치 "뒤(afterend)"에 삽입
 
-      2) #nav-slot      → (모드에 따라) 상단 메뉴가 이 위치 "뒤(afterend)"에 삽입
-          - home 모드 : menu-awesome.html
-          - app  모드 : menu.html
+        2) #nav-slot      → (모드에 따라) 상단 메뉴가 이 위치 "뒤(afterend)"에 삽입
+            - home 모드 : menu-awesome.html
+            - app  모드 : menu.html
 
-      3) .main 안 (모드에 따라 보이는 영역이 달라짐)
-          - home 모드 :
-              #home-content  → content-home.html (홈 화면용 콘텐츠)
-          - app 모드 :
-              #left-menu     → menu-XXX.html (사이드 메뉴) 삽입
-              #main-content  → content-XXX.html (본문 내용) 삽입
+        3) .main 안 (모드에 따라 보이는 영역이 달라짐)
+            - home 모드 :
+                #home-content  → content-home.html (홈 화면용 콘텐츠)
+            - app 모드 :
+                #left-menu     → menu-XXX.html (사이드 메뉴) 삽입
+                #main-content  → content-XXX.html (본문 내용) 삽입
 
-      4) #footer-slot   → footer.html 이 이 위치 "앞(beforebegin)"에 삽입
+        4) #footer-slot   → footer.html 이 이 위치 "앞(beforebegin)"에 삽입
 
-      ※ XXX 는 상단 메뉴의 data-menu 값
+    ※ XXX 는 상단 메뉴의 data-menu 값
         예) data-menu="detailillust" → menu-detailillust.html, content-detailillust.html
 ========================================================= -->
 <html lang="ko">
@@ -52,16 +52,16 @@
 <body>
     <!-- =====================================================
         1) 헤더 삽입 위치 마커
-          - 실제 header.html 의 내용은 include.js 에서
-            이 div 바로 "뒤(afterend)"에 삽입됩니다.
-          - 이 div 자체는 화면에 보이지 않는 기준점 역할만 합니다.
+            - 실제 header.html 의 내용은 include.js 에서
+                이 div 바로 "뒤(afterend)"에 삽입됩니다.
+            - 이 div 자체는 화면에 보이지 않는 기준점 역할만 합니다.
     ===================================================== -->
     <div id="header-slot"></div>
 
     <!-- =====================================================
         2) 상단 메뉴(navbar) 삽입 위치 마커
-          - include.js에서 모드에 따라 아래 파일 중 하나가
-            이 div 바로 "뒤(afterend)"에 삽입됩니다.
+            - include.js에서 모드에 따라 아래 파일 중 하나가
+                이 div 바로 "뒤(afterend)"에 삽입됩니다.
             - home 모드 : menu-awesome.html
             - app  모드 : menu.html
     ===================================================== -->
@@ -69,9 +69,10 @@
 
     <!-- =====================================================
         3) 본문 레이아웃 컨테이너(.main)
-          - home 모드 : #home-content 만 보이게(랜딩 페이지)
-          - app  모드 : #left-menu + #main-content 보이게(기존 UI)
+            - home 모드 : #home-content 만 보이게(랜딩 페이지)
+            - app  모드 : #left-menu + #main-content 보이게(기존 UI)
     ===================================================== -->
+    <div id="app-nav"></div>
     <div class="main">
         <!-- 홈 전용 콘텐츠 영역
             - 기본적으로는 CSS에서 display:none 처리되어 숨겨져 있습니다.
@@ -81,12 +82,12 @@
         <!-- 기존 UI(앱) -->
         <!-- 왼쪽 사이드 메뉴 영역
             - include.js 의 loadSideAndContent() 에서
-              menu-XXX.html 파일을 읽어와 여기에 넣습니다. -->
+                menu-XXX.html 파일을 읽어와 여기에 넣습니다. -->
         <div id="left-menu" class="item"></div>
 
         <!-- 오른쪽 본문 영역
             - include.js 의 loadSideAndContent() 에서
-              content-XXX.html 파일을 읽어와 여기에 넣습니다. -->
+                content-XXX.html 파일을 읽어와 여기에 넣습니다. -->
         <div id="main-content" class="item">
             <!-- JS가 자동으로 HTML을 삽입하기 때문에
                 여기에는 초기 텍스트를 넣지 않고 비워 둡니다. -->
@@ -95,8 +96,8 @@
 
     <!-- =====================================================
         4) 푸터 삽입 위치 마커
-          - footer.html 이 이 div 바로 "앞(beforebegin)"에 삽입됩니다.
-          - 실제 보라색 푸터 박스는 footer.html 안에 정의되어 있습니다.
+            - footer.html 이 이 div 바로 "앞(beforebegin)"에 삽입됩니다.
+            - 실제 보라색 푸터 박스는 footer.html 안에 정의되어 있습니다.
     ===================================================== -->
     <div id="footer-slot"></div>
 </body>

@@ -1,0 +1,58 @@
+<!-- =========================================================
+    menu-webcolor.html
+    ----------------------------------------------------------
+    ■ 이 파일의 역할
+      - WEBCOLOR 페이지의 “왼쪽 사이드 메뉴”입니다.
+      - menu.html(상단 메뉴)의 WEBCOLOR 항목은
+            data-menu="webcolor"
+        로 설정되어 있으며,
+        include.js 가 이 값을 읽어
+            menu-webcolor.html  → #left-menu
+            content-webcolor.html → #main-content
+        를 자동으로 로드합니다.
+
+    ■ include.js 자동 로딩 흐름
+      - 사용자가 webcolor.html 또는 상단 메뉴 WEBCOLOR 를 클릭하면:
+          menu-webcolor.html → #left-menu 에 삽입됨
+          content-webcolor.html → #main-content 에 삽입됨
+
+    ※ 따라서 이 파일은 오직 “사이드 메뉴 UI”만 담고 있으며
+      본문 내용은 content-webcolor.html 에 존재합니다.
+
+    ■ 구조 설명
+      <ul class="side-menu">
+        <li><strong>WEBCOLOR</strong></li>   ← 카테고리 제목(굵게)
+        <li><a>...</a></li>                   ← 하위 항목들
+        <li><a>...</a></li>
+        <li><a>...</a></li>
+      </ul>
+
+    CSS는 style.css 의 `.side-menu`, `.side-menu li`, `.side-menu a`
+    규칙이 적용됩니다.
+========================================================= -->
+
+<ul class="side-menu">
+
+    <!-- 카테고리 이름 (굵게 표시됨) -->
+    <!--<li><strong>WEBCOLOR</strong></li>-->
+
+    <!-- 하위 메뉴 항목들 -->
+    <!-- 개별 글(본문) 연결 링크들 -->
+    <li>
+      <a href="#" class="side-link" data-content="content-camera-iso.html">[02호] iso~~~</a>
+    </li>
+
+    <li>
+      <a href="#" class="side-link" data-content="content-camera-iso-2.html">[03호] iso</a>
+    </li>
+
+    <!-- ▼ 필요한 만큼 계속 추가 가능 -->
+    <!--
+    <li>
+      <a href="#" class="side-link" data-content="content-detailillust-04.html">
+        [04호] 또 다른 주제...
+      </a>
+    </li>
+    -->
+
+</ul>
