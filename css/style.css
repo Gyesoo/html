@@ -233,6 +233,12 @@ img {
   color: red !important;
 }
 
+/* 선택(Active) 스타일 */
+#topMenu a.menuLink.active {
+  color: red;
+  font-weight: 700;
+}
+
 
 /* =========================================================
    5. 드롭다운 서브메뉴

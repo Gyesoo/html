@@ -1,93 +1,95 @@
 <!DOCTYPE html>
 <!-- =========================================================
-    detailillust.html
+    camera.html
     ----------------------------------------------------------
-    ■ 이 파일의 목적
-        - "DETAILILLUST" 페이지의 기본 골격(레이아웃 뼈대)입니다.
-        - 실제 화면에 보이는 콘텐츠는 content-detailillust.html
-            에 있으며, include.js 가 해당 본문을 자동으로 채워 넣습니다.
+    ■ 이 파일의 역할
+      - CAMERA 섹션(카메라 강좌/설명)의 “메인 엔트리(시작점)” 페이지입니다.
+      - 하지만 실제 화면에 보이는 상세 콘텐츠는 이 파일에 직접 쓰지 않고,
+        상단 메뉴 클릭에 따라 content-camera-*.html 파일을 include.js가
+        #main-content 영역에 동적으로 로드합니다.
 
-    ----------------------------------------------------------
-    ■ include.js 자동 로딩 흐름 (핵심 구조)
+    ■ 왜 이렇게 되어 있는가?
+      - 상단 메뉴 파일(menu-camera.html)에서 각 항목은 다음처럼 구성됩니다.
+          data-menu="camera"
+          data-content="content-camera-iso.html" (또는 shutter/mode 등)
 
-        (1) #header-slot 뒤(afterend)
-            → header.html 삽입
+      - include.js는 메뉴 클릭(또는 초기 진입 시 설정된 값)에 따라
+            (사이드) menu-camera.html 또는 menu-camera-*.html
+            (본문)  content-camera-xxx.html
+        형태로 필요한 조각 HTML을 불러와 화면을 구성하는 구조입니다.
+        ※ 실제로 어떤 menu-*.html을 로드하는지는 include.js 규칙에 따릅니다.
 
-        (2) #nav-slot 뒤(afterend)
-            → menu.html 삽입
-            → menu.html 안의 data-menu 값을 읽어
-                menu-detailillust.html      (왼쪽 메뉴)
-                content-detailillust.html   (본문)
-                을 자동으로 선택하여 로드
+      ▶ camera.html 자체는 “레이아웃 뼈대”만 담당합니다.
 
-        (3) .main 안에서
-            #left-menu  ← menu-detailillust.html 자동 삽입
-            #main-content ← content-detailillust.html 자동 삽입
+    ■ 전체 로드 흐름(개념)
+      1) #header-slot 뒤(afterend)에 header.html 삽입
+      2) #nav-slot    뒤(afterend)에 상단 메뉴(menu-camera.html 또는 공통 menu.html) 삽입
+      3) 앱(app) 모드에서:
+         - #left-menu     에 camera 관련 사이드 메뉴 로드
+         - #main-content  에 data-content로 지정된 content-camera-*.html 로드
+      4) #footer-slot 앞(beforebegin)에 footer.html 삽입
 
-        (4) #footer-slot 앞(beforebegin)
-            → footer.html 삽입
-
-        즉, detailillust.html 자체에는 본문을 직접 작성하지 않습니다.
-        페이지 뼈대만 제공하고 나머지는 JS가 모두 자동으로 채웁니다.
+    ※ index.html과 기본 레이아웃 구조는 동일하며,
+       페이지 성격(카메라 섹션 진입점)과 title만 camera에 맞춘 버전입니다.
 ========================================================= -->
 <html lang="ko">
 <head>
     <meta charset="UTF-8" />
-
-    <!-- 모바일·태블릿 화면 비율을 기기 화면 너비에 맞추기 -->
+    <!-- 모바일 · 태블릿에서 화면 너비 비율 맞추기 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>DETAILILLUST</title>
+    <title>CAMERA</title>
 
-    <!-- 사이트 전체 공통 스타일 -->
+    <!-- 사이트 공통 CSS -->
     <link rel="stylesheet" href="./css/style.css" />
 
     <!-- include.js
-        - header/menu/footer 자동 로드
-        - 현재 페이지에 해당하는 사이드 메뉴 + 본문 자동 로드
-        ※ defer: HTML 파싱 완료 후 JS 실행 -->
+        - header / (상단 메뉴) / footer 자동 로딩
+        - 사이드 메뉴(menu-XXX.html) 자동 로딩
+        - 본문(content-XXX.html) 자동 로딩
+        ※ defer : HTML parsing 종료 후 실행 -->
     <script src="./js/include.js" defer></script>
 </head>
 
-<body class="detailillust">
+<body>
 
     <!-- =====================================================
-        [1] 헤더 삽입 위치
-        - header.html 이 이 div "뒤(afterend)"에 삽입됩니다.
-        - 이 div 자체는 화면에는 보이지 않으며 기준점 역할만 합니다.
-    ====================================================== -->
+        1) 헤더 삽입 기준점
+          → include.js 가 header.html을 여기 “뒤(afterend)”에 넣습니다.
+    ===================================================== -->
     <div id="header-slot"></div>
 
     <!-- =====================================================
-        [2] 상단 네비게이션(검정 메뉴바) 삽입 위치
-        - menu.html 이 이 div "뒤(afterend)"에 삽입됩니다.
-        - menu.html 내 data-menu 속성을 통해 현재 페이지가 결정됨.
-    ====================================================== -->
+        2) 상단 메뉴(navbar) 삽입 기준점
+          → include.js 가 상단 메뉴 파일을 여기 “뒤(afterend)”에 넣습니다.
+             (프로젝트 설정/모드에 따라 menu-camera.html 또는 menu.html 등)
+    ===================================================== -->
     <div id="nav-slot"></div>
 
     <!-- =====================================================
-        [3] 메인 레이아웃(사이드 메뉴 + 본문)
-        - .container : 1440px 폭, 중앙 정렬, 2열 Grid
-        - #left-menu : 메뉴(menu-detailillust.html)
-        - #main-content : 본문(content-detailillust.html)
-        ※ include.js 가 자동으로 채움
-    ====================================================== -->
-    <div class="main">
+        3) 메인 레이아웃 컨테이너
+          (.main = grid 레이아웃)
 
-        <!-- 왼쪽 사이드 메뉴 -->
+          ※ 이 안의 두 영역은 include.js가 동적으로 채웁니다.
+            - #left-menu     ← camera 섹션용 사이드 메뉴(menu-camera*.html)
+            - #main-content  ← content-camera-*.html (ISO/셔터스피드/카메라모드 등)
+
+          즉, camera.html에는 본문을 직접 작성하지 않습니다.
+    ===================================================== -->
+    <div class="main">
+        <!-- 왼쪽 사이드 메뉴 (JS가 camera 관련 menu 파일로 채움) -->
         <div id="left-menu" class="item"></div>
 
-        <!-- 오른쪽 본문 -->
+        <!-- 오른쪽 본문 (JS가 content-camera-*.html 로 채움) -->
         <div id="main-content" class="item">
-            <!-- 본문 내용은 자바스크립트가 자동 삽입합니다. -->
+            <!-- JS가 내용을 자동으로 삽입하므로 비워둠 -->
         </div>
-
     </div>
 
     <!-- =====================================================
-        [4] 푸터 삽입 위치
-        - footer.html 이 이 div "앞(beforebegin)"에 삽입됩니다.
-    ====================================================== -->
+        4) 푸터 삽입 기준점
+          → footer.html 을 여기 “앞(beforebegin)”에 넣습니다.
+    ===================================================== -->
     <div id="footer-slot"></div>
 
 </body>

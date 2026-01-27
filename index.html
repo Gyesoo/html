@@ -13,14 +13,20 @@
             - home 모드 : menu-awesome.html
             - app  모드 : menu.html
 
-        3) .main 안 (모드에 따라 보이는 영역이 달라짐)
+        3) (선택) #app-nav → "앱 모드"에서만 사용하는 보조 네비/툴바/브레드크럼 등의
+                             UI를 추가로 꽂아 넣기 위한 자리(마커)
+            - 현재는 비어 있어도 무방하며, 필요 시 include.js 또는 별도 스크립트가
+              이 영역에 DOM을 삽입하여 사용할 수 있습니다.
+            - home 모드에서는 보통 사용하지 않거나 CSS/JS로 숨김 처리합니다.
+
+        4) .main 안 (모드에 따라 보이는 영역이 달라짐)
             - home 모드 :
                 #home-content  → content-home.html (홈 화면용 콘텐츠)
             - app 모드 :
                 #left-menu     → menu-XXX.html (사이드 메뉴) 삽입
                 #main-content  → content-XXX.html (본문 내용) 삽입
 
-        4) #footer-slot   → footer.html 이 이 위치 "앞(beforebegin)"에 삽입
+        5) #footer-slot   → footer.html 이 이 위치 "앞(beforebegin)"에 삽입
 
     ※ XXX 는 상단 메뉴의 data-menu 값
         예) data-menu="detailillust" → menu-detailillust.html, content-detailillust.html
@@ -68,11 +74,21 @@
     <div id="nav-slot"></div>
 
     <!-- =====================================================
+        2-1) (선택) 앱 보조 네비/툴바 영역 마커 (#app-nav)
+            - 상단 메뉴(#nav-slot)와 본문(.main) 사이에 위치한 "추가 UI 삽입 자리"입니다.
+            - 예: 현재 페이지 제목/브레드크럼, 탭 메뉴, 필터 바, 액션 버튼 영역 등
+            - 현재 프로젝트에서 즉시 사용하지 않아도,
+              추후 확장(앱 화면 강화)을 위해 미리 확보해 둔 슬롯으로 보면 됩니다.
+            - 실제 내용은 기본적으로 비어 있으며(placeholder),
+              필요 시 JS(include.js 또는 별도 스크립트)로 동적으로 채웁니다.
+    ===================================================== -->
+    <div id="app-nav"></div>
+
+    <!-- =====================================================
         3) 본문 레이아웃 컨테이너(.main)
             - home 모드 : #home-content 만 보이게(랜딩 페이지)
             - app  모드 : #left-menu + #main-content 보이게(기존 UI)
     ===================================================== -->
-    <div id="app-nav"></div>
     <div class="main">
         <!-- 홈 전용 콘텐츠 영역
             - 기본적으로는 CSS에서 display:none 처리되어 숨겨져 있습니다.

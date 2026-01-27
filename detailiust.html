@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!-- =========================================================
+    detailillust.html
+    ----------------------------------------------------------
+    ■ 이 파일의 목적
+        - "DETAILILLUST" 페이지의 기본 골격(레이아웃 뼈대)입니다.
+        - 실제 화면에 보이는 콘텐츠는 content-detailillust.html
+            에 있으며, include.js 가 해당 본문을 자동으로 채워 넣습니다.
+
+    ----------------------------------------------------------
+    ■ include.js 자동 로딩 흐름 (핵심 구조)
+
+        (1) #header-slot 뒤(afterend)
+            → header.html 삽입
+
+        (2) #nav-slot 뒤(afterend)
+            → menu.html 삽입
+            → menu.html 안의 data-menu 값을 읽어
+                menu-detailillust.html      (왼쪽 메뉴)
+                content-detailillust.html   (본문)
+                을 자동으로 선택하여 로드
+
+        (3) .main 안에서
+            #left-menu  ← menu-detailillust.html 자동 삽입
+            #main-content ← content-detailillust.html 자동 삽입
+
+        (4) #footer-slot 앞(beforebegin)
+            → footer.html 삽입
+
+        즉, detailillust.html 자체에는 본문을 직접 작성하지 않습니다.
+        페이지 뼈대만 제공하고 나머지는 JS가 모두 자동으로 채웁니다.
+========================================================= -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+
+    <!-- 모바일·태블릿 화면 비율을 기기 화면 너비에 맞추기 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DETAILILLUST</title>
+
+    <!-- 사이트 전체 공통 스타일 -->
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- include.js
+        - header/menu/footer 자동 로드
+        - 현재 페이지에 해당하는 사이드 메뉴 + 본문 자동 로드
+        ※ defer: HTML 파싱 완료 후 JS 실행 -->
+    <script src="./js/include.js" defer></script>
+</head>
+
+<body class="detailillust">
+
+    <!-- =====================================================
+        [1] 헤더 삽입 위치
+        - header.html 이 이 div "뒤(afterend)"에 삽입됩니다.
+        - 이 div 자체는 화면에는 보이지 않으며 기준점 역할만 합니다.
+    ====================================================== -->
+    <div id="header-slot"></div>
+
+    <!-- =====================================================
+        [2] 상단 네비게이션(검정 메뉴바) 삽입 위치
+        - menu.html 이 이 div "뒤(afterend)"에 삽입됩니다.
+        - menu.html 내 data-menu 속성을 통해 현재 페이지가 결정됨.
+    ====================================================== -->
+    <div id="nav-slot"></div>
+
+    <!-- =====================================================
+        [3] 메인 레이아웃(사이드 메뉴 + 본문)
+        - .container : 1440px 폭, 중앙 정렬, 2열 Grid
+        - #left-menu : 메뉴(menu-detailillust.html)
+        - #main-content : 본문(content-detailillust.html)
+        ※ include.js 가 자동으로 채움
+    ====================================================== -->
+    <div class="main">
+
+        <!-- 왼쪽 사이드 메뉴 -->
+        <div id="left-menu" class="item"></div>
+
+        <!-- 오른쪽 본문 -->
+        <div id="main-content" class="item">
+            <!-- 본문 내용은 자바스크립트가 자동 삽입합니다. -->
+        </div>
+
+    </div>
+
+    <!-- =====================================================
+        [4] 푸터 삽입 위치
+        - footer.html 이 이 div "앞(beforebegin)"에 삽입됩니다.
+    ====================================================== -->
+    <div id="footer-slot"></div>
+
+</body>
+</html>
