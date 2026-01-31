@@ -401,6 +401,21 @@ body.page-webcolor #main-content {
   padding: 0 !important;
 }
 
+/* index에서는 본문을 전체폭으로 */
+body.page-index .main {
+  flex-direction: column;     /* 좌/우 2열 → 위/아래 1열로 */
+}
+
+/* index에서 왼쪽 사이드가 필요 없으면 숨김 */
+body.page-index #left-menu {
+  display: none !important;
+}
+
+/* 안전하게 본문 폭 100% */
+body.page-index #main-content {
+  width: 100%;
+}
+
 
 /* =========================================================
    8. 푸터 영역 (#site-footer)

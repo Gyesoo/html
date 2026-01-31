@@ -1,56 +1,16 @@
 <!-- =========================================================
-    menu-side-camera.html
-    ----------------------------------------------------------
-    ■ 이 파일의 역할
-      - CAMERA 섹션의 “왼쪽 사이드 메뉴(목차)” 조각 HTML 입니다.
-      - app 모드에서 include.js가 이 파일을 <div id="left-menu"></div> 안에
-        자동으로 삽입하여, 본문(content) 전환을 돕습니다.
+  menu-side-camera.html (CAMERA 섹션 사이드 메뉴)
 
-    ■ include.js 와의 연동 방식(현재 파일 기준)
-      - 각 항목(<a class="side-link">)은 data-content="content-camera-xxx.html" 형태로
-        로드할 본문 파일을 지정합니다.
-      - 사용자가 사이드 메뉴 항목을 클릭하면 include.js가
-            해당 content-camera-*.html → #main-content
-        로 교체(삽입)합니다.
-
-      ※ 상단 메뉴(menu-camera.html)의 data-content와 동일한 방식으로
-         “본문 파일만 갈아끼우는” 용도입니다.
-
-    ■ 주의/특징
-      - 이 파일에는 사이드 메뉴 UI만 존재하며,
-        헤더/상단메뉴/푸터 및 .main 레이아웃은 포함하지 않습니다.
-      - CSS는 style.css의 `.side-menu`, `.side-menu li`, `.side-menu a`,
-        그리고 프로젝트에서 정의한 `.side-link` 규칙이 적용됩니다.
-
-    ■ 구조 설명
-      <ul class="side-menu">
-        <li><a class="side-link" data-content="...">항목</a></li>
-        <li><a class="side-link" data-content="...">항목</a></li>
-      </ul>
+  [내부 본문 교체(SPA) 규칙]
+  - href="#" 로 두고, data-content로 본문 파일 지정
 ========================================================= -->
 
 <ul class="side-menu">
-
-    <!-- (선택) 카테고리 제목이 필요하면 사용
-    <li><strong>CAMERA</strong></li>
-    -->
-
-    <!-- 하위 메뉴 항목들: 클릭 시 #main-content에 로드될 본문 파일을 지정 -->
-    <li>
+  <li>
       <a href="#" class="side-link" data-content="content-camera-iso.html">[02호] iso~~~</a>
-    </li>
+  </li>
 
-    <li>
+  <li>
       <a href="#" class="side-link" data-content="content-camera-iso-2.html">[03호] iso</a>
-    </li>
-
-    <!-- ▼ 필요한 만큼 계속 추가 가능 -->
-    <!--
-    <li>
-      <a href="#" class="side-link" data-content="content-camera-mode.html">
-        [04호] 카메라 모드 정리
-      </a>
-    </li>
-    -->
-
+  </li>
 </ul>
