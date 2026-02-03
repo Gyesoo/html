@@ -176,3 +176,12 @@
     --bg: #ffebee;
     --bg-hover: #b71c1c;
 }
+
+.awesome > ul > li:nth-child(6) {
+    --accent: #4169E1;      /* 빨강 */
+    --accent-hover: #87CEEB;
+    --bg: #ffebee;
+    --bg-hover: #000080;
+
+    color: ;
+}
