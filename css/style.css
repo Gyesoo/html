@@ -1,7 +1,7 @@
 /* =========================================================
-   styles.css (정리본)
+   style.css (재정렬/주석 보강본)  — 2026-02-04 12:52:42
 
-   [권장 적용(해석) 순서]
+   [적용/해석 순서(권장)]
    0) 웹폰트(@font-face)
    1) 리셋/기본(base) 스타일
    2) 공통 레이아웃(.container, .main, #home-content)
@@ -9,14 +9,15 @@
    4) 페이지 전용(Detailillust, WebColor 등)
    5) 모드 전환(body.mode-app) 오버라이드
    6) 반응형(@media)
+
+   변경 포인트(정리)
+   - 중복으로 들어가 있던 “헤더 awesome 가로정렬” 규칙을 3) 헤더 섹션으로 통합
+   - index 전용 레이아웃 규칙은 “home 모드에서만” 적용되도록 :not(.mode-app)로 제한(이미 반영돼 있던 내용 유지)
 ========================================================= */
 
 
 /* =========================================================
-   0. 웹폰트 설정
-   - font-family 이름은 CSS에서 사용할 "별칭"입니다.
-   - src는 실제 폰트 파일 경로입니다(상대경로 주의).
-   - font-display: swap -> 폰트 로딩 전엔 기본 폰트로 보였다가 로딩 후 교체
+   0) 웹폰트 설정
 ========================================================= */
 
 /* 나눔고딕 */
@@ -39,18 +40,16 @@
 
 
 /* =========================================================
-   1. 기본 초기화(Reset) & 공통 베이스 스타일
+   1) Reset & Base
 ========================================================= */
 
-/* 모든 요소의 박스 모델을 border-box로 통일
-   - width/height 계산에 padding/border가 포함되어 레이아웃이 예측 쉬워짐 */
+/* box-sizing 통일 */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* 문서 기본값 */
 html {
   margin: 0;
   padding: 0;
@@ -58,12 +57,11 @@ html {
   scroll-behavior: smooth;  /* #anchor 이동 시 부드럽게 스크롤 */
 }
 
-/* 페이지 전체 기본 스타일 */
 body {
   margin: 0;
   padding: 0;
 
-  /* 전체 배경(격자 이미지 + 바탕색) */
+  /* 배경(격자 이미지 + 바탕색) */
   background-image: url(../img/bg_color.png);
   background-color: #f0f0f0;
 
@@ -71,65 +69,73 @@ body {
   font-size: 1rem;
   line-height: 1.4;
 
-  /* DETAILILLUST의 퀵메뉴(#quick) 등이 위치 계산할 때 기준이 되는 경우가 있어 유지 */
+  /* quick 등 absolute 기준점이 필요한 경우가 있어 유지 */
   position: relative;
 }
 
-/* 기본 링크: 밑줄 제거, 글자색은 부모 요소를 따름 */
 a {
   text-decoration: none;
   color: inherit;
 }
 
-/* 이미지가 부모 너비를 넘지 않게 */
 img {
   max-width: 100%;
   height: auto;
 }
 
-/* 레이아웃용 공통 박스(필요 시 확장해서 사용) */
 .item {
   margin: 0;
 }
 
 
 /* =========================================================
-   2. 공통 레이아웃 래퍼
-   - .container : 서브페이지 레이아웃(예: camera.html 등)
-   - .main      : index.html 레이아웃
-   - 기본은 2열(왼쪽 사이드 250px + 오른쪽 본문)
+   2) 공통 레이아웃(.container, .main, #home-content)
 ========================================================= */
 
+/* 기본: 좌/우 2열 레이아웃(사이드 + 본문) */
 .container,
 .main {
   max-width: 1440px;
   width: 100%;
-  margin: 10px auto;     /* 가운데 정렬 + 상하 여백 */
+  margin: 10px auto;
 
   display: flex;
-  flex-direction: row;   /* 기본은 좌/우 2열 */
+  flex-direction: row;
   align-items: stretch;
-  column-gap: 10px;      /* 사이드와 본문 사이 간격 */
+  column-gap: 10px;
 
   padding: 0;
-  background: transparent; /* body 배경이 비치도록 */
+  background: transparent;
 }
 
-/* =====================================================
-   홈 전용 콘텐츠 영역 (#home-content)
-   - include.js에서 home 모드일 때만 display를 block으로 바꿔 보여줌
-===================================================== */
+/* 홈 전용 콘텐츠(기본 숨김, JS에서 home 모드일 때 표시) */
 #home-content {
-  display: none;          /* 기본은 숨김 */
+  display: none;
   flex: 1 1 auto;
   min-width: 0;
   background-color: #fff;
   padding: 10px;
 }
 
+/* index(home)에서만 1열(위/아래) */
+body.page-index:not(.mode-app) .main {
+  flex-direction: column;
+}
+
+/* index(home)에서만 사이드 숨김 */
+body.page-index:not(.mode-app) #left-menu {
+  display: none !important;
+}
+
+/* index(home)에서만 본문 100% */
+body.page-index:not(.mode-app) #main-content {
+  width: 100%;
+}
+
 
 /* =========================================================
-   3. 헤더 영역 (#site-header)
+   3) 공통 컴포넌트
+   3-1) 헤더 (#site-header)
 ========================================================= */
 
 #site-header {
@@ -144,7 +150,7 @@ img {
   align-items: center;
   column-gap: 12px;
 
-  background: #ffcc00;          /* 노란 배경 */
+  background: #ffcc00;
   padding: 8px 12px;
 }
 
@@ -158,14 +164,32 @@ img {
   font-size: 0.85rem;
 }
 
-/* 기존 폭 유지(프로젝트 HTML 구조에 맞춘 값) */
+/* 프로젝트 기존 폭 유지 */
 #site-header input[type="text"] { width: 91.5%; }
 #site-header input[type="password"] { width: 69%; }
 
+/* (추가/통합) header 안 awesome 아이콘 메뉴는 항상 가로 정렬
+   - header-camera.html 등에서 아이콘 nav.awesome을 넣을 때,
+     awesome-style.css가 로드/비활성화 여부와 무관하게 가로 정렬을 보장 */
+#site-header nav.awesome > ul {
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#site-header nav.awesome > ul > li {
+  flex: 0 0 auto;
+}
+
+/* (기존 코드 끝 지점) */
+#site-header nav.awesome > ul > li {
+  flex: 0 0 auto;
+}
 
 /* =========================================================
-   4. 상단 메뉴바 (#topMenu)
-   - 검은색 네비게이션 + 드롭다운 서브메뉴
+   3-2) 상단 메뉴 (#topMenu) + 드롭다운
 ========================================================= */
 
 #topMenu {
@@ -175,7 +199,7 @@ img {
   background: #2d2d2d;
 }
 
-/* 상단 메뉴 1줄(최상위 메뉴) */
+/* 최상위 메뉴 1줄 */
 #topMenu > ul {
   list-style: none;
   margin: 0;
@@ -184,37 +208,35 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  flex-wrap: nowrap;  /* 기본은 한 줄 유지 */
+  flex-wrap: nowrap;
 }
 
-/* 모든 li는 중앙 정렬 */
 #topMenu > ul > li {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* 실제 메뉴 항목(li) - 균등 분배 + 서브메뉴 기준점 */
+/* 실제 메뉴 항목 */
 #topMenu > ul > li.topMenuLi {
-  position: relative; /* submenu absolute의 기준 */
+  position: relative;
   flex: 1 1 0;
 }
 
-/* ‘|’ 구분선 같은 li(메뉴 항목이 아닌 것) */
+/* 구분선용 li */
 #topMenu > ul > li:not(.topMenuLi) {
   flex: 0 0 auto;
   color: #ffffff;
   padding: 0 4px;
 }
 
-/* 메뉴 링크(상단/서브 공통) */
 #topMenu a.menuLink,
 #topMenu a.submenuLink {
   display: block;
   width: 100%;
   padding: 8px 12px;
 
-  white-space: nowrap;  /* 글자 줄바꿈 방지 */
+  white-space: nowrap;
   text-align: center;
 
   font-weight: bold;
@@ -222,29 +244,21 @@ img {
   color: #ffffff;
 }
 
-/* 상단 메뉴 hover */
 #topMenu > ul > li.topMenuLi:hover > a.menuLink {
   background: #4d4d4d;
   color: red;
 }
 
-/* include.js에서 active 클래스를 붙이는 경우 강조 */
+/* include.js에서 active 붙일 때 */
 #topMenu a.active {
   color: red !important;
 }
-
-/* 선택(Active) 스타일 */
 #topMenu a.menuLink.active {
   color: red;
   font-weight: 700;
 }
 
-
-/* =========================================================
-   5. 드롭다운 서브메뉴
-========================================================= */
-
-/* 서브메뉴 기본 상태: 높이 0으로 접어 숨김 */
+/* 드롭다운 서브메뉴 */
 #topMenu > ul > li.topMenuLi > ul.submenu {
   position: absolute;
   top: 100%;
@@ -263,17 +277,14 @@ img {
   z-index: 1000;
 }
 
-/* 상단 메뉴에 마우스 올리면 펼치기 */
 #topMenu > ul > li.topMenuLi:hover > ul.submenu {
-  max-height: 500px; /* 충분히 크게(항목 수가 많으면 더 늘려도 됨) */
+  max-height: 500px;
 }
 
-/* 서브메뉴 구분선 */
 #topMenu > ul > li.topMenuLi > ul.submenu > li {
   border-top: 1px solid #555555;
 }
 
-/* 서브메뉴 hover */
 #topMenu > ul > li.topMenuLi > ul.submenu > li:hover > a {
   background: #dddddd;
   color: red !important;
@@ -281,7 +292,7 @@ img {
 
 
 /* =========================================================
-   6. 왼쪽 사이드 메뉴 (#left-menu, .side-menu)
+   3-3) 사이드 메뉴 (#left-menu, .side-menu)
 ========================================================= */
 
 #left-menu {
@@ -290,16 +301,15 @@ img {
   padding: 0;
   min-height: 200px;
 
-  /* 2열 레이아웃에서 고정 폭 */
+  /* 기본 2열에서 고정 폭 */
   flex: 0 0 250px;
   width: 250px;
   max-width: 250px;
 
-  /* 일부 페이지에서 inline style/display가 꼬이는 것을 방지하려면 유지 */
+  /* 기존 레이아웃 유지 목적(필요 시 제거 가능) */
   display: block !important;
 }
 
-/* 사이드 메뉴(목록) */
 .side-menu {
   list-style: none;
   margin: 0;
@@ -313,34 +323,28 @@ img {
   font-weight: bold;
 }
 
-/* li 구분선: 두 번째 항목부터 위에 선 */
 #left-menu .side-menu li + li {
   border-top: 1px solid #555555;
 }
 
-/* 사이드 메뉴 링크 */
 .side-menu a {
   display: block;
   padding: 8px 12px;
   color: #eeeeee;
 }
 
-/* hover */
 .side-menu a:hover {
   background: #dddddd;
   color: red;
 }
 
-/* ---------------- DETAILILLUST 전용(사이드 메뉴 내부 구조) ---------------- */
-
-/* 섹션 그룹(ul) */
+/* (Detailillust에서 쓰는 구조) */
 .side-menu .side-section {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-/* 섹션 제목 줄 */
 .side-menu .side-section-title {
   background: #222222;
   color: #ffffff;
@@ -348,7 +352,6 @@ img {
   padding: 10px 16px;
 }
 
-/* DETAILILLUST 개별 링크(.side-link) */
 .side-menu .side-link {
   display: block;
   padding: 8px 12px;
@@ -358,7 +361,6 @@ img {
   word-break: keep-all;
 }
 
-/* 선택/hover 강조 */
 .side-menu .side-link:hover,
 .side-menu .side-link.active {
   background: #444444;
@@ -367,18 +369,17 @@ img {
 
 
 /* =========================================================
-   7. 오른쪽 본문 영역 (#main-content)
+   3-4) 본문 (#main-content)
 ========================================================= */
 
 #main-content {
-  flex: 1 1 auto; /* 남은 공간 모두 사용 */
-  min-width: 0;   /* 긴 텍스트/테이블 때문에 가로 스크롤 생기는 문제 완화 */
+  flex: 1 1 auto;
+  min-width: 0;
 
   padding: 10px;
   background-color: #ffffff;
 }
 
-/* 본문 내부 이미지/캔버스 기본 정렬 */
 #main-content img,
 #main-content canvas {
   display: block;
@@ -388,37 +389,25 @@ img {
   padding: 0;
 }
 
-/* WEB COLOR 페이지에서 padding 제거하고 싶을 때(구형 방식)
-   - 페이지에 body.page-webcolor 클래스를 직접 주는 방식 */
+/* 구형: body에 직접 클래스 주는 방식 */
 body.page-webcolor #main-content {
   padding: 0;
 }
 
-/* WEB COLOR 페이지에서 padding 제거(자동 감지 방식)
-   - :has()는 최신 브라우저 위주로 지원됨(구형 브라우저는 무시됨)
-   - webcolor-wrapper가 본문에 있으면 자동으로 padding 제거 */
+/* 최신: 본문에 webcolor-wrapper가 있으면 자동 padding 제거 */
 #main-content:has(.webcolor-wrapper) {
   padding: 0 !important;
 }
 
-/* index에서는 본문을 전체폭으로 */
-body.page-index .main {
-  flex-direction: column;     /* 좌/우 2열 → 위/아래 1열로 */
-}
-
-/* index에서 왼쪽 사이드가 필요 없으면 숨김 */
-body.page-index #left-menu {
-  display: none !important;
-}
-
-/* 안전하게 본문 폭 100% */
-body.page-index #main-content {
-  width: 100%;
+/* 예전 스타일로 폭이 좁아지는 것 방지용(유지) */
+#main-content,
+.content-area {
+  margin: 0;
 }
 
 
 /* =========================================================
-   8. 푸터 영역 (#site-footer)
+   3-5) 푸터 (#site-footer)
 ========================================================= */
 
 #site-footer {
@@ -431,12 +420,12 @@ body.page-index #main-content {
 #site-footer .footer-inner {
   padding: 20px 20px;
   color: #ffffff;
-  text-align: right; /* 모바일에서는 아래 @media에서 center로 변경 */
+  text-align: right; /* 모바일에서는 아래 @media에서 center */
 }
 
 
 /* =========================================================
-   9. DETAILILLUST 페이지 전용 레이아웃
+   4) 페이지 전용 (Detailillust 등)
 ========================================================= */
 
 .detailillust-wrapper {
@@ -449,9 +438,7 @@ body.page-index #main-content {
   font-weight: bold;
 }
 
-/* 퀵메뉴 + 본문 2단(grid)
-   - 왼쪽: 퀵메뉴
-   - 오른쪽: 본문 */
+/* 퀵메뉴 + 본문 2단(grid) */
 .detailillust-layout {
   position: relative;
   display: grid;
@@ -459,7 +446,6 @@ body.page-index #main-content {
   gap: 10px;
 }
 
-/* 떠다니는 퀵메뉴 */
 #quick {
   position: absolute;
   left: -10px;
@@ -486,7 +472,6 @@ body.page-index #main-content {
   color: #ffa500;
 }
 
-/* DETAILILLUST 본문(오른쪽 컬럼 사용) */
 #detail-contents,
 .detailillust-article {
   grid-column: 2 / 3;
@@ -528,63 +513,46 @@ body.page-index #main-content {
   line-height: 1.5;
 }
 
-/* 예전 스타일로 폭이 좁아지는 것 방지용(유지) */
-#main-content,
-.content-area {
-  margin: 0;
-}
-
 
 /* =========================================================
-   10. APP 모드(body.mode-app) 오버라이드
-   - include.js에서 mode가 app일 때 body에 .mode-app 클래스를 붙임
-   - 목표: "사이드 메뉴를 위로 올려" 가로 메뉴처럼 사용
+   5) 모드 전환(body.mode-app) 오버라이드
+   - “app 모드에서 2열 유지 + 사이드 세로 유지” 버전
 ========================================================= */
 
-/* app 모드에서는 상단 검정 메뉴(#topMenu)를 숨김
-   - (원하면 이 줄을 제거하면 app에서도 #topMenu가 보입니다) */
+/* app 모드에서도 상단 메뉴 보이게 */
 body.mode-app #topMenu {
-  display: none !important;
+  display: block !important;
 }
 
-/* app 모드: 기본 2열(.main)을 세로로 쌓기(위: 사이드, 아래: 본문) */
+/* app 모드: 2열(좌:사이드, 우:본문) 유지 */
 body.mode-app .main {
-  display: flex;
-  flex-direction: column;
+  flex-direction: row !important;
 }
 
-/* app 모드: 사이드 메뉴 박스를 가로폭 100%로 */
+/* app 모드: 사이드 폭 유지 */
 body.mode-app #left-menu {
-  width: 100%;
-  max-width: 100%;
-  flex: 0 0 auto;
+  flex: 0 0 250px;
+  width: 250px;
+  max-width: 250px;
 }
 
-/* app 모드: 사이드 메뉴 목록을 "가로 메뉴"처럼 */
+/* app 모드: 사이드 메뉴는 세로(기본) */
 body.mode-app .side-menu,
 body.mode-app .side-menu-detail {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
+  display: block !important;
 }
 
-/* app 모드: 가로 메뉴에서 링크를 버튼처럼 보이게 */
-body.mode-app a.side-link,
-body.mode-app .side-menu a {
-  display: inline-flex;
-  padding: 8px 12px;
-}
-
-/* app 모드: 본문 위쪽 여백이 과하면 여기서 조절 */
-body.mode-app .main {
-  margin-top: 10px;
+/* 링크도 세로 블록 */
+body.mode-app .side-menu a,
+body.mode-app a.side-link {
+  display: block !important;
 }
 
 
 /* =========================================================
-   11. 반응형(태블릿, 1024px 이하)
+   6) 반응형
 ========================================================= */
+
 @media (max-width: 1024px) {
   #site-header,
   #topMenu,
@@ -595,19 +563,18 @@ body.mode-app .main {
     width: 100%;
   }
 
-  /* 태블릿에서 사이드 폭 살짝 축소(원하면 값 조정) */
+  /* 태블릿에서 사이드 폭 축소 */
   #left-menu {
     flex-basis: 220px;
     width: 220px;
     max-width: 220px;
   }
 
-  /* 상단 메뉴가 있을 경우 간격 조정 */
   #topMenu > ul {
     justify-content: space-around;
   }
 
-  /* DETAILILLUST: grid를 1열로(퀵메뉴 위, 본문 아래) */
+  /* DETAILILLUST: grid를 1열로 */
   .detailillust-layout {
     grid-template-columns: 1fr;
   }
@@ -624,12 +591,8 @@ body.mode-app .main {
   }
 }
 
-
-/* =========================================================
-   12. 반응형(모바일, 768px 이하)
-========================================================= */
 @media (max-width: 768px) {
-  /* 기본 2열 레이아웃을 세로로 */
+  /* 모바일에서는 기본 2열을 세로로 */
   .container,
   .main {
     flex-direction: column;
@@ -669,7 +632,6 @@ body.mode-app .main {
     display: none;
   }
 
-  /* 모바일에서 푸터는 가운데 정렬이 보통 보기 좋음 */
   #site-footer .footer-inner {
     text-align: center;
   }

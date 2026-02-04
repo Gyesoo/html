@@ -31,7 +31,6 @@
     padding: 0;
 }
 
-
 /* -----------------------------
     2) Layout (컨테이너/리스트 레이아웃)
 -------------------------------- */
@@ -49,7 +48,6 @@
     margin: 0;
     padding: 0;
 }
-
 
 /* -----------------------------
     3) Item (칸/링크/아이콘/라벨)
@@ -107,7 +105,6 @@
     line-height: 1;
 }
 
-
 /* -----------------------------
     4) States (hover / focus)
     - hover와 focus-within을 동일한 시각 언어로 통일
@@ -143,105 +140,104 @@
     outline-offset: -2px;
 }
 
-
-
-/* -----------------------------
-    5) Per-item Theme
--------------------------------- */
-
-/* 1. 홈/인덱스 (빨강) */
-.awesome > ul > li:has(a[href*="index"]) {
-    --accent: #E53935; 
-    --accent-hover: #EF9A9A; 
-    --bg: #FFEBEE; 
-    --bg-hover: #B71C1C;
-}
-
-/* 2. 웹 (주황) */
-.awesome > ul > li:has(a[href*="web"]) {
-    --accent: #FB8C00; 
-    --accent-hover: #FFCC80; 
-    --bg: #FFF3E0; 
-    --bg-hover: #EF6C00;
-}
-
-/* 3. 카메라 (초록) */
-.awesome > ul > li:has(a[href*="family"]) {
-    --accent: #43A047; 
-    --accent-hover: #A5D6A7; 
-    --bg: #E8F5E9; 
-    --bg-hover: #2E7D32;
-}
-
-/* 4. 가족 (파랑) */
-.awesome > ul > li:has(a[href*="tour"]),
-.awesome > ul > li:has(a[href*="menu4"]) {
-    --accent: #1E88E5; 
-    --accent-hover: #90CAF9; 
-    --bg: #E3F2FD; 
-    --bg-hover: #1565C0;
-}
-
-/* 5. 여행 (남색) */
-.awesome > ul > li:has(a[href*="camera"]) {
-    --accent: #3F51B5; 
-    --accent-hover: #C5CAE9; 
-    --bg: #E8EAF6; 
-    --bg-hover: #1A237E;
-}
-
-/* 6. 목공 (보라) */
-.awesome > ul > li:has(a[href*="woodwork"]),
-.awesome > ul > li:has(a[href*="menu5"]) {
-    --accent: #8E24AA; 
-    --accent-hover: #CE93D8; 
-    --bg: #F3E5F5; 
-    --bg-hover: #6A1B9A;
-}
-
-
 /* -----------------------------
     5) Per-item Theme (1~5번 항목별 색상)
     - 기본/hover 배경, 포인트 컬러(아이콘/라벨)를 변수로 관리
 -------------------------------- */
-/* .awesome > ul > li:nth-child(1) {
-    --accent: #1e88e5; */      /* 파랑색 */
-    /* --accent-hover: #90caf9;
+.awesome > ul > li:nth-child(1) {
+    --accent: #1e88e5;      /* 파랑색 */
+    --accent-hover: #90caf9;
     --bg: #e3f2fd;
     --bg-hover: #0d47a1;
-} */
+}
 
-/* .awesome > ul > li:nth-child(2) {
-    --accent: #43a047; */      /* 초록색 */
-    /* --accent-hover: #a5d6a7;
+.awesome > ul > li:nth-child(2) {
+    --accent: #43a047;      /* 초록색 */
+    --accent-hover: #a5d6a7;
     --bg: #e8f5e9;
     --bg-hover: #1b5e20;
-} */
+}
 
-/* .awesome > ul > li:nth-child(3) {
-    --accent: #fb8c00; */      /* 주황색 */
-    /* --accent-hover: #ffcc80;
+.awesome > ul > li:nth-child(3) {
+    --accent: #fb8c00;      /* 주황색 */
+    --accent-hover: #ffcc80;
     --bg: #fff3e0;
     --bg-hover: #e65100;
-} */
+}
 
-/* .awesome > ul > li:nth-child(4) {
-    --accent: #8e24aa; */      /* 보라색 */
-    /* --accent-hover: #ce93d8;
+.awesome > ul > li:nth-child(4) {
+    --accent: #8e24aa;      /* 보라색 */
+    --accent-hover: #ce93d8;
     --bg: #f3e5f5;
     --bg-hover: #4a148c;
-} */
+}
 
-/* .awesome > ul > li:nth-child(5) {
-    --accent: #e53935; */      /* 빨강색 */
-    /* --accent-hover: #ef9a9a;
+.awesome > ul > li:nth-child(5) {
+    --accent: #e53935;      /* 빨강색 */
+    --accent-hover: #ef9a9a;
     --bg: #ffebee;
     --bg-hover: #b71c1c;
-} */
+}
+
+.awesome > ul > li:nth-child(6) {
+    --accent: #FFD700;      /* Amber (호박색) */
+    --accent-hover: #FFF4D1; /* Soft Yellow */
+    --bg: #ffebee;
+    --bg-hover: #B28500;    /* Deep Amber */
+}
 
 /* .awesome > ul > li:nth-child(6) {
-    --accent: #FFD700; */      /* Amber (호박색) */
-    /* --accent-hover: #FFF4D1;
+    --accent: #4169E1;      /* 군청색 */
+    /* --accent-hover: #87CEEB;
     --bg: #ffebee;
-    --bg-hover: #B28500;
+    --bg-hover: #000080;
 } */
+
+
+/* 1. 빨강 (Red) */
+.awesome > ul > li:nth-child(1) {
+    --accent: #E53935;
+    --accent-hover: #EF9A9A;
+    --bg: #FFEBEE;
+    --bg-hover: #B71C1C;
+}
+
+/* 2. 주황 (Orange) */
+.awesome > ul > li:nth-child(2) {
+    --accent: #FB8C00;
+    --accent-hover: #FFCC80;
+    --bg: #FFF3E0;
+    --bg-hover: #EF6C00;
+}
+
+/* 3. 노랑 (Yellow/Amber) */
+.awesome > ul > li:nth-child(3) {
+    --accent: #FFBF00;
+    --accent-hover: #FFF4D1;
+    --bg: #FFFDE7;
+    --bg-hover: #B28500;
+}
+
+/* 4. 초록 (Green) */
+.awesome > ul > li:nth-child(4) {
+    --accent: #43A047;
+    --accent-hover: #A5D6A7;
+    --bg: #E8F5E9;
+    --bg-hover: #2E7D32;
+}
+
+/* 5. 파랑 (Blue) */
+.awesome > ul > li:nth-child(5) {
+    --accent: #1E88E5;
+    --accent-hover: #90CAF9;
+    --bg: #E3F2FD;
+    --bg-hover: #1565C0;
+}
+
+/* 6. 보라 (Purple) */
+.awesome > ul > li:nth-child(6) {
+    --accent: #8E24AA;
+    --accent-hover: #CE93D8;
+    --bg: #F3E5F5;
+    --bg-hover: #6A1B9A;
+}
