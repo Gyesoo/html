@@ -205,43 +205,43 @@
     - 기본/hover 배경, 포인트 컬러(아이콘/라벨)를 변수로 관리
 -------------------------------- */
 /* .awesome > ul > li:nth-child(1) {
-    --accent: #1e88e5; */      /* 파랑색 */
-    /* --accent-hover: #90caf9;
+    --accent: #1e88e5;
+    --accent-hover: #90caf9;
     --bg: #e3f2fd;
     --bg-hover: #0d47a1;
-} */
+}
 
-/* .awesome > ul > li:nth-child(2) {
-    --accent: #43a047; */      /* 초록색 */
-    /* --accent-hover: #a5d6a7;
+.awesome > ul > li:nth-child(2) {
+    --accent: #43a047;
+    --accent-hover: #a5d6a7;
     --bg: #e8f5e9;
     --bg-hover: #1b5e20;
-} */
+}
 
-/* .awesome > ul > li:nth-child(3) {
-    --accent: #fb8c00; */      /* 주황색 */
-    /* --accent-hover: #ffcc80;
+.awesome > ul > li:nth-child(3) {
+    --accent: #fb8c00;
+    --accent-hover: #ffcc80;
     --bg: #fff3e0;
     --bg-hover: #e65100;
-} */
+}
 
-/* .awesome > ul > li:nth-child(4) {
-    --accent: #8e24aa; */      /* 보라색 */
-    /* --accent-hover: #ce93d8;
+.awesome > ul > li:nth-child(4) {
+    --accent: #8e24aa;
+    --accent-hover: #ce93d8;
     --bg: #f3e5f5;
     --bg-hover: #4a148c;
-} */
+}
 
-/* .awesome > ul > li:nth-child(5) {
-    --accent: #e53935; */      /* 빨강색 */
-    /* --accent-hover: #ef9a9a;
+.awesome > ul > li:nth-child(5) {
+    --accent: #e53935;
+    --accent-hover: #ef9a9a;
     --bg: #ffebee;
     --bg-hover: #b71c1c;
-} */
+}
 
-/* .awesome > ul > li:nth-child(6) {
-    --accent: #FFD700; */      /* Amber (호박색) */
-    /* --accent-hover: #FFF4D1;
+.awesome > ul > li:nth-child(6) {
+    --accent: #FFD700;
+    --accent-hover: #FFF4D1;
     --bg: #ffebee;
     --bg-hover: #B28500;
 } */
