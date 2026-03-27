@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <title>레이아웃</title>
+    <meta charset="utf-8">
+    <style>
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Falcon 홈페이지</h1>
+      </header>
+      <section class="content">
+        <nav>
+          <ul>
+            <li>C언어</li>
+            <li>C++언어</li>
+            <li>JAVA</li>
+            <li>HTML</li>
+            <li>CSS</li>
+          </ul>
+        </nav>
+        <article>
+          Falcon 블로그는 컴퓨터 언어에 대한 정보가 있는 강좌 블로그 입니다.
+        </article>
+        <aside>
+          AD
+        </aside>
+      </section>
+      <footer>
+        <a href="https://blog.naver.com/fb_lua">블로그</a>
+      </footer>
+    </div>
+  </body>
+</html>

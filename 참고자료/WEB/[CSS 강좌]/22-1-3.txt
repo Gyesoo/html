@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>float 레이아웃</title>
+    <meta charset="utf-8">
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      .container {
+        width: 540px;
+        border: 1px solid gray;
+        margin: auto;
+      }
+      header {
+        border-bottom: 1px solid gray;
+        text-align: center;
+      }
+      /* nav, article, aside {
+        border: 1px solid gray;
+      } */
+      nav {
+        float: left;
+        border-right: 1px solid gray;
+        width: 120px;
+      }
+      article {
+        float: left;
+        width: 300px;
+        border-left: 1px solid gray;
+        border-right: 1px solid gray;
+        margin-left: -1px;
+        margin-right: -1px;
+        padding: 10px;
+      }
+      aside {
+        float: left;
+        border-left: 1px solid gray;
+        width: 120px;
+        text-align: center;
+        padding-top: 10px;
+      }
+      footer {
+        clear: both;
+        border-top: 1px solid gray;
+        text-align: center;
+      }
+      article h2 {
+        margin-top: 0;
+      }
+      nav ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+      nav li {
+         text-align: left;
+         padding-left: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Falcon 홈페이지</h1>
+      </header>
+      <nav>
+        <ul>
+          <li>position</li>
+          <li>float</li>
+          <li>flex</li>
+        </ul>
+      </nav>
+      <article>
+        <h2>float</h2>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores nam optio nulla aliquid neque iste perferendis recusandae adipisci quaerat ut similique facere, eum dignissimos sit et ipsa nemo consectetur deleniti explicabo, ab debitis accusamus obcaecati maxime veniam. Reiciendis provident deleniti molestiae soluta alias dolore nihil quasi, corporis at delectus dolorum.
+      </article>
+      <aside>
+        ad
+      </aside>
+      <footer>
+        copyleft
+      </footer>
+    </div>
+  </body>
+</html>
