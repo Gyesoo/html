@@ -1,0 +1,197 @@
+[웹디자인 표지 글꼴 분석 - 통합 정리본]
+
+설명:
+- 이 문서는 두 가지 의견(이전 시각 판독 + Gemini 답변)을 통합한 최종 정리본입니다.
+- 사실 근거는 주로 문서 "Web DESIGN-font_analysis_summary.txt"의 서술입니다.
+- 일부 항목은 첨부 이미지의 시각 판독을 함께 반영한 통합 판단입니다.
+
+==================================================
+1) 요소별 최종 통합표
+==================================================
+
+1. 메인 타이틀: "Web DESIgN"
+- 최종 1순위: Futura Bold / Extra Bold
+- 2순위 / 보완 후보: ITC Avant Garde Gothic Extra Bold
+- 확신도: 중간~높음
+- 근거: 문서에서는 Futura를 직접 제시함. [Web DESIGN-font_analysis_summary.txt, 3. 세 번째 이미지]
+  시각 판독상 매우 기하학적인 산세리프이며, 소문자 g 형태 때문에 Avant Garde 계열 가능성도 남음.
+
+2. 상단 한글: "웹디자인"
+- 최종 1순위: 윤고딕 100/300 계열 Bold
+- 2순위 / 보완 후보: 스포카 한 산스 네오 Bold, 맑은 고딕 Bold
+- 확신도: 높음
+- 근거: 문서에서 윤고딕 100/300 시리즈와 대체안이 직접 제시됨. [Web DESIGN-font_analysis_summary.txt, 3. 세 번째 이미지]
+
+3. 상단 한글: "임프레스"
+- 최종 1순위: 윤고딕 계열을 기반으로 한 로고 처리
+- 2순위 / 보완 후보: 커스텀 로고타입
+- 확신도: 중간
+- 근거: 문서는 '인프레스'와 '웹디자인'을 같은 한글 굵은 타이틀 범주로 묶어 윤고딕 계열로 봄. [Web DESIGN-font_analysis_summary.txt, 3. 세 번째 이미지]
+  다만 시각적으로는 일반 식자보다 로고화 흔적이 더 강함.
+
+4. 상단 URL: "www.impress.co.kr"
+- 최종 1순위: Helvetica Bold
+- 2순위 / 보완 후보: Arial Bold
+- 확신도: 높음
+- 근거: 문서에서 Helvetica Bold 또는 Arial Bold로 제시됨. [Web DESIGN-font_analysis_summary.txt, 4. 네 번째 이미지]
+
+5. 상단 설명문: "디지털 시대 디자인 리더를 위한 매거진"
+- 최종 1순위: 윤고딕 얇은 웨이트
+- 2순위 / 보완 후보: 일반 한글 고딕 Medium/Regular
+- 확신도: 중간
+- 근거: 문서에서 보조 한글 얇은 텍스트에 윤고딕 얇은 웨이트를 제시함. [Web DESIGN-font_analysis_summary.txt, 3. 세 번째 이미지]
+
+6. 메인 타이틀 아래 영문 보조카피:
+   "Internet / Web Design / Web Publishing - Monthly Magazine / Vol_19"
+- 최종 1순위: Helvetica / Arial Regular
+- 2순위 / 보완 후보: Univers 계열
+- 확신도: 높음
+- 근거: 문서에서 보조 영문에 Helvetica, Arial을 제시함. [Web DESIGN-font_analysis_summary.txt, 3. 세 번째 이미지]
+
+7. 좌측 빨간 글자: "Special Issue"
+- 최종 1순위: Comic Sans MS Bold
+- 2순위 / 보완 후보: 유사 캐주얼 디스플레이체
+- 확신도: 높음
+- 근거: 문서에서 Comic Sans MS Bold와 포토샵 효과를 구체적으로 제시함. [Web DESIGN-font_analysis_summary.txt, 2. 두 번째 텍스트]
+
+8. 좌측 세로 한글 문구: "웹은 지금 플래시 애니메이션이…"
+- 최종 1순위: 휴먼매직체 / HY매직체
+- 2순위 / 보완 후보: 손글씨풍 한글 디스플레이체
+- 확신도: 높음
+- 근거: 문서에서 직접 휴먼매직체(HY매직체)를 제시함. [Web DESIGN-font_analysis_summary.txt, 1. 첫 번째 텍스트]
+
+9. 상단 좌측: "Digital"
+- 최종 1순위: Brush Script MT
+- 2순위 / 보완 후보: 스크립트 로고체
+- 확신도: 중간~높음
+- 근거: 문서에서 Brush Script MT를 명시함. [Web DESIGN-font_analysis_summary.txt, 4. 네 번째 이미지]
+  실제 사용본은 약간 수정되었을 가능성도 있음.
+
+10. 상단 좌측: "impress"
+- 최종 1순위: Helvetica Black Oblique
+- 2순위 / 보완 후보: 아주 굵은 고딕 이탤릭/오블리크, 커스텀 로고 처리
+- 확신도: 중간
+- 근거: 문서에서 Helvetica Black Oblique 또는 굵은 고딕 기울임꼴을 제시함. [Web DESIGN-font_analysis_summary.txt, 4. 네 번째 이미지]
+
+11. 우측 세로 숫자: "2001"
+- 최종 1순위: Futura Regular / Medium
+- 2순위 / 보완 후보: Futura 계열 숫자 변형
+- 확신도: 높음
+- 근거: 문서에서 Futura Regular 또는 Medium, 90도 회전 배치라고 직접 설명함. [Web DESIGN-font_analysis_summary.txt, 5. 다섯 번째 이미지]
+
+12. 우측 숫자: "07"
+- 최종 1순위: Helvetica Bold / Arial Bold
+- 2순위 / 보완 후보: 굵은 산세리프 숫자체
+- 확신도: 높음
+- 근거: 문서에서 직접 제시함. [Web DESIGN-font_analysis_summary.txt, 5. 다섯 번째 이미지]
+
+13. 티셔츠 아래 작은 16진수 색상코드
+- 최종 1순위: 작은 고딕/기술표기용 산세리프
+- 2순위 / 보완 후보: OCR-B, 모노스페이스 계열
+- 확신도: 낮음
+- 근거: 문서에 직접 언급은 없음.
+  이 항목은 첨부 이미지의 시각 판독에 따른 보완 추정임.
+
+14. 하단 좌측: "책속의 책"
+- 최종 1순위: 윤고딕 100 시리즈
+- 2순위 / 보완 후보: 윤고딕 계열 중간 이상 굵기
+- 확신도: 높음
+- 근거: 문서에서 직접 제시함. [Web DESIGN-font_analysis_summary.txt, 6. 여섯 번째 이미지]
+
+15. 하단 좌측: "Web Technic Book"
+- 최종 1순위: Impact
+- 2순위 / 보완 후보: Franklin Gothic Heavy, Helvetica Black
+- 확신도: 높음
+- 근거: 문서에서 Impact를 직접 제시함. [Web DESIGN-font_analysis_summary.txt, 6. 여섯 번째 이미지]
+
+16. 바코드 아래 숫자: "7000"
+- 최종 1순위: Arial Bold 등 기본 고딕
+- 2순위 / 보완 후보: 굵은 산세리프 숫자체
+- 확신도: 높음
+- 근거: 문서에서 직접 제시함. [Web DESIGN-font_analysis_summary.txt, 6. 여섯 번째 이미지]
+
+17. 하단 오렌지 로고: "digit"
+- 최종 1순위: 커스텀 로고타입
+- 2순위 / 보완 후보: 없음
+- 확신도: 매우 높음
+- 근거: 문서에서 기성 폰트가 아닌 직접 그린 레터링이라고 밝힘. [Web DESIGN-font_analysis_summary.txt, 6. 여섯 번째 이미지]
+
+18. 하단: "WEBSAFE T-SHIRTS\"
+- 최종 1순위: Helvetica Light / Arial Light
+- 2순위 / 보완 후보: Univers Light, Futura Light
+- 확신도: 높음
+- 근거: 문서에서 Helvetica 또는 Arial Light를 제시함. [Web DESIGN-font_analysis_summary.txt, 6. 여섯 번째 이미지]
+
+19. 하단: "2001 \ AUTUMN/WINTER COLLECTION OUT NOW"
+- 최종 1순위: Helvetica / Arial Light
+- 2순위 / 보완 후보: 같은 패밀리의 Regular~Light
+- 확신도: 높음
+- 근거: 문서의 얇은 영문 텍스트 설명과 일치함. [Web DESIGN-font_analysis_summary.txt, 6. 여섯 번째 이미지]
+
+==================================================
+2) 가장 실무적으로 쓸 수 있는 최종 결론
+==================================================
+
+- 메인 타이틀 "Web DESIgN" -> Futura Bold/Extra Bold
+  보완 후보: ITC Avant Garde Gothic Extra Bold
+
+- 한글 메인 제목 "웹디자인", "책속의 책" -> 윤고딕 계열
+
+- 보조 영문 (URL, 서브카피, 하단 얇은 영문) -> Helvetica / Arial 계열
+
+- 장식 텍스트
+  * "Special Issue" -> Comic Sans MS Bold
+  * 좌측 세로 한글 -> 휴먼매직체 / HY매직체
+
+- 숫자 계열
+  * "2001" -> Futura Regular / Medium
+  * "07" -> Helvetica Bold / Arial Bold
+
+- 로고 타입
+  * "digit" -> 커스텀 로고타입
+  * "Digital impress" -> Brush Script MT + Helvetica Black Oblique 기반 로고 조합
+
+==================================================
+3) 확신도별 정리
+==================================================
+
+[확신도가 높은 항목]
+- Special Issue -> Comic Sans MS Bold
+- 좌측 세로 한글 -> 휴먼매직체 / HY매직체
+- www.impress.co.kr -> Helvetica Bold / Arial Bold
+- 2001 -> Futura Regular / Medium
+- 07 -> Helvetica Bold / Arial Bold
+- Web Technic Book -> Impact
+- digit -> 커스텀 로고타입
+
+[실무상 충분히 유력한 항목]
+- Web DESIgN -> Futura Bold/Extra Bold 우선, Avant Garde 보완
+- 웹디자인 / 책속의 책 -> 윤고딕 계열
+- 하단 얇은 영문 -> Helvetica/Arial Light
+
+[확신도가 낮은 항목]
+- 티셔츠 아래 작은 색상코드 폰트
+  -> 작은 고딕/기술표기용 산세리프 또는 OCR-B 유사체
+
+==================================================
+4) 최종 한 줄 요약
+==================================================
+
+이 표지의 핵심 서체 구성은
+"메인 타이틀은 Futura 계열, 보조 영문은 Helvetica/Arial 계열,
+한글 메인은 윤고딕 계열, 장식 텍스트는 휴먼매직체와 Comic Sans MS Bold,
+로고는 일부 커스텀 처리"로 보는 것이 가장 타당함.
+
+==================================================
+5) 근거 문서
+==================================================
+
+- Web DESIGN-font_analysis_summary.txt
+  * 1. 첫 번째 텍스트
+  * 2. 두 번째 텍스트
+  * 3. 세 번째 이미지
+  * 4. 네 번째 이미지
+  * 5. 다섯 번째 이미지
+  * 6. 여섯 번째 이미지
+
+끝.

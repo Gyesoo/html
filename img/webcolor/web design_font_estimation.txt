@@ -1,0 +1,134 @@
+첨부 이미지 글꼴 추정 결과
+기준: 사용자가 첨부한 이미지 자체만을 근거로 한 시각적 추정
+주의: 단일 이미지 기준이므로 정확한 폰트명을 100% 확정할 수는 없으며, 아래 내용은 가장 가능성이 높은 후보군 정리입니다.
+
+1) 요소별 글꼴 추정
+
+[상단 좌측] "Digital impress"
+- 가장 유력한 글꼴: 커스텀 로고타입 또는 스크립트/세리프 혼합 로고
+- 대체 후보: 손글씨형 스크립트 + 소문자 세리프 조합
+- 확신도: 낮음
+- 근거: 일반 활자보다 로고처럼 보이며, "Digital"과 "impress"의 결이 다르게 보입니다.
+
+[상단 좌측] 큰 한글 "임프레스"
+- 가장 유력한 글꼴: 커스텀 한글 로고타입
+- 대체 후보: 굵은 고딕을 수정한 로고
+- 확신도: 중간
+- 근거: 획 모양이 일반 본문용 한글 폰트보다 장식적이며 로고화되어 보입니다.
+
+[상단] "웹디자인"
+- 가장 유력한 글꼴: 윤고딕/견고딕 계열의 굵은 고딕체
+- 대체 후보: HY견고딕, 윤고딕 700~800대
+- 확신도: 중간
+- 근거: 획이 굵고 균일하며 잡지 타이틀용 고딕 인상이 강합니다.
+
+[상단 우측] "www.impress.co.kr"
+- 가장 유력한 글꼴: Helvetica/Arial/Univers Bold 계열
+- 대체 후보: Helvetica Bold, Arial Bold, Univers 65
+- 확신도: 중간
+- 근거: 중성적 산세리프이며 획 대비가 거의 없습니다.
+
+[상단 우측] "디지털 시대 디자인 리더를 위한 매거진"
+- 가장 유력한 글꼴: 한글 고딕 Regular/Medium 계열
+- 대체 후보: 윤고딕 Medium, 중고딕류
+- 확신도: 중간
+- 근거: 장식이 없는 일반 산세리프 본문체입니다.
+
+[중앙 메인 타이틀] "Web DESIgN"
+- 가장 유력한 글꼴: ITC Avant Garde Gothic Extra Bold 계열
+- 대체 후보: Futura Extra Bold, Century Gothic Bold(변형)
+- 확신도: 중간~높음
+- 근거: 매우 기하학적이며, 단층(single-storey) 소문자 g가 보입니다. Helvetica 계열보다 Avant Garde/Futura 계열 가능성이 큽니다.
+
+[메인 타이틀 아래] "Internet / Web Design / Web Publishing - Monthly Magazine / Vol_19"
+- 가장 유력한 글꼴: Helvetica/Univers/Arial 계열 Regular
+- 대체 후보: Helvetica Neue, Univers, Arial
+- 확신도: 중간
+- 근거: 중성적인 산세리프 본문체입니다.
+
+[우측 세로] "2001", "07"
+- 가장 유력한 글꼴: 메인 타이틀과 같은 계열의 굵은 기하학 산세리프
+- 대체 후보: Avant Garde Extra Bold, Futura Extra Bold, Compacta/Inserat 계열
+- 확신도: 중간
+- 근거: 숫자가 매우 굵고 디스플레이용이며 타이틀과 유사한 조형 언어를 공유합니다.
+
+[좌측 빨간 세로] "Special Issue"
+- 가장 유력한 글꼴: 이탤릭 디스플레이체
+- 대체 후보: Times New Roman Bold Italic, Garamond Italic, 세리프 이탤릭 계열
+- 확신도: 낮음
+- 근거: 기울기와 곡선이 강합니다. 해상도상 세리프 여부는 확정이 어렵습니다.
+
+[좌측 검정 세로 한글 문구]
+- 가장 유력한 글꼴: 궁서/명조 계열 또는 캘리그래피형 한글
+- 대체 후보: 궁서체, 윤명조류, 붓글씨형 디스플레이체
+- 확신도: 낮음~중간
+- 근거: 획 굵기 변화가 있고 고딕보다 명조/서예 느낌이 강합니다.
+
+[중앙 티셔츠 아래 작은 16진수 색상코드]
+- 가장 유력한 글꼴: 작은 고정폭/기술표기용 산세리프
+- 대체 후보: OCR-B, DIN Mono, Helvetica Condensed, 비트맵 산세리프
+- 확신도: 낮음
+- 근거: 숫자/영문 6자리 코드 표기용이라 고정폭 또는 기술적 인상의 폰트일 가능성이 큽니다.
+
+[하단 좌측] "책속의 책"
+- 가장 유력한 글꼴: 굵은 한글 고딕 또는 제목용 한글체
+- 대체 후보: 윤고딕 Bold, 견고딕 계열
+- 확신도: 낮음~중간
+- 근거: 짧은 제목용 한글로 보이며 본문체보다 더 무겁습니다.
+
+[하단 좌측] "Web Technic Book"
+- 가장 유력한 글꼴: Franklin Gothic / Helvetica Black 계열
+- 대체 후보: Franklin Gothic Heavy, Arial Black, Helvetica Black
+- 확신도: 중간
+- 근거: 제목용 굵은 산세리프이며 고전적 매거진/신문형 헤드라인 인상입니다.
+
+[하단 중앙 오렌지] "digit"
+- 가장 유력한 글꼴: 커스텀 로고타입
+- 대체 후보: 둥근 산세리프를 수정한 워드마크
+- 확신도: 높음
+- 근거: 일반 폰트라기보다 브랜드 워드마크처럼 보입니다.
+
+[하단 우측] "WEBSAFE T-SHIRTS\"
+- 가장 유력한 글꼴: Helvetica Neue Light / Univers Light 계열
+- 대체 후보: Helvetica Light, Univers 45, Futura Light
+- 확신도: 중간
+- 근거: 가늘고 넓게 보이는 대문자 산세리프입니다.
+
+[하단 우측] "2001 \ AUTUMN/WINTER COLLECTION OUT NOW"
+- 가장 유력한 글꼴: 위와 같은 Light/Regular 산세리프
+- 대체 후보: Helvetica/Univers Light~Regular
+- 확신도: 중간
+- 근거: 바로 위 문구와 같은 패밀리의 작은 크기 서브카피처럼 보입니다.
+
+[하단 좌측 가격/바코드 숫자] "'000" 등
+- 가장 유력한 글꼴: 굵은 산세리프 또는 압축 산세리프
+- 대체 후보: Helvetica Bold, Arial Bold, DIN 계열
+- 확신도: 낮음
+- 근거: 기능성 표기에 가까운 소형 숫자입니다.
+
+2) 서체 계열별 요약
+- 기하학적 굵은 산세리프: ITC Avant Garde Gothic Extra Bold / Futura Extra Bold
+- 중성적 산세리프: Helvetica / Univers / Arial 계열
+- 한글 굵은 고딕: 윤고딕 / 견고딕 계열
+- 한글 명조/궁서 또는 캘리그래피: 궁서/명조 계열
+- 세리프 이탤릭 또는 장식적 이탤릭: Times/Garamond Italic 계열
+- 고정폭/기술표기용 작은 문자: OCR-B 또는 유사 고정폭체
+- 커스텀 워드마크: Digital impress / 임프레스 / digit
+
+3) 가장 가능성이 높은 대표 후보
+- 메인 제목: ITC Avant Garde Gothic Extra Bold
+- 보조 영문: Helvetica / Univers 계열
+- 한글 고딕: 윤고딕 / HY견고딕 계열
+- 세로 한글: 궁서/명조 계열
+- 빨간 영문: Times New Roman Bold Italic 유사체
+- 색상코드: OCR-B 또는 유사 고정폭체
+
+4) 정확도를 더 높이기 위해 필요한 자료
+- 원본 PDF 또는 300dpi 이상 스캔본
+- "Web DESIgN" 부분 확대 이미지
+- 왼쪽 세로 한글 문구 확대 이미지
+- 하단 "digit", "WEBSAFE T-SHIRTS" 확대 이미지
+
+작성 메모:
+- 본 문서는 첨부된 이미지 한 장만을 근거로 한 시각적 분석 요약입니다.
+- 실제 사용 폰트는 아웃라인 처리, 수동 수정, 로고화, 인쇄 상태, 스캔 품질에 따라 달라질 수 있습니다.
