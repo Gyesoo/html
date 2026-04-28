@@ -5,16 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
+        // 변수를 선언합니다.
         let output = '';
 
+        // 중첩 반복문
         for (let i = 1; i < 10; i++) {
             for ( let j = 0; j < i; j++) {
-                output += '*';
+                output += '*';  
             }
-            output += '<br>';
+            output += '\n'; // 줄바꿈 문자 유지
         }
-        document.write(output);
-        console.log(output);
+    
+        // 출력합니다.
+        // document.write 할 때 <pre> 태그로 감싸줍니다.
+        document.write('<pre>' + output + '</pre>');    // 웹페이지 출력
+        console.log(output);                            // 콘솔 출력
     </script>
 </body>
 </head>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function earnings(name, wage=8590, hours=40) {
+            document.write(`# ${name} 님의 급여 정보`);
+            document.write(`<br>`);
+            document.write(`- 시급: ${wage}원`);
+            document.write(`<br>`);
+            document.write(`- 근무 시간: ${hours}시간`);
+            document.write(`<br>`);
+            document.write(`- 급여: ${wage * hours}원`);
+            document.write(`<hr>`);
+        }
+
+        earnings('구름');
+
+        earnings('별', 10000);
+
+        earnings('인성', 10000, 52);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
