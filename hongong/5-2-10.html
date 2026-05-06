@@ -1,0 +1,30 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script>
+            let pi = 3.14;
+            document.write(`파이 값은 ${pi}입니다.<br>`);
+
+            // 블럭을 사용한 스코프 생성
+            {
+                let pi = 3.141592;
+                document.write(`파이 값이 ${pi}입니다.<br>`);
+            }
+            document.write(`파이 값은 ${pi}입니다.<br>`);
+
+            // 함수 블럭을 사용한 스코프 생성
+            function sample() {
+                let pi = 3.141592;
+                document.write(`파이 값이 ${pi}입니다.<br>`);
+            }
+            sample();
+            document.write(`파이 값은 ${pi}입니다.<br>`);
+        </script>
+    </head>
+    <body>
+        
+    </body>
+    </html>
