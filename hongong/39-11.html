@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li class="fruit apple">Apple</li>
+        <li class="fruit banana">Banana</li>
+        <li class="fruit orange">Orange</li>
+    </ul>
+    <script>
+        const $elems = document.querySelectorAll('.fruit');
+
+        [...$elems].forEach(elem => { elem.style.color = 'red' });
+
+        const $apples = document.querySelectorAll('.fruit.apple');
+
+        [...$apples].forEach(app => { app.style.color = 'blue'});
+    </script>
+</body>
+</html>
