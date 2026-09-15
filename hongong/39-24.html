@@ -7,22 +7,16 @@
 </head>
 <body>
     <ul id="fruits">
-        <li>Apple</li>
+        <li> Apple</li>
         <li>Banana</li>
     </ul>
 </body>
 <script>
     const $fruits = document.querySelector('#fruits');
 
-    const { childNodes } = $fruits;
-    console.log(childNodes instanceof NodeList);
+    // replaceChildren()을 호출하면 하위의 모든 자식 노드가 한 번에 깨끗하게 삭제됩니다.
+    $fruits.replaceChildren();
 
-    console.log(childNodes);
-
-    for (let i = 0; i < childNodes.length; i++) {
-        $fruits.removeChild(childNodes[i]);
-    }
-
-    console.log(childNodes);
+    console.log($fruits.children); // HTMLCollection [] (length: 0)
 </script>
 </html>
