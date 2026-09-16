@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="fruits">
+        <li class="apple">Apple</li>
+        <li class="banana">Banana</li>
+        <li class="orange">Orange</li>
+    </ul>
+    <script>
+        const $fruits = document.querySelector('#fruits');
+
+        const { firstElementChild } = $fruits;
+        console.log(firstElementChild);
+
+        const { nextElementSibling } = firstElementChild;
+        console.log(nextElementSibling);
+    </script>
+</body>
+</html>
