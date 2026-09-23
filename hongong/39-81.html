@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="checkbox" checked>
+    <script>
+        const $checkbox = document.querySelector('input[type=checkbox]');
+
+        // getAttribute 메서드로 취득한 어트리뷰트 값은 언제나 문자열이다.
+        console.log($checkbox.getAttribute('checked'));
+
+        // DOM 프로퍼티로 취득한 최신 상태 값은 문자열이 아닐 수도 있다.
+        console.log($checkbox.checked);
+    </script>
+</body>
+</html>

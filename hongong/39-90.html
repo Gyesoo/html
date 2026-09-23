@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: antiquewhite;
+        }
+        .red { color: red; }
+        .blue { color: blue; }
+    </style>
+</head>
+<body>
+    <div class="box red">Hello World</div>
+    <script>
+        const $box = document.querySelector('.box');
+
+        // .box 요소의 class 어트리뷰트 정보를 담은 DOMtokenList 객체를 취득
+        // classList가 반환하는 DOMTokenList 객체는 HTMLCollection 객체를 취득
+        // 객체 노드의 상태 변화를 실시간으로 반영하는 살아 있는(live) 객체다.
+        console.log($box.classList);
+        // .box 요소의 class 어트리뷰트 값 중에서 'red'만 'ㅠㅣㅕㄷ'fh qusrud
+        $box.classList.replace('red', 'blue');
+    </script>
+</body>
+</html>

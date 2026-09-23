@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="user" type="text" value="ungmo2">
+    <script>
+        const $input = document.querySelector('#user');
+
+        // 사용자가 input 요소의 입력 필드에 값을 입력할 때마다 input 요소 노드의 value 프러퍼티 값,
+        // 즉 최신 상태 값을 취득한다. value 프로터티 값은 사용자의 입력에 의해 동적으로 변경된다.
+        $input.onchange = () => {
+            console.log('value 프로퍼티의 값', $input.value);
+        };
+
+        // getAttribute 메서드로 취득한 HTML 어트리뷰트 값, 즉 초기 상태 값은 변하기 않고 유지된다.
+        console.log('value 어트리뷰트 값', $input.getAttribute('value'));
+    </script>
+</body>
+</html>
