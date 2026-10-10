@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var elem = {
+            value: "실제 입력값",
+            valuse: "오타로 만들어진 속성"
+        };
+
+        console.log(elem?.value);  // 출력: "실제 입력값"
+        console.log(elem?.valuse); // 출력: "오타로 만들어진 속성"
+        console.log(elem?.age);    // 출력: undefined
+    </script>
+</body>
+</html>
