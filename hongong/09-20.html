@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var done = true;
+        var message = '';
+
+        // 주어진 조건이 true일 때
+        if (done) message = '완료';
+        console.log(message);
+
+        // if 문은 단축 평가로 대체 가능하다.
+        message = done && '완료';
+        console.log(message);
+    </script>
+</body>
+</html>

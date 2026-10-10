@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 단축 평가를 사용한 매개변수의 기본값 설정
+        function getStringLength(str) {
+            str = str || '';
+            return str.length;
+        }
+
+        getStringLength();
+        console.log(getStringLength());
+        getStringLength('hi');
+        console.log(getStringLength('hi'));
+
+        // ES6의 매개변수의 기본값 설정
+        function getStringLength(str = '') {
+            return str.length;
+        }
+
+        getStringLength();
+        getStringLength('hi');
+    </script>
+</body>
+</html>
