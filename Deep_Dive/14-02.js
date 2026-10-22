@@ -1,10 +1,9 @@
 var x = 'global';
 
 function foo() {
-    var x = 'local';
     console.log(x);
+    var x = 'local';
 }
 
 foo();
-
 console.log(x);
