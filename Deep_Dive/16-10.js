@@ -11,4 +11,5 @@ console.log(person);
 
 delete person.name;
 console.log(person);
+
 Object.defineProperty(person, 'age', { value: 20 });
