@@ -43,3 +43,4 @@ console.log(descriptor);
 // { get: [Function: get fullName], set: [Function: set fullName],
 // enumerable: true, configurable: true }
 
+console.log(Object.getOwnPropertyDescriptors(person));
